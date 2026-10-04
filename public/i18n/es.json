@@ -1,5 +1,32 @@
 {
   "app": {
-    "title": "Aplicación Web"
+    "title": "FleetSafe"
+  },
+  "layout": {
+    "dashboard": "Panel",
+    "identityAndAccess": "Identidad y Acceso",
+    "fleetManagement": "Gestión de Flota",
+    "vehicleDocumentation": "Documentación Vehicular",
+    "preOperationalInspection": "Inspección Preoperacional",
+    "evaluationAndAuthorization": "Evaluación y Autorización",
+    "incidentManagement": "Gestión de Incidencias"
+  },
+  "validation": {
+    "required": "El campo {{field}} es obligatorio.",
+    "invalid": "El campo {{field}} no es válido."
+  },
+  "home": {
+    "title": "Bienvenido a FleetSafe",
+    "content": "Plataforma de gestión de flotas y seguridad del transporte."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "powered-by": "Desarrollado con",
+    "and": "y"
+  },
+  "page-not-found": {
+    "title": "Página no encontrada",
+    "content": "La página que buscas no existe o ya no está disponible.",
+    "go-home": "Volver al panel"
   }
 }
