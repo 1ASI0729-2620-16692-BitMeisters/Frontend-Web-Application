@@ -1,0 +1,114 @@
+/* ============================================================================
+   FleetSafe — Language Switcher
+   Modern pill-style toggle integrated into the topbar.
+   ============================================================================ */
+
+/* ─── 1. Design tokens ─────────────────────────────────────────────────── */
+
+:host {
+  --ls-bg: #F1F3F7;
+  --ls-bg-hover: #E4E8EF;
+  --ls-bg-active: #13315C;
+  --ls-text: #4A4A4A;
+  --ls-text-hover: #0B2545;
+  --ls-text-active: #FFFFFF;
+  --ls-radius: 9999px;
+  --ls-height: 34px;
+  --ls-transition: 180ms ease;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ─── 2. Group container ───────────────────────────────────────────────── */
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  height: var(--ls-height);
+  padding: 3px;
+  background-color: var(--ls-bg);
+  border-radius: var(--ls-radius);
+  border: none;
+  gap: 2px;
+  overflow: hidden;
+}
+
+/* ─── 3. Individual toggles ────────────────────────────────────────────── */
+
+.language-toggle ::ng-deep .mat-button-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--ls-radius);
+  color: var(--ls-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  min-width: 46px;
+  height: calc(var(--ls-height) - 6px);
+  transition:
+    background-color var(--ls-transition),
+    color var(--ls-transition);
+}
+
+.language-toggle ::ng-deep .mat-button-toggle-label-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  line-height: 1;
+  height: 100%;
+  background-color: transparent;
+  color: inherit;
+}
+
+/* ─── 4. Hover state (non-selected toggles) ────────────────────────────── */
+
+.language-toggle ::ng-deep .mat-button-toggle:not(.mat-button-toggle-checked):hover {
+  background-color: var(--ls-bg-hover);
+  color: var(--ls-text-hover);
+}
+
+.language-toggle ::ng-deep .mat-button-toggle:not(.mat-button-toggle-checked):hover .mat-button-toggle-label-content {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* ─── 5. Active (checked) state ────────────────────────────────────────── */
+
+.language-toggle ::ng-deep .mat-button-toggle-checked {
+  background-color: var(--ls-bg-active);
+  color: var(--ls-text-active);
+  box-shadow: 0 1px 3px rgba(11, 37, 69, 0.25);
+}
+
+.language-toggle ::ng-deep .mat-button-toggle-checked .mat-button-toggle-label-content {
+  background-color: transparent;
+  color: var(--ls-text-active);
+  font-weight: 700;
+}
+
+/* ─── 6. Neutralize Material's overlay, ripple and checkbox ────────────── */
+
+.language-toggle ::ng-deep .mat-button-toggle-focus-overlay {
+  background-color: transparent;
+  opacity: 0;
+}
+
+.language-toggle ::ng-deep .mat-ripple,
+.language-toggle ::ng-deep .mat-button-toggle-ripple {
+  display: none;
+}
+
+.language-toggle ::ng-deep .mat-button-toggle-checkbox-wrapper,
+.language-toggle ::ng-deep .mat-pseudo-checkbox {
+  display: none;
+}
+
+.language-toggle ::ng-deep .mat-button-toggle + .mat-button-toggle {
+  border-left: none;
+}
