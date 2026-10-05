@@ -5,6 +5,9 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
 
+/**
+ * Application-wide provider configuration for routing, HTTP, and localization.
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -15,8 +18,8 @@ export const appConfig: ApplicationConfig = {
         prefix: '/i18n/',
         suffix: '.json',
       }),
-      lang: 'en',
-      fallbackLang: 'en',
+      lang: 'es',
+      fallbackLang: 'es',
     }),
   ],
 };
