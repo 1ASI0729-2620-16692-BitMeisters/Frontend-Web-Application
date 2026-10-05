@@ -1,0 +1,38 @@
+<h1 class="title">{{ 'incident.repair.new-title' | translate }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>{{ 'incident.repair.workshop' | translate }}</mat-label>
+    <input matInput formControlName="workshop" required />
+    @if (form.get('workshop')?.touched && form.get('workshop')!.hasError('required')) {
+      <mat-error>{{ 'incident.error.workshop-required' | translate }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.repair.cost' | translate }}</mat-label>
+    <input matInput type="number" formControlName="cost" required />
+    @if (form.get('cost')?.touched && form.get('cost')!.hasError('required')) {
+      <mat-error>{{ 'incident.error.cost-required' | translate }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.repair.started-at' | translate }}</mat-label>
+    <input matInput type="date" formControlName="startedAt" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.repair.finished-at' | translate }}</mat-label>
+    <input matInput type="date" formControlName="finishedAt" required />
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      {{ 'incident.repair.schedule' | translate }}
+    </button>
+    <button mat-stroked-button type="button" (click)="cancel()">
+      {{ 'incident.cancel' | translate }}
+    </button>
+  </div>
+</form>
