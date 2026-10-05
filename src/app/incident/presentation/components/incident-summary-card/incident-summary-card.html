@@ -1,0 +1,25 @@
+<mat-card class="incident-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{ 'incident.summary.title' | translate }} #{{ incident().id }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ incident().vehicleId }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="description">{{ incident().description }}</p>
+    <div class="badges">
+      <span class="badge" [class]="severityClass()">
+        {{ 'incident.severity.' + incident().severity | translate }}
+      </span>
+      <span class="badge" [class]="statusClass()">
+        {{ 'incident.status.' + incident().status | translate }}
+      </span>
+    </div>
+    <p class="meta">
+      <mat-icon inline>calendar_today</mat-icon>
+      {{ incident().reportedAt }}
+    </p>
+  </mat-card-content>
+</mat-card>

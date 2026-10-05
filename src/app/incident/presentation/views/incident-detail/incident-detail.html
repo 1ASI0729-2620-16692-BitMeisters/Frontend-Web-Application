@@ -1,0 +1,106 @@
+@if (incident(); as incident) {
+  <div class="detail-container">
+    <div class="header">
+      <h1>{{ 'incident.detail-title' | translate }} #{{ incident.id }}</h1>
+      <button mat-stroked-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        {{ 'incident.back' | translate }}
+      </button>
+    </div>
+
+    <mat-card class="info-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'incident.info' | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="label">{{ 'incident.vehicle' | translate }}</span>
+            <span class="value">{{ incident.vehicleId }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">{{ 'incident.origin' | translate }}</span>
+            <span class="value">{{ 'incident.origin.' + incident.origin | translate }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">{{ 'incident.severity' | translate }}</span>
+            <span class="value">{{ 'incident.severity.' + incident.severity | translate }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">{{ 'incident.status' | translate }}</span>
+            <span class="value">{{ 'incident.status.' + incident.status | translate }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">{{ 'incident.reported-by' | translate }}</span>
+            <span class="value">{{ incident.reportedBy }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">{{ 'incident.reported-at' | translate }}</span>
+            <span class="value">{{ incident.reportedAt }}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <p class="description">{{ incident.description }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'incident.corrective-actions' | translate }}</mat-card-title>
+        <button mat-raised-button color="primary" (click)="addCorrectiveAction()">
+          {{ 'incident.add-corrective-action' | translate }}
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        @for (action of incident.correctiveActions; track action.id) {
+          <div class="list-item">
+            <p>{{ action.description }}</p>
+            <p class="meta">{{ action.performedBy }} · {{ action.performedAt }}</p>
+          </div>
+        } @empty {
+          <p class="empty">{{ 'incident.no-corrective-actions' | translate }}</p>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'incident.repairs' | translate }}</mat-card-title>
+        <button mat-raised-button color="primary" (click)="scheduleRepair()">
+          {{ 'incident.schedule-repair' | translate }}
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        @for (repair of incident.repairs; track repair.id) {
+          <div class="list-item">
+            <p>{{ repair.workshop }} · {{ repair.cost }}</p>
+            <p class="meta">
+              {{ repair.startedAt }} → {{ repair.finishedAt }} · {{ repair.status }}
+            </p>
+          </div>
+        } @empty {
+          <p class="empty">{{ 'incident.no-repairs' | translate }}</p>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="section-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'incident.follow-ups' | translate }}</mat-card-title>
+        <button mat-raised-button color="primary" (click)="addFollowUp()">
+          {{ 'incident.add-follow-up' | translate }}
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        @for (followUp of incident.followUps; track followUp.id) {
+          <div class="list-item">
+            <p>{{ followUp.note }}</p>
+            <p class="meta">{{ followUp.createdBy }} · {{ followUp.createdAt }}</p>
+          </div>
+        } @empty {
+          <p class="empty">{{ 'incident.no-follow-ups' | translate }}</p>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+}
