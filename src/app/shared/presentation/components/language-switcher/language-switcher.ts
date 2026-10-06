@@ -1,21 +1,24 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-switcher',
-  imports: [MatButtonToggleModule],
+  imports: [MatButtonToggleModule, TranslatePipe],
   templateUrl: './language-switcher.html',
   styleUrl: './language-switcher.css',
 })
 export class LanguageSwitcher {
-  protected currentLang = 'en';
-  protected languages = ['en', 'es'];
+  protected currentLang = 'en-US';
+  protected readonly languages = [
+    { code: 'en-US', label: 'EN', name: 'English' },
+    { code: 'es-419', label: 'ES', name: 'Español' },
+  ];
 
   private readonly translate = inject(TranslateService);
 
   constructor() {
-    this.currentLang = this.translate.getCurrentLang() || 'en';
+    this.currentLang = this.translate.getCurrentLang() || 'en-US';
   }
 
   protected useLanguage(language: string): void {

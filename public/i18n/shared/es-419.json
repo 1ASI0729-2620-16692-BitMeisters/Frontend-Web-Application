@@ -9,11 +9,21 @@
     "vehicleDocumentation": "Documentación Vehicular",
     "preOperationalInspection": "Inspección Preoperacional",
     "evaluationAndAuthorization": "Evaluación y Autorización",
-    "incidentManagement": "Gestión de Incidencias"
+    "incidentManagement": "Gestión de Incidencias",
+    "preferredLanguage": "Idioma preferido"
   },
   "validation": {
     "required": "El campo {{field}} es obligatorio.",
     "invalid": "El campo {{field}} no es válido."
+  },
+  "errors": {
+    "network": "No se pudo conectar con el servidor. Revisa tu conexión e inténtalo de nuevo.",
+    "unauthorized": "Tu sesión ha expirado. Vuelve a iniciar sesión.",
+    "forbidden": "No tienes permiso para realizar esta acción.",
+    "server": "Algo salió mal de nuestro lado. Inténtalo de nuevo más tarde."
+  },
+  "notifications": {
+    "dismiss": "Cerrar"
   },
   "home": {
     "title": "Bienvenido a FleetSafe",

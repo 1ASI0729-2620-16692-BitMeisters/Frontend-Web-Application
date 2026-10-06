@@ -9,11 +9,21 @@
     "vehicleDocumentation": "Vehicle Documentation",
     "preOperationalInspection": "Pre-Operational Inspection",
     "evaluationAndAuthorization": "Evaluation and Authorization",
-    "incidentManagement": "Incident Management"
+    "incidentManagement": "Incident Management",
+    "preferredLanguage": "Preferred language"
   },
   "validation": {
     "required": "The field {{field}} is required.",
     "invalid": "The field {{field}} is invalid."
+  },
+  "errors": {
+    "network": "Unable to reach the server. Check your connection and try again.",
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You do not have permission to perform this action.",
+    "server": "Something went wrong on our side. Please try again later."
+  },
+  "notifications": {
+    "dismiss": "Dismiss"
   },
   "home": {
     "title": "Welcome to FleetSafe",
