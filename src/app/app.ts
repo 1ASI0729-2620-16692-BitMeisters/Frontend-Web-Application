@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Layout } from './shared/presentation/components/layout/layout';
 
 @Component({
@@ -9,4 +10,11 @@ import { Layout } from './shared/presentation/components/layout/layout';
 })
 export class App {
   protected readonly title = signal('FleetSafe');
+
+  private readonly translate = inject(TranslateService);
+
+  constructor() {
+    this.translate.addLangs(['en-US', 'es-419']);
+    this.translate.use('en-US');
+  }
 }

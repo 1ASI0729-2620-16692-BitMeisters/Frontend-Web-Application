@@ -3,6 +3,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -15,8 +16,7 @@ export const appConfig: ApplicationConfig = {
         prefix: '/i18n/',
         suffix: '.json',
       }),
-      lang: 'en',
-      fallbackLang: 'en',
+      fallbackLang: 'en-US',
     }),
   ],
 };
