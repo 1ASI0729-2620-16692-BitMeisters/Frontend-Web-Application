@@ -1,32 +1,30 @@
 import { BaseEntity } from '../../../shared/domain/model/base-entity';
-import type { Vehicle } from './vehicle.entity';
+import { Vehicle } from './vehicle.entity';
 import { VehicleStatus } from './vehicle.entity';
 
-export interface FleetProps {
-  id: string;
-  companyId: string;
-  name: string;
-  description: string;
-  vehicleIds?: string[];
-  createdAt?: string;
-  updatedAt?: string;
-}
-
-export class Fleet implements BaseEntity<string> {
+export class Fleet implements BaseEntity {
   #id: string;
   #companyId: string;
   #name: string;
   #description: string;
-  #vehicleIds: Set<string>;
+  #vehicleIds: string[];
   #createdAt?: string;
   #updatedAt?: string;
 
-  constructor(props: FleetProps) {
+  constructor(props: {
+    id: string;
+    companyId: string;
+    name: string;
+    description: string;
+    vehicleIds?: string[];
+    createdAt?: string;
+    updatedAt?: string;
+  }) {
     this.#id = props.id;
     this.#companyId = props.companyId;
     this.#name = props.name;
     this.#description = props.description;
-    this.#vehicleIds = new Set(props.vehicleIds ?? []);
+    this.#vehicleIds = props.vehicleIds ?? [];
     this.#createdAt = props.createdAt;
     this.#updatedAt = props.updatedAt;
   }
@@ -56,24 +54,18 @@ export class Fleet implements BaseEntity<string> {
   }
 
   addVehicle(vehicleId: string): void {
-    this.#vehicleIds.add(vehicleId);
+    if (!this.#vehicleIds.includes(vehicleId)) {
+      this.#vehicleIds.push(vehicleId);
+    }
   }
 
   getVehicles(): string[] {
     return [...this.#vehicleIds];
   }
 
-  countByStatus(vehicles: readonly Vehicle[]): Record<VehicleStatus, number> {
-    return {
-      [VehicleStatus.ENABLED]: vehicles.filter(
-        (vehicle) => vehicle.currentStatus === VehicleStatus.ENABLED,
-      ).length,
-      [VehicleStatus.OBSERVED]: vehicles.filter(
-        (vehicle) => vehicle.currentStatus === VehicleStatus.OBSERVED,
-      ).length,
-      [VehicleStatus.NOT_ENABLED]: vehicles.filter(
-        (vehicle) => vehicle.currentStatus === VehicleStatus.NOT_ENABLED,
-      ).length,
-    };
+  countByStatus(vehicles: readonly Vehicle[], status: VehicleStatus): number {
+    return vehicles.filter(
+      (vehicle) => vehicle.fleetId === this.#id && vehicle.currentStatus === status,
+    ).length;
   }
 }

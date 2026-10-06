@@ -4,44 +4,47 @@ import type { VehicleAssignment } from './vehicle-assignment.entity';
 export enum VehicleStatus {
   ENABLED = 'ENABLED',
   OBSERVED = 'OBSERVED',
-  NOT_ENABLED = 'NOT_ENABLED',
+  NOT_ENABLED = 'NOT_ENABLED'
+}
+export enum VehicleType{
+  THIN = 'THIN',
+  MEDIUM = 'MEDIUM',
+  LARGE = 'LARGE'
 }
 
-export interface VehicleProps {
-  id: string;
-  fleetId: string;
-  plate: string;
-  brand: string;
-  model: string;
-  year: number;
-  trucktype: string;
-  capacity: number;
-  currentStatus: VehicleStatus;
-  createdAt?: string;
-  updatedAt?: string;
-}
-
-export class Vehicle implements BaseEntity<string> {
+export class Vehicle implements BaseEntity {
   #id: string;
   #fleetId: string;
   #plate: string;
   #brand: string;
   #model: string;
   #year: number;
-  #trucktype: string;
+  #type: VehicleType;
   #capacity: number;
   #currentStatus: VehicleStatus;
   #createdAt?: string;
   #updatedAt?: string;
 
-  constructor(props: VehicleProps) {
+  constructor(props: {
+    id: string;
+    fleetId: string;
+    plate: string;
+    brand: string;
+    model: string;
+    year: number;
+    type: VehicleType;
+    capacity: number;
+    currentStatus: VehicleStatus;
+    createdAt?: string;
+    updatedAt?: string;
+  }) {
     this.#id = props.id;
     this.#fleetId = props.fleetId;
     this.#plate = props.plate;
     this.#brand = props.brand;
     this.#model = props.model;
     this.#year = props.year;
-    this.#trucktype = props.trucktype;
+    this.#type = props.type;
     this.#capacity = props.capacity;
     this.#currentStatus = props.currentStatus;
     this.#createdAt = props.createdAt;
@@ -72,8 +75,8 @@ export class Vehicle implements BaseEntity<string> {
     return this.#year;
   }
 
-  get trucktype(): string {
-    return this.#trucktype;
+  get type(): VehicleType {
+    return this.#type;
   }
 
   get capacity(): number {

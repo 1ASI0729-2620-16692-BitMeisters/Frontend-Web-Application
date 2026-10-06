@@ -1,36 +1,34 @@
 import { BaseEntity } from '../../../shared/domain/model/base-entity';
 
-export interface CompanyProps {
-  id: string;
-  name: string;
-  taxId: string;
-  address: string;
-  phone: string;
-  email: string;
-  fleetIds?: string[];
-  createdAt?: string;
-  updatedAt?: string;
-}
-
-export class Company implements BaseEntity<string> {
+export class Company implements BaseEntity {
   #id: string;
   #name: string;
   #taxId: string;
   #address: string;
   #phone: string;
   #email: string;
-  #fleetIds: Set<string>;
+  #fleetIds: string[];
   #createdAt?: string;
   #updatedAt?: string;
 
-  constructor(props: CompanyProps) {
+  constructor(props: {
+    id: string;
+    name: string;
+    taxId: string;
+    address: string;
+    phone: string;
+    email: string;
+    fleetIds?: string[];
+    createdAt?: string;
+    updatedAt?: string;
+  }) {
     this.#id = props.id;
     this.#name = props.name;
     this.#taxId = props.taxId;
     this.#address = props.address;
     this.#phone = props.phone;
     this.#email = props.email;
-    this.#fleetIds = new Set(props.fleetIds ?? []);
+    this.#fleetIds = props.fleetIds ?? [];
     this.#createdAt = props.createdAt;
     this.#updatedAt = props.updatedAt;
   }
@@ -39,8 +37,16 @@ export class Company implements BaseEntity<string> {
     return this.#id;
   }
 
+  set id(value: string) {
+    this.#id = value;
+  }
+
   get name(): string {
     return this.#name;
+  }
+
+  set name(value: string) {
+    this.#name = value;
   }
 
   get taxId(): string {
@@ -68,7 +74,9 @@ export class Company implements BaseEntity<string> {
   }
 
   addFleet(fleetId: string): void {
-    this.#fleetIds.add(fleetId);
+    if (!this.#fleetIds.includes(fleetId)) {
+      this.#fleetIds.push(fleetId);
+    }
   }
 
   getFleets(): string[] {

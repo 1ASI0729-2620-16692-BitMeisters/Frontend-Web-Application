@@ -1,16 +1,7 @@
 import { BaseEntity } from '../../../shared/domain/model/base-entity';
 import type { VehicleAssignment } from './vehicle-assignment.entity';
 
-export interface DriverProps {
-  id: string;
-  userId: string;
-  licenseNumber: string;
-  licenseExpirationDate: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
-
-export class Driver implements BaseEntity<string> {
+export class Driver implements BaseEntity {
   #id: string;
   #userId: string;
   #licenseNumber: string;
@@ -18,7 +9,14 @@ export class Driver implements BaseEntity<string> {
   #createdAt?: string;
   #updatedAt?: string;
 
-  constructor(props: DriverProps) {
+  constructor(props: {
+    id: string;
+    userId: string;
+    licenseNumber: string;
+    licenseExpirationDate: string;
+    createdAt?: string;
+    updatedAt?: string;
+  }) {
     this.#id = props.id;
     this.#userId = props.userId;
     this.#licenseNumber = props.licenseNumber;
@@ -51,8 +49,8 @@ export class Driver implements BaseEntity<string> {
     return this.#updatedAt;
   }
 
-  hasValidLicense(referenceDate = new Date()): boolean {
-    return new Date(`${this.#licenseExpirationDate}T23:59:59`) >= referenceDate;
+  hasValidLicense(referenceDate: string = new Date().toISOString().slice(0, 10)): boolean {
+    return this.#licenseExpirationDate >= referenceDate;
   }
 
   getActiveAssignment(assignments: readonly VehicleAssignment[]): VehicleAssignment | null {

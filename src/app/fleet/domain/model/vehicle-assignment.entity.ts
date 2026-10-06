@@ -1,16 +1,6 @@
 import { BaseEntity } from '../../../shared/domain/model/base-entity';
 
-export interface VehicleAssignmentProps {
-  id: string;
-  vehicleId: string;
-  driverId: string;
-  assignedFrom: string;
-  assignedTo: string | null;
-  isActive: boolean;
-  createdAt?: string;
-}
-
-export class VehicleAssignment implements BaseEntity<string> {
+export class VehicleAssignment implements BaseEntity {
   #id: string;
   #vehicleId: string;
   #driverId: string;
@@ -19,12 +9,20 @@ export class VehicleAssignment implements BaseEntity<string> {
   #isActive: boolean;
   #createdAt?: string;
 
-  constructor(props: VehicleAssignmentProps) {
+  constructor(props: {
+    id: string;
+    vehicleId: string;
+    driverId: string;
+    assignedFrom: string;
+    assignedTo?: string | null;
+    isActive: boolean;
+    createdAt?: string;
+  }) {
     this.#id = props.id;
     this.#vehicleId = props.vehicleId;
     this.#driverId = props.driverId;
     this.#assignedFrom = props.assignedFrom;
-    this.#assignedTo = props.assignedTo;
+    this.#assignedTo = props.assignedTo ?? null;
     this.#isActive = props.isActive;
     this.#createdAt = props.createdAt;
   }
@@ -58,10 +56,13 @@ export class VehicleAssignment implements BaseEntity<string> {
   }
 
   isActiveOn(date: Date): boolean {
-    const from = new Date(`${this.#assignedFrom}T00:00:00`);
-    const to = this.#assignedTo ? new Date(`${this.#assignedTo}T23:59:59`) : null;
+    const currentDate = date.toISOString().slice(0, 10);
 
-    return this.#isActive && from <= date && (!to || date <= to);
+    return (
+      this.#isActive &&
+      this.#assignedFrom <= currentDate &&
+      (this.#assignedTo === null || currentDate <= this.#assignedTo)
+    );
   }
 
   close(endDate: string): void {
