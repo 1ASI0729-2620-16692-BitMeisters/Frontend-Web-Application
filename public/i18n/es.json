@@ -28,5 +28,43 @@
     "title": "Página no encontrada",
     "content": "La página que buscas no existe o ya no está disponible.",
     "go-home": "Volver al panel"
+  },
+  "documents": {
+    "title": "Documentación vehicular",
+    "subtitle": "Mantén los documentos de tu flota al día y anticipa sus vencimientos.",
+    "supervisor": "Supervisor de flota",
+    "register": "Registrar documento",
+    "edit": "Actualizar documento",
+    "vehicle": "Vehículo",
+    "type": "Tipo de documento",
+    "number": "Número de documento",
+    "issueDate": "Fecha de emisión",
+    "expirationDate": "Fecha de vencimiento",
+    "fileUrl": "URL del documento digital (opcional)",
+    "fileHint": "Enlace a un PDF o imagen existente. Aquí no se suben archivos.",
+    "requiredExpiration": "La fecha de vencimiento es obligatoria.",
+    "validation": "Completa los campos obligatorios. Usa fechas válidas, vencimiento igual o posterior a la emisión y una URL HTTP(S).",
+    "cancel": "Cancelar",
+    "save": "Guardar documento",
+    "saving": "Guardando…",
+    "search": "Buscar placa, tipo o número",
+    "state": "Estado",
+    "actions": "Acciones",
+    "viewFile": "Ver archivo",
+    "saved": "Documento guardado. Se recalculó su estado de vigencia.",
+    "error": "No se pudo completar la solicitud. Verifica que la API del puerto 3001 esté activa e inténtalo de nuevo.",
+    "retry": "Reintentar",
+    "loading": "Cargando documentos…",
+    "empty": "No hay documentos que coincidan con esta selección.",
+    "list": "Documentos vehiculares",
+    "vehicleScope": "Se muestran todos los documentos del vehículo seleccionado.",
+    "expiringScope": "Se muestran documentos que vencen en los próximos {{days}} días de todos los vehículos. Selecciona un vehículo para consultar también los vigentes y vencidos.",
+    "expiringAll": "Próximos a vencer · todos",
+    "status": {
+      "ALL": "Todos los estados",
+      "VALID": "Vigente",
+      "EXPIRING": "Próximo a vencer",
+      "EXPIRED": "Vencido"
+    }
   }
 }

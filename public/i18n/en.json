@@ -28,5 +28,43 @@
     "title": "Page not found",
     "content": "The page you are looking for does not exist or is no longer available.",
     "go-home": "Return to Dashboard"
+  },
+  "documents": {
+    "title": "Vehicle documentation",
+    "subtitle": "Keep your fleet documents up to date and prevent expiration.",
+    "supervisor": "Fleet supervisor",
+    "register": "Register document",
+    "edit": "Update document",
+    "vehicle": "Vehicle",
+    "type": "Document type",
+    "number": "Document number",
+    "issueDate": "Issue date",
+    "expirationDate": "Expiration date",
+    "fileUrl": "Digital document URL (optional)",
+    "fileHint": "Link to an existing PDF or image. Files are not uploaded here.",
+    "requiredExpiration": "Expiration date is required.",
+    "validation": "Complete the required fields. Use valid dates, expiration on or after issue date, and an HTTP(S) URL.",
+    "cancel": "Cancel",
+    "save": "Save document",
+    "saving": "Saving…",
+    "search": "Search plate, type or number",
+    "state": "Status",
+    "actions": "Actions",
+    "viewFile": "View file",
+    "saved": "Document saved. Its validity has been recalculated.",
+    "error": "Could not complete the request. Check that the API on port 3001 is running and try again.",
+    "retry": "Retry",
+    "loading": "Loading documents…",
+    "empty": "No documents match this selection.",
+    "list": "Vehicle documents",
+    "vehicleScope": "Showing all documents for the selected vehicle.",
+    "expiringScope": "Showing documents expiring in the next {{days}} days across all vehicles. Select a vehicle to also see valid and expired documents.",
+    "expiringAll": "Expiring soon · all vehicles",
+    "status": {
+      "ALL": "All statuses",
+      "VALID": "Valid",
+      "EXPIRING": "Expiring soon",
+      "EXPIRED": "Expired"
+    }
   }
 }

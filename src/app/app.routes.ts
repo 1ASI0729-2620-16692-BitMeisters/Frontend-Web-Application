@@ -6,6 +6,9 @@ const pageNotFound = () => import('./shared/presentation/view/page-not-found/pag
 const baseTitle = 'FleetSafe';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'vehicle-documentation', pathMatch: 'full' },
+  { path: 'vehicle-documentation', loadChildren: () => import('./vehicle-documentation/presentation/vehicle-documentation.routes').then(m => m.vehicleDocumentationRoutes) },
+  { path: 'app/documents', redirectTo: 'vehicle-documentation', pathMatch: 'full' },
   { path: 'home', component: Home, title: `${baseTitle} - Home` },
   { path: 'about', loadComponent: about, title: `${baseTitle} - About` },
   { path: '**', loadComponent: pageNotFound, title: `${baseTitle} - Page Not Found` }
