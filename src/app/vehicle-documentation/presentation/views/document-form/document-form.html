@@ -2,7 +2,7 @@
   <h2 id="form-title">{{ (document() ? 'documents.edit' : 'documents.register') | translate }}</h2>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="fields">
-      <mat-form-field><mat-label>{{ 'documents.vehicle' | translate }}</mat-label><mat-select formControlName="vehicleId" [disabled]="!!document()">@for (vehicle of store.vehicles(); track vehicle.id) {<mat-option [value]="vehicle.id">{{ vehicle.licensePlate }}</mat-option>}</mat-select></mat-form-field>
+      <mat-form-field><mat-label>{{ 'documents.vehicle' | translate }}</mat-label><mat-select formControlName="vehicleId">@for (vehicle of store.vehicles(); track vehicle.id) {@if (!document() || vehicle.id === document()?.vehicleId) {<mat-option [value]="vehicle.id">{{ vehicle.licensePlate }}</mat-option>}}</mat-select></mat-form-field>
       <mat-form-field><mat-label>{{ 'documents.type' | translate }}</mat-label><mat-select formControlName="documentTypeId">@for (type of store.types(); track type.id) {@if (type.isActive || type.id === document()?.documentTypeId) {<mat-option [value]="type.id">{{ type.name }}</mat-option>}}</mat-select></mat-form-field>
       <mat-form-field><mat-label>{{ 'documents.number' | translate }}</mat-label><input matInput formControlName="number" maxlength="80" /></mat-form-field>
       <mat-form-field><mat-label>{{ 'documents.issueDate' | translate }}</mat-label><input matInput type="date" formControlName="issueDate" /></mat-form-field>
