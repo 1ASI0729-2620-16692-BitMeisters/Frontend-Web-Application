@@ -1,0 +1,42 @@
+{
+  "app": {
+    "title": "FleetSafe"
+  },
+  "layout": {
+    "dashboard": "Dashboard",
+    "identityAndAccess": "Identity and Access",
+    "fleetManagement": "Fleet Management",
+    "vehicleDocumentation": "Vehicle Documentation",
+    "preOperationalInspection": "Pre-Operational Inspection",
+    "evaluationAndAuthorization": "Evaluation and Authorization",
+    "incidentManagement": "Incident Management",
+    "preferredLanguage": "Preferred language"
+  },
+  "validation": {
+    "required": "The field {{field}} is required.",
+    "invalid": "The field {{field}} is invalid."
+  },
+  "errors": {
+    "network": "Unable to reach the server. Check your connection and try again.",
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You do not have permission to perform this action.",
+    "server": "Something went wrong on our side. Please try again later."
+  },
+  "notifications": {
+    "dismiss": "Dismiss"
+  },
+  "home": {
+    "title": "Welcome to FleetSafe",
+    "content": "Fleet management and transport safety platform."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "powered-by": "Powered by",
+    "and": "and"
+  },
+  "page-not-found": {
+    "title": "Page not found",
+    "content": "The page you are looking for does not exist or is no longer available.",
+    "go-home": "Return to Dashboard"
+  }
+}
