@@ -1,6 +1,6 @@
 export const environment = {
-  production: false,
-  platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
+  production: true,
+  platformProviderApiBaseUrl: 'http://localhost:8080/api/v1',
   platformProviderCompaniesEndpointPath: '/companies',
   platformProviderFleetsEndpointPath: '/fleets',
   platformProviderVehiclesEndpointPath: '/vehicles',
