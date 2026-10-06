@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "FleetSafe"
+  },
+  "layout": {
+    "dashboard": "Dashboard",
+    "identityAndAccess": "Identity and Access",
+    "fleetManagement": "Fleet Management",
+    "vehicleDocumentation": "Vehicle Documentation",
+    "preOperationalInspection": "Pre-Operational Inspection",
+    "evaluationAndAuthorization": "Evaluation and Authorization",
+    "incidentManagement": "Incident Management"
+  },
+  "validation": {
+    "required": "The field {{field}} is required.",
+    "invalid": "The field {{field}} is invalid."
+  },
+  "home": {
+    "title": "Welcome to FleetSafe",
+    "content": "Fleet management and transport safety platform."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "powered-by": "Powered by",
+    "and": "and"
+  },
+  "page-not-found": {
+    "title": "Page not found",
+    "content": "The page you are looking for does not exist or is no longer available.",
+    "go-home": "Return to Dashboard"
+  },
+  "fleet": {
+    "title": "Fleet Management",
+    "subtitle": "Manage fleets, vehicles, drivers and assignments.",
+
+    "fleets": {
+      "title": "Fleets",
+      "count": "Total fleets"
+    },
+
+    "vehicles": {
+      "title": "Vehicles",
+      "subtitle": "Registered vehicles in the fleet.",
+      "new": "Register vehicle",
+      "newTitle": "Register vehicle",
+      "editTitle": "Update vehicle",
+      "detailTitle": "Vehicle details",
+      "notFound": "Vehicle not found.",
+      "fleet": "Fleet",
+      "plate": "Plate",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "type": "Type",
+      "capacity": "Capacity",
+      "status": "Status"
+    },
+
+    "drivers": {
+      "title": "Drivers",
+      "licenseNumber": "License number",
+      "licenseExpirationDate": "Expiration date",
+      "licenseStatus": "License status",
+      "valid": "Valid",
+      "expired": "Expired"
+    },
+
+    "assignments": {
+      "title": "Vehicle assignments",
+      "vehicle": "Vehicle",
+      "driver": "Driver",
+      "assignedFrom": "Assigned from",
+      "activeDriver": "Assigned driver",
+      "none": "No active assignment",
+      "assign": "Assign vehicle"
+    },
+
+    "vehicleTypes": {
+      "THIN": "Thin",
+      "MEDIUM": "Medium",
+      "LARGE": "Large"
+    },
+
+    "status": {
+      "ENABLED": "Enabled",
+      "OBSERVED": "Observed",
+      "NOT_ENABLED": "Not enabled"
+    },
+
+    "actions": {
+      "title": "Actions",
+      "view": "View",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "back": "Back",
+      "viewVehicles": "View vehicles",
+      "viewDrivers": "View drivers",
+      "manageAssignments": "Manage assignments"
+    }
+  }
+}
