@@ -9,7 +9,8 @@
     "vehicleDocumentation": "Documentación Vehicular",
     "preOperationalInspection": "Inspección Preoperacional",
     "evaluationAndAuthorization": "Evaluación y Autorización",
-    "incidentManagement": "Gestión de Incidencias"
+    "incidentManagement": "Gestión de Incidencias",
+    "preferredLanguage": "Idioma preferido"
   },
   "validation": {
     "required": "El campo {{field}} es obligatorio.",
