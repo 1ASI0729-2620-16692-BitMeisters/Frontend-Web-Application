@@ -3,8 +3,7 @@ import { ItemCategory } from '../valueobjects/item-category.enum';
 import { Observation } from './observation.entity';
 import { ResultValue } from '../valueobjects/result-value.enum';
 
-export class InspectionResultEntry implements BaseEntity {
-  readonly id: string;
+export class InspectionResultEntry extends BaseEntity {
   readonly inspectionItemId: string;
   readonly itemName: string;
   readonly itemCategory: ItemCategory;
@@ -21,7 +20,7 @@ export class InspectionResultEntry implements BaseEntity {
     createdAt: Date;
     observations: readonly Observation[];
   }) {
-    this.id = props.id;
+    super(props.id);
     this.inspectionItemId = props.inspectionItemId;
     this.itemName = props.itemName;
     this.itemCategory = props.itemCategory;

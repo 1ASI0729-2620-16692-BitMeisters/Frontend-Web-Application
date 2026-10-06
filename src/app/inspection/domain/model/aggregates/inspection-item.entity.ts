@@ -1,9 +1,8 @@
-import { BaseEntity } from '../../../../shared/domain/model/base-entity';
+import { AuditableAggregateRoot } from '../../../../shared/domain/model/auditable-aggregate-root';
 import { ItemCategory } from '../valueobjects/item-category.enum';
 import { ResultValue } from '../valueobjects/result-value.enum';
 
-export class InspectionItem implements BaseEntity {
-  readonly id: string;
+export class InspectionItem extends AuditableAggregateRoot {
   readonly code: string;
   readonly name: string;
   readonly description: string;
@@ -23,8 +22,10 @@ export class InspectionItem implements BaseEntity {
     requiresEvidence: boolean;
     displayOrder: number;
     isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
   }) {
-    this.id = props.id;
+    super(props.id, props.createdAt, props.updatedAt);
     this.code = props.code;
     this.name = props.name;
     this.description = props.description;

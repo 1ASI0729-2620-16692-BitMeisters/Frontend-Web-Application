@@ -1,8 +1,7 @@
 import { BaseEntity } from '../../../../shared/domain/model/base-entity';
 import { Evidence } from './evidence.entity';
 
-export class Observation implements BaseEntity {
-  readonly id: string;
+export class Observation extends BaseEntity {
   readonly description: string;
   readonly createdBy: string;
   readonly createdAt: Date;
@@ -15,7 +14,7 @@ export class Observation implements BaseEntity {
     createdAt: Date;
     evidences: readonly Evidence[];
   }) {
-    this.id = props.id;
+    super(props.id);
     this.description = props.description;
     this.createdBy = props.createdBy;
     this.createdAt = props.createdAt;

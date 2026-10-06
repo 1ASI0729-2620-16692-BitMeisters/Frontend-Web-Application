@@ -2,8 +2,7 @@ import { BaseEntity } from '../../../../shared/domain/model/base-entity';
 
 export type EvidenceMediaType = 'image/jpeg' | 'image/png';
 
-export class Evidence implements BaseEntity {
-  readonly id: string;
+export class Evidence extends BaseEntity {
   readonly fileUrl: string;
   readonly mediaType: EvidenceMediaType;
   readonly uploadedAt: Date;
@@ -14,7 +13,7 @@ export class Evidence implements BaseEntity {
     mediaType: EvidenceMediaType;
     uploadedAt: Date;
   }) {
-    this.id = props.id;
+    super(props.id);
     this.fileUrl = props.fileUrl;
     this.mediaType = props.mediaType;
     this.uploadedAt = props.uploadedAt;

@@ -1,10 +1,9 @@
-import { BaseEntity } from '../../../../shared/domain/model/base-entity';
+import { AuditableAggregateRoot } from '../../../../shared/domain/model/auditable-aggregate-root';
 import { InspectionItem } from './inspection-item.entity';
 import { InspectionResultEntry } from '../entities/inspection-result-entry.entity';
 import { InspectionStatus } from '../valueobjects/inspection-status.enum';
 
-export class Inspection implements BaseEntity {
-  readonly id: string;
+export class Inspection extends AuditableAggregateRoot {
   readonly vehicleId: string;
   readonly driverId: string;
   readonly status: InspectionStatus;
@@ -22,8 +21,10 @@ export class Inspection implements BaseEntity {
     startedAt: Date;
     completedAt: Date | null;
     results: readonly InspectionResultEntry[];
+    createdAt: Date;
+    updatedAt: Date;
   }) {
-    this.id = props.id;
+    super(props.id, props.createdAt, props.updatedAt);
     this.vehicleId = props.vehicleId;
     this.driverId = props.driverId;
     this.status = props.status;

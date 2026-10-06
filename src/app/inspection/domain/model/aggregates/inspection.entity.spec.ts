@@ -18,6 +18,8 @@ function anItem(id: string, overrides: { requiresEvidence?: boolean; isActive?: 
     requiresEvidence: overrides.requiresEvidence ?? false,
     displayOrder: 1,
     isActive: overrides.isActive ?? true,
+    createdAt: new Date('2026-09-01T14:00:00Z'),
+    updatedAt: new Date('2026-09-01T14:00:00Z'),
   });
 }
 
@@ -65,6 +67,8 @@ function anInspection(
     startedAt: new Date('2026-09-15T10:38:00Z'),
     completedAt: null,
     results,
+    createdAt: new Date('2026-09-15T10:38:00Z'),
+    updatedAt: new Date('2026-09-15T10:38:00Z'),
   });
 }
 
