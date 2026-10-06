@@ -9,13 +9,14 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './language-switcher.css',
 })
 export class LanguageSwitcher {
-  protected currentLang = 'en';
-  protected languages = ['en', 'es'];
+  protected currentLang = 'en-US';
+
+  protected readonly languages = ['en-US', 'es-419'];
 
   private readonly translate = inject(TranslateService);
 
   constructor() {
-    this.currentLang = this.translate.getCurrentLang() || 'en';
+    this.currentLang = this.translate.getCurrentLang() || 'en-US';
   }
 
   protected useLanguage(language: string): void {
