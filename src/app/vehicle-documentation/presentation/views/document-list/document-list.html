@@ -1,0 +1,20 @@
+<section>
+  <header><div><p class="eyebrow">FleetSafe · {{ 'documents.supervisor' | translate }}</p><h1>{{ 'documents.title' | translate }}</h1><p>{{ 'documents.subtitle' | translate }}</p></div><button mat-flat-button (click)="open()" [disabled]="store.loading() || store.error() || showForm()">{{ 'documents.register' | translate }}</button></header>
+  <div class="summary">@for (state of ['VALID','EXPIRING','EXPIRED']; track state) {<article [class]="'metric '+state"><span>{{ ('documents.status.'+state) | translate }}</span><strong>{{ count(state) }}</strong></article>}</div>
+  <p class="scope">{{ (store.vehicleId() ? 'documents.vehicleScope' : 'documents.expiringScope') | translate: { days: config.alertDays } }}</p>
+  <div class="filters">
+    <mat-form-field><mat-label>{{ 'documents.vehicle' | translate }}</mat-label><mat-select [ngModel]="store.vehicleId()" (ngModelChange)="store.selectVehicle($event)" [disabled]="showForm()"><mat-option value="">{{ 'documents.expiringAll' | translate }}</mat-option>@for (vehicle of store.vehicles(); track vehicle.id) {<mat-option [value]="vehicle.id">{{ vehicle.licensePlate }}</mat-option>}</mat-select></mat-form-field>
+    <mat-form-field><mat-label>{{ 'documents.search' | translate }}</mat-label><input matInput [ngModel]="search()" (ngModelChange)="search.set($event)" /></mat-form-field>
+    <mat-form-field><mat-label>{{ 'documents.state' | translate }}</mat-label><mat-select [ngModel]="filter()" (ngModelChange)="filter.set($event)">@for (state of ['ALL','VALID','EXPIRING','EXPIRED']; track state) {<mat-option [value]="state">{{ ('documents.status.'+state) | translate }}</mat-option>}</mat-select></mat-form-field>
+  </div>
+  @if (notice()) {<p class="success" role="status">{{ 'documents.saved' | translate }}</p>}
+  @if (store.error()) {<div class="error" role="alert">{{ 'documents.error' | translate }} <button mat-button [disabled]="store.saving()" (click)="store.load()">{{ 'documents.retry' | translate }}</button></div>}
+  @if (showForm()) {<app-document-form [document]="editing()" (closed)="close($event)" />}
+  @if (store.loading()) {<p role="status">{{ 'documents.loading' | translate }}</p>}
+  @else if (!store.error()) {
+    <div class="table-wrapper"><table><caption>{{ 'documents.list' | translate }}</caption><thead><tr>@for (column of ['vehicle','type','number','expirationDate','state','actions']; track column) {<th scope="col">{{ ('documents.'+column) | translate }}</th>}</tr></thead><tbody>
+      @for (doc of filtered(); track doc.id) {<tr><td><strong>{{ plate(doc.vehicleId) }}</strong></td><td>{{ typeName(doc.documentTypeId) }}</td><td>{{ doc.number }}</td><td>{{ doc.expirationDate | date:'dd/MM/yyyy':'UTC' }}</td><td><span [class]="'badge '+status(doc)">{{ ('documents.status.'+status(doc)) | translate }}</span></td><td><button mat-button [disabled]="showForm()" (click)="open(doc)">{{ 'documents.edit' | translate }}</button>@if (safeUrl(doc.fileUrl); as url) {<a mat-button [href]="url" target="_blank" rel="noopener noreferrer">{{ 'documents.viewFile' | translate }}</a>}</td></tr>}
+      @empty {<tr><td colspan="6" class="empty">{{ 'documents.empty' | translate }}</td></tr>}
+    </tbody></table></div>
+  }
+</section>
