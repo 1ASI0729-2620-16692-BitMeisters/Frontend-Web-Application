@@ -3,7 +3,9 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 import { provideTranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { routes } from './app.routes';
+import { CurrentUser } from './shared/application/current-user';
 import { Notifier } from './shared/application/notifier';
+import { DemoCurrentUser } from './shared/infrastructure/demo-current-user';
 import { errorInterceptor } from './shared/infrastructure/http/error.interceptor';
 import { languageInterceptor } from './shared/infrastructure/http/language.interceptor';
 import {
@@ -18,6 +20,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withInterceptors([languageInterceptor, errorInterceptor])),
     { provide: Notifier, useClass: SnackBarNotifier },
+    //hasta que salga el IAM
+    { provide: CurrentUser, useClass: DemoCurrentUser },
     provideTranslationContexts(['shared']),
     provideTranslateService({
       loader: provideTranslateLoader(BoundedContextTranslateLoader),
