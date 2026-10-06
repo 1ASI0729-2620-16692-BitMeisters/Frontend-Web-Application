@@ -1,5 +1,5 @@
 import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-response';
-import { VehicleStatus } from '../domain/model/vehicle.entity';
+import { VehicleStatus, VehicleType } from '../domain/model/vehicle.entity';
 
 export interface VehicleResource extends BaseResource<string> {
   fleetId: string;
@@ -7,7 +7,7 @@ export interface VehicleResource extends BaseResource<string> {
   brand: string;
   model: string;
   year: number;
-  trucktype: string;
+  type: VehicleType;
   capacity: number;
   currentStatus: VehicleStatus;
   createdAt?: string;

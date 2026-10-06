@@ -63,4 +63,8 @@ export class FleetApi extends BaseApi {
   createVehicleAssignment(assignment: VehicleAssignment): Observable<VehicleAssignment> {
     return this.assignmentsEndpoint.create(assignment);
   }
+
+  deleteVehicle(id: string): Observable<void> {
+    return this.vehiclesEndpoint.delete(id);
+  }
 }
