@@ -11,5 +11,5 @@ export class AssignedVehicleAssembler {
       type: resource.vehicle.type,
       assignedFrom: new Date(resource.assignedFrom),
     });
-  }l
+  }
 }
