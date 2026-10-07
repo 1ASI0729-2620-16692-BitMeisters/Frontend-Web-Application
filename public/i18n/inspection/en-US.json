@@ -6,7 +6,10 @@
       "since": "Assigned since {{date}}",
       "none": "No vehicle assigned today. Contact your supervisor.",
       "error": "We could not load your assigned vehicle.",
-      "retry": "Retry"
+      "retry": "Retry",
+      "greeting": "Hello, {{name}}",
+      "subtitle": "Check your vehicle before starting the route.",
+      "noneTitle": "No vehicle assigned"
     },
     "start": {
       "title": "Before you start",
@@ -15,7 +18,8 @@
       "odometerRequired": "Enter the odometer reading.",
       "odometerMin": "The odometer reading cannot be negative.",
       "submit": "Start inspection",
-      "starting": "Starting inspection"
+      "starting": "Starting inspection",
+      "odometerHint": "Read it from the vehicle dashboard."
     },
     "notifications": {
       "started": "Inspection started."

@@ -43,7 +43,7 @@ export class Layout {
       label: 'layout.vehicleDocumentation'
     },
     {
-      link: '/inspection',
+      link: '/inspections',
       label: 'layout.preOperationalInspection'
     },
     {

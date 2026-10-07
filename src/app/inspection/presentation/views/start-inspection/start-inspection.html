@@ -1,20 +1,33 @@
 <section class="start-inspection" aria-labelledby="start-inspection-title">
-  <h1 id="start-inspection-title">{{ 'inspection.assignedVehicle.title' | translate }}</h1>
+  <header class="heading">
+    <h1 id="start-inspection-title">
+      {{
+        'inspection.assignedVehicle.greeting' | translate: { name: currentUser.user()?.firstName }
+      }}
+    </h1>
+    <p>{{ 'inspection.assignedVehicle.subtitle' | translate }}</p>
+  </header>
 
   @if (store.assignedVehicle.isLoading()) {
-    <div class="status" role="status" aria-live="polite">
+    <div class="state" role="status" aria-live="polite">
       <mat-progress-spinner
         mode="indeterminate"
-        diameter="40"
+        diameter="48"
         [attr.aria-label]="'inspection.assignedVehicle.loading' | translate"
       />
     </div>
   } @else if (noVehicleAssigned()) {
-    <p class="status" role="status">{{ 'inspection.assignedVehicle.none' | translate }}</p>
+    <div class="state" role="status">
+      <mat-icon class="state-icon" aria-hidden="true">no_transfer</mat-icon>
+      <h2>{{ 'inspection.assignedVehicle.noneTitle' | translate }}</h2>
+      <p>{{ 'inspection.assignedVehicle.none' | translate }}</p>
+    </div>
   } @else if (store.assignedVehicle.error()) {
-    <div class="status" role="alert">
+    <div class="state" role="alert">
+      <mat-icon class="state-icon error" aria-hidden="true">error</mat-icon>
       <p>{{ 'inspection.assignedVehicle.error' | translate }}</p>
       <button mat-stroked-button type="button" (click)="store.assignedVehicle.reload()">
+        <mat-icon>refresh</mat-icon>
         {{ 'inspection.assignedVehicle.retry' | translate }}
       </button>
     </div>
@@ -22,13 +35,17 @@
     @if (store.assignedVehicle.value(); as vehicle) {
       <mat-card appearance="outlined" class="vehicle">
         <mat-card-header>
-          <mat-card-title>{{ vehicle.plate }}</mat-card-title>
+          <div mat-card-avatar class="avatar" aria-hidden="true">
+            <mat-icon>local_shipping</mat-icon>
+          </div>
+          <mat-card-title class="plate">{{ vehicle.plate }}</mat-card-title>
           <mat-card-subtitle>
             {{ vehicle.brand }} {{ vehicle.model }} · {{ vehicle.type }}
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p>
+          <p class="since">
+            <mat-icon aria-hidden="true">event</mat-icon>
             {{
               'inspection.assignedVehicle.since'
                 | translate: { date: (vehicle.assignedFrom | date: 'dd/MM/yyyy' : 'UTC') }
@@ -38,24 +55,40 @@
       </mat-card>
 
       <form class="start" novalidate (submit)="start($event)" aria-labelledby="start-title">
-        <h2 id="start-title">{{ 'inspection.start.title' | translate }}</h2>
-        <p>{{ 'inspection.start.description' | translate }}</p>
+        <mat-card appearance="filled" class="before">
+          <mat-card-header>
+            <mat-icon mat-card-avatar class="before-icon" aria-hidden="true">fact_check</mat-icon>
+            <mat-card-title id="start-title">{{
+              'inspection.start.title' | translate
+            }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ 'inspection.start.description' | translate }}</p>
 
-        <mat-form-field appearance="outline">
-          <mat-label>{{ 'inspection.start.odometer' | translate }}</mat-label>
-          <input matInput type="number" inputmode="numeric" [formField]="startForm.odometer" />
-          @if (startForm.odometer().getError('required')) {
-            <mat-error>{{ 'inspection.start.odometerRequired' | translate }}</mat-error>
-          } @else if (startForm.odometer().getError('min')) {
-            <mat-error>{{ 'inspection.start.odometerMin' | translate }}</mat-error>
-          }
-        </mat-form-field>
+            <mat-form-field appearance="outline" class="odometer">
+              <mat-label>{{ 'inspection.start.odometer' | translate }}</mat-label>
+              <mat-icon matPrefix aria-hidden="true">speed</mat-icon>
+              <input matInput type="number" inputmode="numeric" [formField]="startForm.odometer" />
+              <span matTextSuffix>km</span>
+              <mat-hint>{{ 'inspection.start.odometerHint' | translate }}</mat-hint>
+              @if (startForm.odometer().getError('required')) {
+                <mat-error>{{ 'inspection.start.odometerRequired' | translate }}</mat-error>
+              } @else if (startForm.odometer().getError('min')) {
+                <mat-error>{{ 'inspection.start.odometerMin' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
 
         @if (startError(); as message) {
-          <p class="error" role="alert">{{ message }}</p>
+          <p class="error" role="alert">
+            <mat-icon aria-hidden="true">error</mat-icon>
+            {{ message }}
+          </p>
         }
 
-        <button mat-flat-button type="submit" [disabled]="store.starting()">
+        <button mat-flat-button type="submit" class="submit" [disabled]="store.starting()">
+          <mat-icon>{{ store.starting() ? 'hourglass_top' : 'play_arrow' }}</mat-icon>
           {{
             (store.starting() ? 'inspection.start.starting' : 'inspection.start.submit') | translate
           }}

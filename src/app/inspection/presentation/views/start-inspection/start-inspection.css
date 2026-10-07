@@ -3,40 +3,127 @@
   flex-direction: column;
   gap: 16px;
   max-width: 480px;
+  min-height: 100%;
   margin: 0 auto;
   padding: 16px;
 }
 
-h1 {
+.heading h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font: var(--mat-sys-headline-small);
+  color: var(--mat-sys-on-surface);
 }
 
-.status {
+.heading p {
+  margin: 4px 0 0;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.state {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 24px 0;
+  gap: 8px;
+  padding: 48px 16px;
   text-align: center;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.state h2 {
+  margin: 0;
+  font: var(--mat-sys-title-large);
+  color: var(--mat-sys-on-surface);
+}
+
+.state p {
+  margin: 0;
+  font: var(--mat-sys-body-large);
+}
+
+.state-icon {
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
+  color: var(--mat-sys-outline);
+}
+
+.state-icon.error {
+  color: var(--mat-sys-error);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.plate {
+  font: var(--mat-sys-headline-small);
+  letter-spacing: 0.04em;
+}
+
+.since {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 0;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.since mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .start {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
-.start h2 {
-  margin: 0;
-  font-size: 1.125rem;
+.before-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mat-sys-primary);
+}
+
+.before p {
+  margin: 0 0 16px;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.odometer {
+  width: 100%;
+}
+
+.odometer mat-icon {
+  margin: 0 8px 0 12px;
 }
 
 .error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  color: #b3261e;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+  font: var(--mat-sys-body-medium);
 }
 
-button[type='submit'] {
-  min-height: 48px;
+.submit {
+  width: 100%;
+  min-height: 56px;
+  margin-top: auto;
+  font: var(--mat-sys-title-medium);
 }

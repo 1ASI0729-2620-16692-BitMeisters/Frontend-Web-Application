@@ -4,10 +4,12 @@ import { FormField, form, min, required } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { CurrentUser } from '../../../../shared/application/current-user';
 import { ApiError } from '../../../../shared/infrastructure/http/api-error';
 import { InspectionStore } from '../../../application/inspection.store';
 import { StartInspectionCommand } from '../../../domain/model/commands/start-inspection.command';
@@ -20,6 +22,7 @@ import { StartInspectionCommand } from '../../../domain/model/commands/start-ins
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
     TranslatePipe,
@@ -30,6 +33,7 @@ import { StartInspectionCommand } from '../../../domain/model/commands/start-ins
 export class StartInspection {
   protected readonly store = inject(InspectionStore);
   private readonly router = inject(Router);
+  protected readonly currentUser = inject(CurrentUser);
 
   protected readonly startModel = signal({ odometer: NaN });
   protected readonly startForm = form(this.startModel, (path) => {
