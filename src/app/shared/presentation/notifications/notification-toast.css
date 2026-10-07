@@ -1,0 +1,58 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 12px 8px 12px 12px;
+}
+
+.badge {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--toast-tint);
+  color: var(--toast-accent);
+}
+
+.badge mat-icon {
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.message {
+  flex: 1;
+  margin: 0;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface);
+}
+
+button {
+  flex-shrink: 0;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.toast-success {
+  --toast-accent: var(--mat-sys-tertiary);
+  --toast-tint: var(--mat-sys-tertiary-container);
+}
+
+.toast-info {
+  --toast-accent: var(--mat-sys-primary);
+  --toast-tint: var(--mat-sys-primary-container);
+}
+
+.toast-warning {
+  --toast-accent: #b45309;
+  --toast-tint: #fef3c7;
+}
+
+.toast-error {
+  --toast-accent: var(--mat-sys-error);
+  --toast-tint: var(--mat-sys-error-container);
+}
