@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     { provide: Notifier, useClass: SnackBarNotifier },
     //hasta que salga el IAM
     { provide: CurrentUser, useClass: DemoCurrentUser },
-    provideTranslationContexts(['shared']),
+    provideTranslationContexts(['shared', 'inspection']),
     provideTranslateService({
       loader: provideTranslateLoader(BoundedContextTranslateLoader),
       lang: 'en-US',
