@@ -86,6 +86,16 @@ describe('InspectionStore', () => {
     expect(store.starting()).toBe(false);
   });
 
+  it('does not mark the inspection as starting until the request is sent', () => {
+    api.startInspection.mockReturnValue(of(startedInspection));
+    const store = createStore();
+
+    store.startInspection(new StartInspectionCommand({ odometer: 184320 }));
+
+    expect(store.starting()).toBe(false);
+    expect(store.currentInspection()).toBeNull();
+  });
+
   it('keeps no inspection and does not notify when starting fails', () => {
     api.startInspection.mockReturnValue(
       throwError(() => new ApiError(409, 'Conflict', 'An inspection is already in progress.')),

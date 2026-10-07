@@ -1,6 +1,6 @@
 import { Service, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { Observable, finalize, tap } from 'rxjs';
+import { Observable, defer, finalize, tap } from 'rxjs';
 import { Notifier } from '../../shared/application/notifier';
 import { Inspection } from '../domain/model/aggregates/inspection.entity';
 import { StartInspectionCommand } from '../domain/model/commands/start-inspection.command';
@@ -20,8 +20,10 @@ export class InspectionStore {
   readonly starting = this.startingSignal.asReadonly();
 
   startInspection(command: StartInspectionCommand): Observable<Inspection> {
-    this.startingSignal.set(true);
-    return this.api.startInspection(command).pipe(
+    return defer(() => {
+      this.startingSignal.set(true);
+      return this.api.startInspection(command);
+    }).pipe(
       tap((inspection) => {
         this.currentInspectionSignal.set(inspection);
         this.notifier.success('inspection.notifications.started');
