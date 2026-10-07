@@ -1,0 +1,619 @@
+.inspection-container {
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==================================================== */
+/* MOBILE DRIVER FLOW (Centered 390px device container) */
+/* ==================================================== */
+.mobile-frame-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.mobile-device-card {
+  width: 100%;
+  max-width: 400px;
+  min-height: 640px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mobile-header {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.driver-greeting {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.checklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-back-btn {
+  color: #ffffff;
+  margin-left: -8px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.progress-counter {
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.checklist-progress-bar {
+  height: 6px !important;
+}
+
+.mobile-body {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.scrollable-body {
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.timestamp-text {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0 0 12px 0;
+}
+
+.vehicle-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.plate-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.status-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.status-pill.uninspected {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.status-pill.enabled {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-pill.observed {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-pill.not-enabled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.vehicle-model {
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.assigned-date {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.info-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.info-title {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.info-desc {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.meta-tag {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.action-spacer {
+  flex: 1;
+  min-height: 24px;
+}
+
+.primary-pill-btn {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+  border-radius: 24px !important;
+  height: 48px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.secondary-pill-btn {
+  border-radius: 24px !important;
+  height: 48px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Checklist items list */
+.category-section {
+  margin-bottom: 20px;
+}
+
+.category-heading {
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.item-row.item-fail {
+  border-color: #f87171;
+  background-color: #fef2f2;
+}
+
+.item-row.item-observed {
+  border-color: #fcd34d;
+  background-color: #fffbeb;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.evidence-required-hint {
+  font-size: 0.75rem;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+/* 48x48px segmented touch controls */
+.segmented-control {
+  display: flex;
+  gap: 6px;
+}
+
+.seg-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.seg-btn.ok-btn.active {
+  background-color: #15803d;
+  color: #ffffff;
+  border-color: #15803d;
+}
+
+.seg-btn.obs-btn.active {
+  background-color: #b45309;
+  color: #ffffff;
+  border-color: #b45309;
+}
+
+.seg-btn.fail-btn.active {
+  background-color: #b91c1c;
+  color: #ffffff;
+  border-color: #b91c1c;
+}
+
+/* Summary screen */
+.summary-vehicle-card {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.summary-plate {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.summary-odometer {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.summary-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.metric-box {
+  border-radius: 12px;
+  padding: 12px 8px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metric-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.compliant-box .metric-num {
+  color: #15803d;
+}
+
+.observed-box .metric-num {
+  color: #b45309;
+}
+
+.failed-box .metric-num {
+  color: #b91c1c;
+}
+
+.metric-lbl {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.findings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.finding-card {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  background-color: #ffffff;
+}
+
+.finding-card.fail-border {
+  border-color: #f87171;
+}
+
+.finding-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.finding-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.finding-badge.fail {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.finding-desc {
+  margin: 0 0 8px 0;
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+.photo-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.photo-tag {
+  background-color: #eff6ff;
+  border: 1px dashed #3b82f6;
+  color: #1d4ed8;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.evaluation-notice {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 12px 0;
+  text-align: center;
+}
+
+/* Result Screen */
+.result-banner-card {
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.banner-not-enabled {
+  background-color: #fef2f2;
+}
+
+.banner-observed {
+  background-color: #fffbeb;
+}
+
+.banner-enabled {
+  background-color: #f0fdf4;
+}
+
+.result-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.banner-not-enabled .result-icon-circle {
+  background-color: #b91c1c;
+  color: #ffffff;
+}
+
+.banner-observed .result-icon-circle {
+  background-color: #b45309;
+  color: #ffffff;
+}
+
+.banner-enabled .result-icon-circle {
+  background-color: #15803d;
+  color: #ffffff;
+}
+
+.result-condition-title {
+  margin: 0 0 6px 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.banner-not-enabled .result-condition-title {
+  color: #991b1b;
+}
+
+.banner-observed .result-condition-title {
+  color: #92400e;
+}
+
+.banner-enabled .result-condition-title {
+  color: #166534;
+}
+
+.result-condition-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.failure-reason-highlight {
+  margin: 10px 0 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b91c1c;
+}
+
+.next-steps-card {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  background-color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.next-title {
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.next-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.desktop-view-container {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.supervisor-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.export-btn {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.kpi-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e8f0;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.kpi-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.kpi-green .kpi-value {
+  color: #15803d;
+}
+
+.kpi-amber .kpi-value {
+  color: #b45309;
+}
+
+.kpi-red .kpi-value {
+  color: #b91c1c;
+}
+
+.filters-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.filter-inputs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.table-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.desktop-table {
+  width: 100%;
+}
