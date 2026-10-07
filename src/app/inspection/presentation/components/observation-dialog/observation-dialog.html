@@ -1,0 +1,63 @@
+<div class="dialog-header">
+  <button mat-icon-button type="button" (click)="cancel()" aria-label="Back">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h2 class="dialog-title">{{ data.itemName }}</h2>
+</div>
+
+<div class="dialog-content">
+  <div class="status-badge" [class.fail]="data.result === 'FAIL'" [class.observed]="data.result === 'OBSERVED'">
+    • {{ data.result === 'FAIL' ? ('inspection.result.fail' | translate) : ('inspection.result.observed' | translate) }}
+  </div>
+
+  <div class="form-section">
+    <label class="section-label">{{ 'inspection.dialog.observationLabel' | translate }}</label>
+    <mat-form-field appearance="outline" class="full-width">
+      <textarea
+        matInput
+        [(ngModel)]="description"
+        rows="4"
+        placeholder="{{ 'inspection.dialog.observationPlaceholder' | translate }}"
+        required></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="form-section">
+    <label class="section-label">
+      {{ 'inspection.dialog.evidenceLabel' | translate }}
+      @if (data.requiresEvidence) {
+        <span class="required-hint"> · {{ 'inspection.dialog.requiredOnThisItem' | translate }}</span>
+      }
+    </label>
+
+    <div class="evidence-grid">
+      @for (ev of evidences; track $index) {
+        <div class="evidence-slot filled">
+          <span>{{ ev }}</span>
+          <button mat-icon-button type="button" class="remove-btn" (click)="removePhoto($index)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      }
+
+      <button type="button" class="evidence-slot add-btn" (click)="addMockPhoto()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    @if (data.requiresEvidence && data.result === 'FAIL' && evidences.length === 0) {
+      <p class="error-msg">{{ 'inspection.dialog.photoRequiredError' | translate }}</p>
+    }
+  </div>
+</div>
+
+<div class="dialog-actions">
+  <button
+    mat-flat-button
+    color="primary"
+    class="submit-btn"
+    [disabled]="!canSave()"
+    (click)="save()">
+    {{ 'inspection.dialog.saveAndContinue' | translate }}
+  </button>
+</div>
