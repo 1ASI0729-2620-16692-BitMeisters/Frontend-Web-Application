@@ -1,1 +1,172 @@
-{}
+{
+  "inspection-items": [
+    { "id": "item-01", "code": "SAF-01", "name": "Brake system", "description": "Foot brake and emergency brake operation", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": true, "displayOrder": 1, "isActive": true },
+    { "id": "item-02", "code": "SAF-02", "name": "Brake lights", "description": "Rear stop signal lights", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 2, "isActive": true },
+    { "id": "item-03", "code": "SAF-03", "name": "Headlights", "description": "High and low beam lamps", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 3, "isActive": true },
+    { "id": "item-04", "code": "SAF-04", "name": "Turn signals and hazard lights", "description": "Front and rear direction indicators", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 4, "isActive": true },
+    { "id": "item-05", "code": "SAF-05", "name": "Steering and suspension", "description": "Play in steering wheel and tie rods", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": true, "displayOrder": 5, "isActive": true },
+    { "id": "item-06", "code": "SAF-06", "name": "Tires and wheel nuts", "description": "Tread depth and inflation pressure", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": true, "displayOrder": 6, "isActive": true },
+    { "id": "item-07", "code": "SAF-07", "name": "Spare tire", "description": "Spare wheel integrity and pressure", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 7, "isActive": true },
+    { "id": "item-08", "code": "SAF-08", "name": "Seatbelts", "description": "Driver and passenger three-point belts", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 8, "isActive": true },
+    { "id": "item-09", "code": "SAF-09", "name": "Fire extinguisher", "description": "Charged ABC dry chemical extinguisher with valid seal", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 9, "isActive": true },
+    { "id": "item-10", "code": "SAF-10", "name": "Safety cones", "description": "At least three reflective hazard cones", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 10, "isActive": true },
+    { "id": "item-11", "code": "SAF-11", "name": "First aid kit", "description": "Mandatory basic medical supplies", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 11, "isActive": true },
+    { "id": "item-12", "code": "SAF-12", "name": "Reverse alarm", "description": "Audible backup warning buzzer", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 12, "isActive": true },
+    { "id": "item-13", "code": "SAF-13", "name": "Horn", "description": "Dual tone horn acoustic warning", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 13, "isActive": true },
+    { "id": "item-14", "code": "SAF-14", "name": "Rearview mirrors", "description": "Main, wide-angle and curb mirrors", "category": "SAFETY_COMPONENT", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 14, "isActive": true },
+
+    { "id": "item-15", "code": "CMP-01", "name": "Engine oil level", "description": "Dipstick oil level and condition", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 15, "isActive": true },
+    { "id": "item-16", "code": "CMP-02", "name": "Coolant level", "description": "Radiator expansion tank level", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 16, "isActive": true },
+    { "id": "item-17", "code": "CMP-03", "name": "Brake fluid level", "description": "Fluid reservoir level", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 17, "isActive": true },
+    { "id": "item-18", "code": "CMP-04", "name": "Battery and terminals", "description": "Cleanliness and tightness of battery poles", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 18, "isActive": true },
+    { "id": "item-19", "code": "CMP-05", "name": "Windshield and windows", "description": "Clean and free from cracks or chips", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 19, "isActive": true },
+    { "id": "item-20", "code": "CMP-06", "name": "Wipers and washer fluid", "description": "Blade condition and spray nozzles", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 20, "isActive": true },
+    { "id": "item-21", "code": "CMP-07", "name": "Doors and latches", "description": "Proper door locking and handle operation", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 21, "isActive": true },
+    { "id": "item-22", "code": "CMP-08", "name": "Body and chassis", "description": "Absence of structural cracks or dents", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 22, "isActive": true },
+    { "id": "item-23", "code": "CMP-09", "name": "Exhaust system", "description": "Silencer condition and emission pipe", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 23, "isActive": true },
+    { "id": "item-24", "code": "CMP-10", "name": "Fuel tank and cap", "description": "Cap seal and tank mounting straps", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 24, "isActive": true },
+    { "id": "item-25", "code": "CMP-11", "name": "Fluid leaks", "description": "Absence of puddle or wet spots underneath", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": true, "displayOrder": 25, "isActive": true },
+    { "id": "item-26", "code": "CMP-12", "name": "Dashboard instruments", "description": "Gauges, warning lights and indicators", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 26, "isActive": true },
+    { "id": "item-27", "code": "CMP-13", "name": "Odometer and speedometer", "description": "Accurate mileage and speed readout", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 27, "isActive": true },
+    { "id": "item-28", "code": "CMP-14", "name": "GPS / Tracking unit", "description": "Active power and satellite reception", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 28, "isActive": true },
+    { "id": "item-29", "code": "CMP-15", "name": "Tail lights", "description": "Rear marker and position lights", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 29, "isActive": true },
+    { "id": "item-30", "code": "CMP-16", "name": "License plate light", "description": "Illumination of plate number", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 30, "isActive": true },
+    { "id": "item-31", "code": "CMP-17", "name": "Right side lamp", "description": "Right side amber clearance lamp", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 31, "isActive": true },
+    { "id": "item-32", "code": "CMP-18", "name": "Left side lamp", "description": "Left side amber clearance lamp", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 32, "isActive": true },
+    { "id": "item-33", "code": "CMP-19", "name": "Front and rear bumpers", "description": "Secure mounting and anti-underrun guard", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 33, "isActive": true },
+    { "id": "item-34", "code": "CMP-20", "name": "Fifth wheel / Coupling", "description": "Kingpin locking mechanism and plate lubrication", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": true, "displayOrder": 34, "isActive": true },
+    { "id": "item-35", "code": "CMP-21", "name": "Air brake hoses", "description": "Spiral hose couplings and glad hands", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 35, "isActive": true },
+    { "id": "item-36", "code": "CMP-22", "name": "Air suspension / Leaf springs", "description": "Air bellows pressure and spring leaves", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 36, "isActive": true },
+    { "id": "item-37", "code": "CMP-23", "name": "Driveshaft and universal joints", "description": "No loose bolts or universal joint play", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 37, "isActive": true },
+    { "id": "item-38", "code": "CMP-24", "name": "Driver seat and ergonomics", "description": "Suspension seat adjustment and backrest", "category": "COMPONENT", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 38, "isActive": true },
+
+    { "id": "item-39", "code": "DOC-01", "name": "Vehicle registration card", "description": "Valid SUNARP registration title", "category": "DOCUMENTATION", "isSafetyComponent": false, "requiresEvidence": false, "displayOrder": 39, "isActive": true },
+    { "id": "item-40", "code": "DOC-02", "name": "SOAT certificate", "description": "Valid compulsory traffic accident insurance", "category": "DOCUMENTATION", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 40, "isActive": true },
+    { "id": "item-41", "code": "DOC-03", "name": "Technical Inspection Certificate (CITV)", "description": "Current roadworthiness inspection certificate", "category": "DOCUMENTATION", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 41, "isActive": true },
+    { "id": "item-42", "code": "DOC-04", "name": "SUTRAN operating permit", "description": "Current freight operating concession authorization", "category": "DOCUMENTATION", "isSafetyComponent": true, "requiresEvidence": false, "displayOrder": 42, "isActive": true }
+  ],
+  "inspections": [
+    {
+      "id": "insp-001",
+      "vehicleId": "veh-abc-123",
+      "driverId": "drv-juan-santos",
+      "vehiclePlate": "ABC-123",
+      "driverName": "Juan Santos",
+      "status": "COMPLETED",
+      "odometer": 184320,
+      "startedAt": "2026-09-15T05:38:00.000Z",
+      "completedAt": "2026-09-15T05:44:00.000Z",
+      "operatingCondition": "NOT_ENABLED",
+      "failureReason": "Brake system failed → blocking",
+      "createdAt": "2026-09-15T05:38:00.000Z",
+      "updatedAt": "2026-09-15T05:44:00.000Z",
+      "results": [
+        {
+          "id": "res-01",
+          "inspectionId": "insp-001",
+          "inspectionItemId": "item-01",
+          "itemName": "Brake system",
+          "itemCategory": "SAFETY_COMPONENT",
+          "result": "FAIL",
+          "createdAt": "2026-09-15T05:40:00.000Z",
+          "observation": {
+            "id": "obs-01",
+            "inspectionResultId": "res-01",
+            "description": "Spongy pedal, long travel before braking.",
+            "createdBy": "drv-juan-santos",
+            "createdAt": "2026-09-15T05:41:00.000Z",
+            "evidences": [
+              { "id": "ev-01", "observationId": "obs-01", "fileUrl": "photo 1", "mediaType": "image/jpeg", "uploadedAt": "2026-09-15T05:41:30.000Z" },
+              { "id": "ev-02", "observationId": "obs-01", "fileUrl": "photo 2", "mediaType": "image/jpeg", "uploadedAt": "2026-09-15T05:42:00.000Z" }
+            ]
+          }
+        },
+        {
+          "id": "res-02",
+          "inspectionId": "insp-001",
+          "inspectionItemId": "item-10",
+          "itemName": "Safety cones",
+          "itemCategory": "SAFETY_COMPONENT",
+          "result": "OBSERVED",
+          "createdAt": "2026-09-15T05:42:00.000Z",
+          "observation": {
+            "id": "obs-02",
+            "inspectionResultId": "res-02",
+            "description": "Only two of three",
+            "createdBy": "drv-juan-santos",
+            "createdAt": "2026-09-15T05:42:10.000Z",
+            "evidences": []
+          }
+        },
+        {
+          "id": "res-03",
+          "inspectionId": "insp-001",
+          "inspectionItemId": "item-31",
+          "itemName": "Right side lamp",
+          "itemCategory": "COMPONENT",
+          "result": "OBSERVED",
+          "createdAt": "2026-09-15T05:43:00.000Z",
+          "observation": {
+            "id": "obs-03",
+            "inspectionResultId": "res-03",
+            "description": "Flickering",
+            "createdBy": "drv-juan-santos",
+            "createdAt": "2026-09-15T05:43:10.000Z",
+            "evidences": [
+              { "id": "ev-03", "observationId": "obs-03", "fileUrl": "photo 1", "mediaType": "image/jpeg", "uploadedAt": "2026-09-15T05:43:20.000Z" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "insp-002",
+      "vehicleId": "veh-abc-123",
+      "driverId": "drv-juan-santos",
+      "vehiclePlate": "ABC-123",
+      "driverName": "Juan Santos",
+      "status": "COMPLETED",
+      "odometer": 183900,
+      "startedAt": "2026-09-14T05:40:00.000Z",
+      "completedAt": "2026-09-14T05:46:00.000Z",
+      "operatingCondition": "OBSERVED",
+      "failureReason": "One or more items observed",
+      "createdAt": "2026-09-14T05:40:00.000Z",
+      "updatedAt": "2026-09-14T05:46:00.000Z",
+      "results": [
+        {
+          "id": "res-04",
+          "inspectionId": "insp-002",
+          "inspectionItemId": "item-20",
+          "itemName": "Wipers and washer fluid",
+          "itemCategory": "COMPONENT",
+          "result": "OBSERVED",
+          "createdAt": "2026-09-14T05:42:00.000Z",
+          "observation": {
+            "id": "obs-04",
+            "inspectionResultId": "res-04",
+            "description": "Left blade worn out",
+            "createdBy": "drv-juan-santos",
+            "createdAt": "2026-09-14T05:42:30.000Z",
+            "evidences": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "insp-003",
+      "vehicleId": "veh-abc-123",
+      "driverId": "drv-juan-santos",
+      "vehiclePlate": "ABC-123",
+      "driverName": "Juan Santos",
+      "status": "COMPLETED",
+      "odometer": 183450,
+      "startedAt": "2026-09-13T05:35:00.000Z",
+      "completedAt": "2026-09-13T05:41:00.000Z",
+      "operatingCondition": "ENABLED",
+      "createdAt": "2026-09-13T05:35:00.000Z",
+      "updatedAt": "2026-09-13T05:41:00.000Z",
+      "results": []
+    }
+  ]
+}
