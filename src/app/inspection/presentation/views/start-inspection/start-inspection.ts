@@ -58,7 +58,10 @@ export class StartInspection {
     const command = new StartInspectionCommand({ odometer: this.startModel().odometer });
     this.store.startInspection(command).subscribe({
       next: (inspection) => this.router.navigate(['/inspections', inspection.id, 'execute']),
-      error: (error: ApiError) => this.startError.set(error.detail),
+      error: (error: unknown) => {
+        if (!(error instanceof ApiError)) throw error;
+        this.startError.set(error.detail);
+      },
     });
   }
 }
