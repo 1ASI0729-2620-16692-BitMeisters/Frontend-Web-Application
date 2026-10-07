@@ -6,6 +6,7 @@ import { routes } from './app.routes';
 import { CurrentUser } from './shared/application/current-user';
 import { Notifier } from './shared/application/notifier';
 import { DemoCurrentUser } from './shared/infrastructure/demo-current-user';
+import { authInterceptor } from './shared/infrastructure/http/auth.interceptor';
 import { errorInterceptor } from './shared/infrastructure/http/error.interceptor';
 import { languageInterceptor } from './shared/infrastructure/http/language.interceptor';
 import {
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([languageInterceptor, errorInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, languageInterceptor, errorInterceptor])),
     { provide: Notifier, useClass: SnackBarNotifier },
     //hasta que salga el IAM
     { provide: CurrentUser, useClass: DemoCurrentUser },
