@@ -9,8 +9,16 @@ interface MockDatabase {
   vehicleAssignments: VehicleAssignmentResource[];
 }
 
-export const database: MockDatabase = structuredClone({
-  inspectionItems: seed['inspection-items'],
-  inspections: seed.inspections,
-  vehicleAssignments: seed.vehicleAssignments,
-});
+function fromSeed(): MockDatabase {
+  return structuredClone({
+    inspectionItems: seed['inspection-items'],
+    inspections: seed.inspections,
+    vehicleAssignments: seed.vehicleAssignments,
+  });
+}
+
+export const database: MockDatabase = fromSeed();
+
+export function resetDatabase(): void {
+  Object.assign(database, fromSeed());
+}

@@ -1,4 +1,5 @@
 import { setupServer } from 'msw/node';
+import { resetDatabase } from '../database';
 import { inspectionHandlers } from './inspection.handlers';
 
 const server = setupServer(...inspectionHandlers);
@@ -10,6 +11,7 @@ function url(path: string): string {
 
 describe('inspection mock api', () => {
   beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+  beforeEach(() => resetDatabase());
   afterAll(() => server.close());
 
   it('rejects requests without an access token', async () => {
@@ -66,5 +68,40 @@ describe('inspection mock api', () => {
 
     expect(response.status).toBe(400);
     expect(body.errors[0].field).toBe('odometer');
+  });
+
+  it('registers and corrects the result of an item', async () => {
+    const created = await fetch(url('/inspections'), {
+      method: 'POST',
+      headers: authorized,
+      body: JSON.stringify({ odometer: 1000 }),
+    });
+    const inspection = await created.json();
+    const items: { id: string; name: string }[] = await (
+      await fetch(url('/inspection-items?isActive=true'), { headers: authorized })
+    ).json();
+
+    const registered = await fetch(url(`/inspections/${inspection.id}/results`), {
+      method: 'POST',
+      headers: authorized,
+      body: JSON.stringify({ inspectionItemId: items[0].id, result: 'FAIL' }),
+    });
+    const entry = await registered.json();
+    expect(registered.status).toBe(201);
+    expect(entry.itemName).toBe(items[0].name);
+
+    const duplicated = await fetch(url(`/inspections/${inspection.id}/results`), {
+      method: 'POST',
+      headers: authorized,
+      body: JSON.stringify({ inspectionItemId: items[0].id, result: 'OK' }),
+    });
+    expect(duplicated.status).toBe(409);
+
+    const corrected = await fetch(url(`/inspections/${inspection.id}/results/${entry.id}`), {
+      method: 'PATCH',
+      headers: authorized,
+      body: JSON.stringify({ result: 'OK' }),
+    });
+    expect((await corrected.json()).result).toBe('OK');
   });
 });
