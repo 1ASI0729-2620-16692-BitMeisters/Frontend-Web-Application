@@ -48,7 +48,7 @@
   color: var(--mat-sys-outline);
 }
 
-.state-icon.error {
+.state-icon-error {
   color: var(--mat-sys-error);
 }
 
@@ -109,7 +109,7 @@
   margin: 0 8px 0 12px;
 }
 
-.error {
+.start-error {
   display: flex;
   align-items: center;
   gap: 8px;

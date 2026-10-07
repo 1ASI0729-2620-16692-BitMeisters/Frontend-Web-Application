@@ -24,7 +24,7 @@
     </div>
   } @else if (store.assignedVehicle.error()) {
     <div class="state" role="alert">
-      <mat-icon class="state-icon error" aria-hidden="true">error</mat-icon>
+      <mat-icon class="state-icon state-icon-error" aria-hidden="true">cloud_off</mat-icon>
       <p>{{ 'inspection.assignedVehicle.error' | translate }}</p>
       <button mat-stroked-button type="button" (click)="store.assignedVehicle.reload()">
         <mat-icon>refresh</mat-icon>
@@ -81,7 +81,7 @@
         </mat-card>
 
         @if (startError(); as message) {
-          <p class="error" role="alert">
+          <p class="start-error" role="alert">
             <mat-icon aria-hidden="true">error</mat-icon>
             {{ message }}
           </p>
