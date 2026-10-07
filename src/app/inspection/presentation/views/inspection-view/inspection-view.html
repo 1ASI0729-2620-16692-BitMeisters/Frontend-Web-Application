@@ -1,0 +1,359 @@
+<div class="inspection-container">
+  <mat-tab-group [(selectedIndex)]="selectedTabIndex" mat-stretch-tabs="false" animationDuration="200ms">
+    
+    <!-- ========================================== -->
+    <!-- TAB 1: DRIVER FLOW (Mobile 390px Experience) -->
+    <!-- ========================================== -->
+    <mat-tab [label]="'inspection.tabs.driver' | translate">
+      <div class="mobile-frame-wrapper">
+        <div class="mobile-device-card">
+
+          <!-- STEP 1: MY ASSIGNED VEHICLE -->
+          @if (driverStep() === 'ASSIGNED_VEHICLE') {
+            <header class="mobile-header">
+              <span class="app-logo">FleetSafe</span>
+              <span class="driver-greeting">{{ assignedVehicle.driverName }}</span>
+            </header>
+
+            <div class="mobile-body">
+              <p class="timestamp-text">{{ 'inspection.assigned.today' | translate }} · 05:38</p>
+
+              <div class="vehicle-card mat-elevation-z1">
+                <div class="card-top-row">
+                  <h3 class="plate-title">{{ assignedVehicle.plate }}</h3>
+                  <span class="status-pill uninspected">• {{ 'inspection.assigned.notInspected' | translate }}</span>
+                </div>
+                <p class="vehicle-model">{{ assignedVehicle.model }}</p>
+                <p class="assigned-date">{{ 'inspection.assigned.assignedSince' | translate:{ date: assignedVehicle.assignedSince } }}</p>
+              </div>
+
+              <div class="info-card mat-elevation-z1">
+                <h4 class="info-title">{{ 'inspection.assigned.beforeYouStartTitle' | translate }}</h4>
+                <p class="info-desc">{{ 'inspection.assigned.beforeYouStartDesc' | translate }}</p>
+                <span class="meta-tag">{{ totalItemsCount() || 42 }} {{ 'inspection.assigned.itemsEstimate' | translate }}</span>
+              </div>
+
+              <div class="action-spacer"></div>
+
+              <button mat-flat-button class="primary-pill-btn" (click)="startInspection()">
+                {{ 'inspection.assigned.startInspection' | translate }}
+              </button>
+            </div>
+          }
+
+          <!-- STEP 2: CHECKLIST EXECUTION -->
+          @if (driverStep() === 'CHECKLIST') {
+            <header class="mobile-header checklist-header">
+              <button mat-icon-button type="button" (click)="finishFlow()" class="header-back-btn">
+                <mat-icon>arrow_back</mat-icon>
+              </button>
+              <h2 class="header-title">{{ 'inspection.checklist.title' | translate }}</h2>
+              <span class="progress-counter">{{ answeredCount() }} / {{ totalItemsCount() }}</span>
+            </header>
+
+            <mat-progress-bar mode="determinate" [value]="progressPercentage()" class="checklist-progress-bar"></mat-progress-bar>
+
+            <div class="mobile-body scrollable-body">
+              @for (category of categories; track category) {
+                <section class="category-section">
+                  <h4 class="category-heading">{{ 'inspection.category.' + category | translate }}</h4>
+
+                  <div class="items-list">
+                    @for (item of getItemsByCategory(category); track item.id) {
+                      <div class="item-row mat-elevation-z1"
+                           [class.item-fail]="getItemResult(item.id) === 'FAIL'"
+                           [class.item-observed]="getItemResult(item.id) === 'OBSERVED'">
+                        
+                        <div class="item-info">
+                          <span class="item-name">{{ item.name }}</span>
+                          @if (getItemResult(item.id) === 'FAIL' && item.requiresPhotoOnFail) {
+                            <span class="evidence-required-hint">
+                              {{ 'inspection.checklist.obsEvidenceRequired' | translate }}
+                            </span>
+                          }
+                        </div>
+
+                        <!-- 48x48px accessible touch buttons -->
+                        <div class="segmented-control">
+                          <button
+                            type="button"
+                            class="seg-btn ok-btn"
+                            [class.active]="getItemResult(item.id) === 'OK'"
+                            (click)="setResult(item, 'OK')">
+                            OK
+                          </button>
+                          <button
+                            type="button"
+                            class="seg-btn obs-btn"
+                            [class.active]="getItemResult(item.id) === 'OBSERVED'"
+                            (click)="setResult(item, 'OBSERVED')">
+                            Obs.
+                          </button>
+                          <button
+                            type="button"
+                            class="seg-btn fail-btn"
+                            [class.active]="getItemResult(item.id) === 'FAIL'"
+                            (click)="setResult(item, 'FAIL')">
+                            Fail
+                          </button>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                </section>
+              }
+
+              <div class="action-spacer"></div>
+
+              <button mat-flat-button class="primary-pill-btn" (click)="goToSummary()">
+                {{ 'inspection.checklist.continue' | translate }}
+              </button>
+            </div>
+          }
+
+          <!-- STEP 3: SUMMARY -->
+          @if (driverStep() === 'SUMMARY') {
+            <header class="mobile-header checklist-header">
+              <button mat-icon-button type="button" (click)="backToChecklist()" class="header-back-btn">
+                <mat-icon>arrow_back</mat-icon>
+              </button>
+              <h2 class="header-title">{{ 'inspection.summary.title' | translate }}</h2>
+            </header>
+
+            <div class="mobile-body scrollable-body">
+              <div class="summary-vehicle-card mat-elevation-z1">
+                <h3 class="summary-plate">{{ assignedVehicle.plate }} · {{ assignedVehicle.model }}</h3>
+                <p class="summary-odometer">{{ 'inspection.summary.odometer' | translate }}: {{ assignedVehicle.odometer }} km · 05:38 - 05:44</p>
+              </div>
+
+              <!-- 3 Metrics in a row -->
+              <div class="summary-metrics-row">
+                <div class="metric-box compliant-box">
+                  <span class="metric-num">{{ compliantCount() }}</span>
+                  <span class="metric-lbl">{{ 'inspection.summary.compliant' | translate }}</span>
+                </div>
+                <div class="metric-box observed-box">
+                  <span class="metric-num">{{ observedCount() }}</span>
+                  <span class="metric-lbl">{{ 'inspection.summary.observed' | translate }}</span>
+                </div>
+                <div class="metric-box failed-box">
+                  <span class="metric-num">{{ failedCount() }}</span>
+                  <span class="metric-lbl">{{ 'inspection.summary.failed' | translate }}</span>
+                </div>
+              </div>
+
+              <!-- Findings list -->
+              @if (findingsList().length > 0) {
+                <div class="findings-container">
+                  @for (finding of findingsList(); track finding.id) {
+                    <div class="finding-card" [class.fail-border]="finding.result === 'FAIL'">
+                      <div class="finding-header">
+                        <strong>{{ finding.itemName }}</strong>
+                        <span class="finding-badge" [class.fail]="finding.result === 'FAIL'">
+                          {{ 'inspection.result.' + (finding.result | lowercase) | translate }}
+                        </span>
+                      </div>
+                      <p class="finding-desc">{{ finding.observation?.notes }}</p>
+                      @if (finding.observation?.evidence) {
+                        <div class="photo-tags">
+                          <span class="photo-tag">{{ finding.observation.evidence.photoUrl }}</span>
+                        </div>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+
+              <p class="evaluation-notice">{{ 'inspection.summary.evaluationNotice' | translate }}</p>
+
+              <div class="action-spacer"></div>
+
+              <button mat-flat-button class="primary-pill-btn" (click)="submitInspection()">
+                {{ 'inspection.summary.submitInspection' | translate }}
+              </button>
+            </div>
+          }
+
+          <!-- STEP 4: FINAL EVALUATION RESULT -->
+          @if (driverStep() === 'RESULT') {
+            <header class="mobile-header">
+              <h2 class="header-title">{{ 'inspection.resultScreen.title' | translate }}</h2>
+            </header>
+
+            <div class="mobile-body">
+              <div class="result-banner-card"
+                   [class.banner-not-enabled]="activeInspection()?.operatingCondition === 'NOT_ENABLED'"
+                   [class.banner-observed]="activeInspection()?.operatingCondition === 'OBSERVED'"
+                   [class.banner-enabled]="activeInspection()?.operatingCondition === 'ENABLED'">
+                
+                <div class="result-icon-circle">
+                  @if (activeInspection()?.operatingCondition === 'NOT_ENABLED') {
+                    <mat-icon>priority_high</mat-icon>
+                  } @else if (activeInspection()?.operatingCondition === 'OBSERVED') {
+                    <mat-icon>warning</mat-icon>
+                  } @else {
+                    <mat-icon>check</mat-icon>
+                  }
+                </div>
+
+                <h3 class="result-condition-title">
+                  {{ 'inspection.condition.' + (activeInspection()?.operatingCondition || 'NOT_ENABLED') | translate }}
+                </h3>
+
+                <p class="result-condition-subtitle">
+                  {{ 'inspection.resultScreen.vehicleText' | translate:{ plate: assignedVehicle.plate } }}
+                </p>
+
+                @if (activeInspection()?.failureReason) {
+                  <p class="failure-reason-highlight">{{ activeInspection()?.failureReason }}</p>
+                }
+              </div>
+
+              <div class="next-steps-card mat-elevation-z1">
+                <h4 class="next-title">{{ 'inspection.resultScreen.whatHappensNow' | translate }}</h4>
+                <p class="next-desc">
+                  @if (activeInspection()?.operatingCondition === 'NOT_ENABLED') {
+                    {{ 'inspection.resultScreen.notEnabledInstruction' | translate }}
+                  } @else if (activeInspection()?.operatingCondition === 'OBSERVED') {
+                    {{ 'inspection.resultScreen.observedInstruction' | translate }}
+                  } @else {
+                    {{ 'inspection.resultScreen.enabledInstruction' | translate }}
+                  }
+                </p>
+              </div>
+
+              <div class="action-spacer"></div>
+
+              <button mat-stroked-button color="primary" class="secondary-pill-btn" (click)="finishFlow()">
+                {{ 'inspection.resultScreen.backToStart' | translate }}
+              </button>
+            </div>
+          }
+
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: SUPERVISOR FLOW (Desktop 1280px History) -->
+    <!-- ============================================== -->
+    <mat-tab [label]="'inspection.tabs.supervisor' | translate">
+      <div class="desktop-view-container">
+        
+        <!-- Header with Export button -->
+        <div class="supervisor-top-bar">
+          <h2 class="view-title">{{ 'inspection.history.title' | translate }}</h2>
+          <button mat-flat-button color="primary" class="export-btn" (click)="exportPdf()">
+            <mat-icon>picture_as_pdf</mat-icon>
+            {{ 'inspection.history.exportPdf' | translate }}
+          </button>
+        </div>
+
+        <!-- 5 Summary KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card mat-elevation-z1">
+            <span class="kpi-value">{{ store.totalInspectionsCount() }}</span>
+            <span class="kpi-label">{{ 'inspection.history.kpiTotal' | translate }}</span>
+          </div>
+          <div class="kpi-card mat-elevation-z1 kpi-green">
+            <span class="kpi-value">{{ store.enabledCount() }}</span>
+            <span class="kpi-label">{{ 'inspection.condition.ENABLED' | translate }}</span>
+          </div>
+          <div class="kpi-card mat-elevation-z1 kpi-amber">
+            <span class="kpi-value">{{ store.observedCount() }}</span>
+            <span class="kpi-label">{{ 'inspection.condition.OBSERVED' | translate }}</span>
+          </div>
+          <div class="kpi-card mat-elevation-z1 kpi-red">
+            <span class="kpi-value">{{ store.notEnabledCount() }}</span>
+            <span class="kpi-label">{{ 'inspection.condition.NOT_ENABLED' | translate }}</span>
+          </div>
+          <div class="kpi-card mat-elevation-z1">
+            <span class="kpi-value">{{ store.exceptionCount() }}</span>
+            <span class="kpi-label">{{ 'inspection.history.kpiException' | translate }}</span>
+          </div>
+        </div>
+
+        <!-- Filters Toolbar -->
+        <div class="filters-card mat-elevation-z1">
+          <div class="filter-inputs">
+            <mat-form-field appearance="outline" density="compact" class="filter-field">
+              <mat-label>{{ 'inspection.history.filterVehicle' | translate }}</mat-label>
+              <input matInput [(ngModel)]="filterVehicle" placeholder="ABC-123">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" density="compact" class="filter-field">
+              <mat-label>{{ 'inspection.history.filterResult' | translate }}</mat-label>
+              <mat-select [(ngModel)]="filterResult">
+                <mat-option value="ALL">{{ 'inspection.history.allResults' | translate }}</mat-option>
+                <mat-option value="ENABLED">{{ 'inspection.condition.ENABLED' | translate }}</mat-option>
+                <mat-option value="OBSERVED">{{ 'inspection.condition.OBSERVED' | translate }}</mat-option>
+                <mat-option value="NOT_ENABLED">{{ 'inspection.condition.NOT_ENABLED' | translate }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Inspection History Table -->
+        <div class="table-container mat-elevation-z1">
+          <table mat-table [dataSource]="filteredInspections()" class="desktop-table">
+            
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.date' | translate }}</th>
+              <td mat-cell *matCellDef="let element">{{ element.startedAt | date:'dd/MM/yyyy' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="vehicle">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.vehicle' | translate }}</th>
+              <td mat-cell *matCellDef="let element"><strong>{{ element.vehiclePlate }}</strong></td>
+            </ng-container>
+
+            <ng-container matColumnDef="driver">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.driver' | translate }}</th>
+              <td mat-cell *matCellDef="let element">{{ element.driverName }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="result">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.result' | translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                <span class="status-pill"
+                      [class.enabled]="element.operatingCondition === 'ENABLED'"
+                      [class.observed]="element.operatingCondition === 'OBSERVED'"
+                      [class.not-enabled]="element.operatingCondition === 'NOT_ENABLED'">
+                  • {{ 'inspection.condition.' + (element.operatingCondition || 'NOT_ENABLED') | translate }}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="exception">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.exception' | translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.operatingCondition === 'NOT_ENABLED' ? 'Yes' : '—' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="authorizedBy">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.authorizedBy' | translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.operatingCondition === 'NOT_ENABLED' ? 'E. Apaza' : '—' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.actions' | translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-stroked-button (click)="viewInspectionDetail(element)">
+                  {{ 'inspection.table.viewDetail' | translate }}
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="historyColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: historyColumns;"></tr>
+          </table>
+        </div>
+
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
