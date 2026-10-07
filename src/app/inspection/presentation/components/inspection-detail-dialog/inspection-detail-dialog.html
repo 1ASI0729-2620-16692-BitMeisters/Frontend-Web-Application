@@ -1,0 +1,81 @@
+<div class="dialog-header">
+  <div>
+    <span class="breadcrumb">{{ 'inspection.detail.breadcrumbPrefix' | translate }} / {{ inspection.vehiclePlate }} / {{ inspection.startedAt | date:'dd/MM/yyyy' }}</span>
+    <h2 class="title">
+      {{ 'inspection.detail.title' | translate }}
+      <span class="badge" [class.not-enabled]="inspection.operatingCondition === 'NOT_ENABLED'"
+            [class.observed]="inspection.operatingCondition === 'OBSERVED'"
+            [class.enabled]="inspection.operatingCondition === 'ENABLED'">
+        • {{ 'inspection.condition.' + (inspection.operatingCondition || 'NOT_ENABLED') | translate }}
+      </span>
+    </h2>
+  </div>
+  <button mat-icon-button (click)="close()" aria-label="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="content">
+  @if (inspection.operatingCondition === 'NOT_ENABLED' && inspection.failureReason) {
+    <div class="explanation-card">
+      <h3 class="card-title">{{ 'inspection.detail.whyNotEnabled' | translate }}</h3>
+      <p class="card-text">
+        {{ 'inspection.detail.ruleAppliedText' | translate:{ reason: inspection.failureReason } }}
+      </p>
+    </div>
+  }
+
+  <h3 class="section-title">{{ 'inspection.detail.findings' | translate }}</h3>
+
+  @if (nonCompliantResults.length > 0) {
+    <table mat-table [dataSource]="nonCompliantResults" class="findings-table mat-elevation-z1">
+      <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.item' | translate }}</th>
+        <td mat-cell *matCellDef="let row"><strong>{{ row.itemName }}</strong></td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.category' | translate }}</th>
+        <td mat-cell *matCellDef="let row">{{ 'inspection.category.' + row.itemCategory | translate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.result' | translate }}</th>
+        <td mat-cell *matCellDef="let row">
+          <span class="result-badge" [class.fail]="row.result === 'FAIL'" [class.observed]="row.result === 'OBSERVED'">
+            {{ 'inspection.result.' + (row.result | lowercase) | translate }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="observation">
+        <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.observation' | translate }}</th>
+        <td mat-cell *matCellDef="let row">{{ row.observation?.notes || '—' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="evidence">
+        <th mat-header-cell *matHeaderCellDef>{{ 'inspection.table.evidence' | translate }}</th>
+        <td mat-cell *matCellDef="let row">
+          @if (row.observation?.evidence) {
+            <span class="evidence-link">1 {{ 'inspection.table.photos' | translate }}</span>
+          } @else {
+            <span>—</span>
+          }
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  } @else {
+    <p class="no-findings">{{ 'inspection.detail.noIssues' | translate }}</p>
+  }
+
+  <p class="remaining-compliant">
+    {{ 'inspection.detail.remainingCompliant' | translate:{ count: compliantCount } }}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">{{ 'inspection.detail.close' | translate }}</button>
+</mat-dialog-actions>
