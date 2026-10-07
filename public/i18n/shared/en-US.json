@@ -38,5 +38,102 @@
     "title": "Page not found",
     "content": "The page you are looking for does not exist or is no longer available.",
     "go-home": "Return to Dashboard"
+  },
+  "inspection": {
+    "tabs": {
+      "driver": "Driver Inspection (Mobile)",
+      "supervisor": "Fleet Inspection History"
+    },
+    "category": {
+      "SAFETY_COMPONENT": "Safety components",
+      "COMPONENT": "Vehicle components",
+      "DOCUMENTATION": "Documentation"
+    },
+    "result": {
+      "ok": "Compliant",
+      "observed": "Observed",
+      "fail": "Failed"
+    },
+    "condition": {
+      "ENABLED": "Enabled",
+      "OBSERVED": "Observed",
+      "NOT_ENABLED": "Not Enabled"
+    },
+    "assigned": {
+      "today": "Tuesday, 15 September",
+      "notInspected": "Not inspected",
+      "assignedSince": "Assigned since {{date}}",
+      "beforeYouStartTitle": "Before you start",
+      "beforeYouStartDesc": "Complete the pre-operational inspection so the vehicle can be authorized to operate.",
+      "itemsEstimate": "items · about 5 minutes",
+      "startInspection": "Start inspection"
+    },
+    "checklist": {
+      "title": "Inspection",
+      "obsEvidenceRequired": "Observation and evidence required",
+      "continue": "Continue",
+      "pendingAlert": "Please register all items. {{count}} items remaining."
+    },
+    "dialog": {
+      "observationLabel": "Observation",
+      "observationPlaceholder": "Describe the detected problem or condition...",
+      "evidenceLabel": "Evidence",
+      "requiredOnThisItem": "required on this item",
+      "photoRequiredError": "At least one photograph is required for this safety component.",
+      "saveAndContinue": "Save and continue"
+    },
+    "summary": {
+      "title": "Summary",
+      "odometer": "Odometer",
+      "compliant": "Compliant",
+      "observed": "Observed",
+      "failed": "Failed",
+      "evaluationNotice": "On submit, the system evaluates the vehicle against your company rules.",
+      "submitInspection": "Submit inspection"
+    },
+    "resultScreen": {
+      "title": "Result",
+      "vehicleText": "Vehicle {{plate}} does not meet the conditions to operate.",
+      "whatHappensNow": "What happens now",
+      "notEnabledInstruction": "The incident was registered and your supervisor has been notified. Do not start the operation until you receive instructions.",
+      "observedInstruction": "The vehicle is authorized to operate with findings recorded for preventive follow-up.",
+      "enabledInstruction": "The vehicle is fully authorized to operate.",
+      "backToStart": "Back to start"
+    },
+    "history": {
+      "title": "Inspection history",
+      "exportPdf": "Export PDF",
+      "pdfExported": "Inspection report exported to PDF.",
+      "kpiTotal": "Total Inspections",
+      "kpiException": "Exceptions",
+      "filterVehicle": "Vehicle plate",
+      "filterResult": "Result",
+      "allResults": "All"
+    },
+    "table": {
+      "date": "Date",
+      "vehicle": "Vehicle",
+      "driver": "Driver",
+      "result": "Result",
+      "exception": "Exception",
+      "authorizedBy": "Authorized by",
+      "actions": "Actions",
+      "viewDetail": "View Detail",
+      "item": "Item",
+      "category": "Category",
+      "observation": "Observation",
+      "evidence": "Evidence",
+      "photos": "photos"
+    },
+    "detail": {
+      "breadcrumbPrefix": "Fleet",
+      "title": "Inspection Findings",
+      "whyNotEnabled": "Why it is not enabled",
+      "ruleAppliedText": "The rule \"{{reason}}\" was applied. A single blocking impact leaves the vehicle Not Enabled.",
+      "findings": "Findings",
+      "noIssues": "No defects or observations were recorded.",
+      "remainingCompliant": "{{count}} remaining items compliant",
+      "close": "Close"
+    }
   }
 }
