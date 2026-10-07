@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
+  platformProviderApiBaseUrl: '/api/v1',
   demoAccessToken: 'demo-token',
+  useMockApi: true,
 };
