@@ -1,0 +1,24 @@
+{
+  "inspection": {
+    "assignedVehicle": {
+      "title": "My assigned vehicle",
+      "loading": "Loading your assigned vehicle",
+      "since": "Assigned since {{date}}",
+      "none": "No vehicle assigned today. Contact your supervisor.",
+      "error": "We could not load your assigned vehicle.",
+      "retry": "Retry"
+    },
+    "start": {
+      "title": "Before you start",
+      "description": "Complete the pre-operational inspection so the vehicle can be authorized to operate.",
+      "odometer": "Odometer (km)",
+      "odometerRequired": "Enter the odometer reading.",
+      "odometerMin": "The odometer reading cannot be negative.",
+      "submit": "Start inspection",
+      "starting": "Starting inspection"
+    },
+    "notifications": {
+      "started": "Inspection started."
+    }
+  }
+}

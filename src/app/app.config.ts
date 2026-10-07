@@ -13,6 +13,7 @@ import {
   BoundedContextTranslateLoader,
   provideTranslationContexts,
 } from './shared/infrastructure/i18n/bounded-context-translate-loader';
+import { provideMaterialDefaults } from './shared/presentation/material/material-defaults';
 import { SnackBarNotifier } from './shared/presentation/notifications/snack-bar-notifier';
 
 export const appConfig: ApplicationConfig = {
@@ -21,9 +22,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor, languageInterceptor, errorInterceptor])),
     { provide: Notifier, useClass: SnackBarNotifier },
+    provideMaterialDefaults(),
     //hasta que salga el IAM
     { provide: CurrentUser, useClass: DemoCurrentUser },
-    provideTranslationContexts(['shared']),
+    provideTranslationContexts(['shared', 'inspection']),
     provideTranslateService({
       loader: provideTranslateLoader(BoundedContextTranslateLoader),
       lang: 'en-US',

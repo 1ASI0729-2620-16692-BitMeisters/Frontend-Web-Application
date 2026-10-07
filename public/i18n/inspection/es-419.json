@@ -1,0 +1,24 @@
+{
+  "inspection": {
+    "assignedVehicle": {
+      "title": "Mi vehículo asignado",
+      "loading": "Cargando tu vehículo asignado",
+      "since": "Asignado desde el {{date}}",
+      "none": "Hoy no tienes un vehículo asignado. Comunícate con tu supervisor.",
+      "error": "No pudimos cargar tu vehículo asignado.",
+      "retry": "Reintentar"
+    },
+    "start": {
+      "title": "Antes de empezar",
+      "description": "Completa la inspección preoperacional para que el vehículo pueda ser habilitado para operar.",
+      "odometer": "Odómetro (km)",
+      "odometerRequired": "Ingresa la lectura del odómetro.",
+      "odometerMin": "La lectura del odómetro no puede ser negativa.",
+      "submit": "Iniciar inspección",
+      "starting": "Iniciando inspección"
+    },
+    "notifications": {
+      "started": "Inspección iniciada."
+    }
+  }
+}
