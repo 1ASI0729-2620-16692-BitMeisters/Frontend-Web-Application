@@ -43,7 +43,24 @@
       "title": "Inspección",
       "obsEvidenceRequired": "Se requiere observación y evidencia",
       "continue": "Continuar",
-      "pendingAlert": "Por favor complete todos los elementos. Faltan {{count}} elementos por registrar."
+      "pendingAlert": "Por favor complete todos los elementos. Faltan {{count}} elementos por registrar.",
+      "back": "Volver",
+      "progress": "{{percent}}% de los elementos respondidos",
+      "loading": "Cargando la lista de inspección",
+      "loadError": "No pudimos cargar la lista de inspección.",
+      "observationRequired": "Se requiere observación",
+      "step": "Paso {{current}} de {{total}}",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "review": "Revisar inspección",
+      "systems": "Todos los sistemas",
+      "complete": "Completo",
+      "withFindings": "Con hallazgos",
+      "answeredOf": "{{answered}} de {{total}} respondidos",
+      "answerAllToContinue": "Responde todos los elementos para continuar.",
+      "overall": "{{answered}} de {{total}} elementos respondidos",
+      "safety": "Seguridad",
+      "photo": "Foto si falla"
     },
     "dialog": {
       "observationLabel": "Observación",
@@ -105,6 +122,16 @@
       "noIssues": "No se registraron defectos ni observaciones.",
       "remainingCompliant": "{{count}} elementos restantes conformes",
       "close": "Cerrar"
+    },
+    "system": {
+      "BRAKES": "Frenos",
+      "LIGHTS": "Luces y señales",
+      "TIRES_AND_SUSPENSION": "Llantas, dirección y suspensión",
+      "ENGINE_AND_FLUIDS": "Motor y fluidos",
+      "CABIN": "Cabina",
+      "SAFETY_EQUIPMENT": "Equipo de seguridad",
+      "BODY_AND_COUPLING": "Carrocería y acople",
+      "DOCUMENTATION": "Documentos"
     }
   }
 }

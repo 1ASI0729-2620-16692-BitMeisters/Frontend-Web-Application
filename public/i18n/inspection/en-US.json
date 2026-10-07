@@ -43,7 +43,24 @@
       "title": "Inspection",
       "obsEvidenceRequired": "Observation and evidence required",
       "continue": "Continue",
-      "pendingAlert": "Please register all items. {{count}} items remaining."
+      "pendingAlert": "Please register all items. {{count}} items remaining.",
+      "back": "Back",
+      "progress": "{{percent}}% of the items answered",
+      "loading": "Loading the checklist",
+      "loadError": "We could not load the inspection checklist.",
+      "observationRequired": "Observation required",
+      "step": "Step {{current}} of {{total}}",
+      "previous": "Previous",
+      "next": "Next",
+      "review": "Review inspection",
+      "systems": "All systems",
+      "complete": "Complete",
+      "withFindings": "With findings",
+      "answeredOf": "{{answered}} of {{total}} answered",
+      "answerAllToContinue": "Answer every item to continue.",
+      "overall": "{{answered}} of {{total}} items answered",
+      "safety": "Safety",
+      "photo": "Photo if it fails"
     },
     "dialog": {
       "observationLabel": "Observation",
@@ -105,6 +122,16 @@
       "noIssues": "No defects or observations were recorded.",
       "remainingCompliant": "{{count}} remaining items compliant",
       "close": "Close"
+    },
+    "system": {
+      "BRAKES": "Brakes",
+      "LIGHTS": "Lights and signals",
+      "TIRES_AND_SUSPENSION": "Tires, steering and suspension",
+      "ENGINE_AND_FLUIDS": "Engine and fluids",
+      "CABIN": "Cabin",
+      "SAFETY_EQUIPMENT": "Safety equipment",
+      "BODY_AND_COUPLING": "Body and coupling",
+      "DOCUMENTATION": "Documents"
     }
   }
 }
