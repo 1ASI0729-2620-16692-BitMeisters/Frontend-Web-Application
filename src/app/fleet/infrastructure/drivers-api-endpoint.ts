@@ -6,7 +6,6 @@ import { DriverResource, DriversResponse } from './drivers-response';
 import { DriverAssembler } from './driver-assembler';
 
 export class DriversApiEndpoint extends BaseApiEndpoint<
-  string,
   Driver,
   DriverResource,
   DriversResponse,

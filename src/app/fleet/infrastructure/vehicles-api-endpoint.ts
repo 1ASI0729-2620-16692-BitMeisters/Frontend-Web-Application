@@ -6,7 +6,6 @@ import { VehicleResource, VehiclesResponse } from './vehicles-response';
 import { VehicleAssembler } from './vehicle-assembler';
 
 export class VehiclesApiEndpoint extends BaseApiEndpoint<
-  string,
   Vehicle,
   VehicleResource,
   VehiclesResponse,

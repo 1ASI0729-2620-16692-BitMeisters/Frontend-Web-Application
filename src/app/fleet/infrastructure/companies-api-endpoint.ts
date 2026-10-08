@@ -6,7 +6,6 @@ import { CompanyResource, CompaniesResponse } from './companies-response';
 import { CompanyAssembler } from './company-assembler';
 
 export class CompaniesApiEndpoint extends BaseApiEndpoint<
-  string,
   Company,
   CompanyResource,
   CompaniesResponse,

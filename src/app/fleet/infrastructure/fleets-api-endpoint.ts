@@ -6,7 +6,6 @@ import { FleetResource, FleetsResponse } from './fleets-response';
 import { FleetAssembler } from './fleet-assembler';
 
 export class FleetsApiEndpoint extends BaseApiEndpoint<
-  string,
   Fleet,
   FleetResource,
   FleetsResponse,

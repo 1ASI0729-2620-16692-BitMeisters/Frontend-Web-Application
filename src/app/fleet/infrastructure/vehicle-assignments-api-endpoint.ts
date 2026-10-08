@@ -9,7 +9,6 @@ import {
 import { VehicleAssignmentAssembler } from './vehicle-assignment-assembler';
 
 export class VehicleAssignmentsApiEndpoint extends BaseApiEndpoint<
-  string,
   VehicleAssignment,
   VehicleAssignmentResource,
   VehicleAssignmentsResponse,
