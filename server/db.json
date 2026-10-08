@@ -717,9 +717,10 @@
       "updatedAt": "2026-09-13T05:41:00.000Z"
     }
   ],
-  "vehicleAssignments": [
+  "vehicle-assignments": [
     {
       "id": "9a8b7c6d-5e4f-4a3b-8c2d-1e0f9a8b7c6d",
+      "vehicleId": "4d5e6f7a-8b9c-4d0e-af1b-2c3d4e5f6a7b",
       "driverId": "2c3d4e5f-6a7b-4c8d-9e0f-1a2b3c4d5e6f",
       "assignedFrom": "2026-09-01",
       "assignedTo": null,

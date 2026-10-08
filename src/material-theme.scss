@@ -38,8 +38,22 @@ html {
       filled-container-shape: 12px,
       outlined-container-height: 48px,
       outlined-container-shape: 12px,
+      protected-container-height: 48px,
       protected-container-shape: 12px,
+      text-container-height: 48px,
       text-container-shape: 12px,
+      filled-hover-state-layer-opacity: 0.12,
+      filled-focus-state-layer-opacity: 0.16,
+      filled-pressed-state-layer-opacity: 0.2,
+      outlined-hover-state-layer-opacity: 0.08,
+      outlined-focus-state-layer-opacity: 0.12,
+      outlined-pressed-state-layer-opacity: 0.16,
+      protected-hover-state-layer-opacity: 0.12,
+      protected-focus-state-layer-opacity: 0.16,
+      protected-pressed-state-layer-opacity: 0.2,
+      text-hover-state-layer-opacity: 0.08,
+      text-focus-state-layer-opacity: 0.12,
+      text-pressed-state-layer-opacity: 0.16,
     )
   );
 

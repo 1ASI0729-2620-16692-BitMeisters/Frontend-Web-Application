@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.7] - 2026-10-08
+
+### Fixed
+- Fleet Management loads the vehicle assignments: the mock api serves them under `/vehicle-assignments`, the path the fleet api requests.
+- The incident form keeps its primary action visible, and the sidebar highlights the active section and the button states consistently.
+
 ## [0.2.6] - 2026-10-08
 
 ### Fixed
@@ -62,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shared layout with sidebar, language switcher and footer.
 - Environments per stage and the json-server mock api.
 
+[0.2.7]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.3...v0.2.4

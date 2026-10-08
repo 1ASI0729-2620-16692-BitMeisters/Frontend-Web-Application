@@ -81,7 +81,7 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
         {{ (isEdit ? 'incident.update' : 'incident.create') | translate }}
       </button>
       <button mat-stroked-button type="button" (click)="cancel()">

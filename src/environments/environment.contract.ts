@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  version: '0.2.6',
+  version: '0.2.7',
   platformProviderApiBaseUrl: 'http://localhost:4010',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',
