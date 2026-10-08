@@ -38,7 +38,9 @@
   "page-not-found": {
     "title": "Página no encontrada",
     "content": "La página que buscas no existe o ya no está disponible.",
-    "go-home": "Volver al panel"
+    "go-home": "Volver al panel",
+    "content-prefix": "La ruta",
+    "content-suffix": "no es válida."
   },
   "inspection": {
     "assignedVehicle": {
@@ -173,6 +175,105 @@
       "SAFETY_EQUIPMENT": "Equipo de seguridad",
       "BODY_AND_COUPLING": "Carrocería y acople",
       "DOCUMENTATION": "Documentos"
+    }
+  },
+  "option": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "incidents": "Incidencias"
+  },
+  "about": {
+    "title": "Acerca de FleetSafe",
+    "content": "FleetSafe es una plataforma web de seguridad y control preventivo vehicular desarrollada por BitMeisters, dirigida a empresas de transporte de carga que necesitan verificar y controlar las condiciones de seguridad de sus unidades antes de iniciar una operación."
+  },
+  "incidents": {
+    "list-title": "Incidencias",
+    "id": "ID",
+    "vehicle": "Vehículo",
+    "description": "Descripción",
+    "severity": "Severidad",
+    "status": "Estado",
+    "reported-at": "Reportado el",
+    "actions": "Acciones",
+    "new": "Nueva Incidencia",
+    "view": "Ver",
+    "delete": "Eliminar"
+  },
+  "incident": {
+    "new-title": "Registrar Nueva Incidencia",
+    "edit-title": "Editar Incidencia",
+    "detail-title": "Detalle de Incidencia",
+    "summary": {
+      "title": "Incidencia"
+    },
+    "vehicle": "ID del Vehículo",
+    "type": "Tipo de Incidencia",
+    "inspection": "ID de Inspección",
+    "origin": {
+      "INSPECTION": "Inspección",
+      "OPERATION": "Operación"
+    },
+    "description": "Descripción",
+    "severity": {
+      "LOW": "Baja",
+      "MEDIUM": "Media",
+      "HIGH": "Alta",
+      "CRITICAL": "Crítica"
+    },
+    "status": {
+      "REGISTERED": "Registrada",
+      "IN_REVIEW": "En Revisión",
+      "RESOLVED": "Resuelta",
+      "CLOSED": "Cerrada"
+    },
+    "reported-by": "Reportado por",
+    "reported-at": "Reportado el",
+    "create": "Registrar Incidencia",
+    "update": "Actualizar Incidencia",
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "info": "Información",
+    "corrective-actions": "Acciones Correctivas",
+    "add-corrective-action": "Agregar Acción Correctiva",
+    "no-corrective-actions": "No hay acciones correctivas registradas.",
+    "repairs": "Reparaciones",
+    "schedule-repair": "Programar Reparación",
+    "no-repairs": "No hay reparaciones programadas.",
+    "follow-ups": "Seguimientos",
+    "add-follow-up": "Agregar Seguimiento",
+    "no-follow-ups": "No hay seguimientos registrados.",
+    "corrective-action": {
+      "new-title": "Registrar Acción Correctiva",
+      "description": "Descripción",
+      "performed-by": "Realizado por",
+      "performed-at": "Realizado el",
+      "evidence-url": "URL de Evidencia",
+      "register": "Registrar Acción"
+    },
+    "repair": {
+      "new-title": "Programar Reparación",
+      "workshop": "Taller",
+      "cost": "Costo",
+      "started-at": "Inicio",
+      "finished-at": "Fin",
+      "schedule": "Programar Reparación"
+    },
+    "follow-up": {
+      "new-title": "Agregar Seguimiento",
+      "note": "Nota",
+      "created-by": "Creado por",
+      "add": "Agregar Seguimiento"
+    },
+    "error": {
+      "vehicle-required": "El vehículo es obligatorio",
+      "type-required": "El tipo de incidencia es obligatorio",
+      "description-required": "La descripción es obligatoria",
+      "reported-by-required": "El reportante es obligatorio",
+      "performed-by-required": "El ejecutor es obligatorio",
+      "workshop-required": "El taller es obligatorio",
+      "cost-required": "El costo es obligatorio",
+      "note-required": "La nota es obligatoria",
+      "created-by-required": "El creador es obligatorio"
     }
   }
 }

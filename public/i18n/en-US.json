@@ -38,7 +38,9 @@
   "page-not-found": {
     "title": "Page not found",
     "content": "The page you are looking for does not exist or is no longer available.",
-    "go-home": "Return to Dashboard"
+    "go-home": "Return to Dashboard",
+    "content-prefix": "The path",
+    "content-suffix": "is not valid."
   },
   "inspection": {
     "assignedVehicle": {
@@ -173,6 +175,105 @@
       "SAFETY_EQUIPMENT": "Safety equipment",
       "BODY_AND_COUPLING": "Body and coupling",
       "DOCUMENTATION": "Documents"
+    }
+  },
+  "option": {
+    "home": "Home",
+    "about": "About Us",
+    "incidents": "Incidents"
+  },
+  "about": {
+    "title": "About FleetSafe",
+    "content": "FleetSafe is a web platform for vehicle safety and preventive control developed by BitMeisters, aimed at cargo transport companies that need to verify and control the safety conditions of their units before starting an operation."
+  },
+  "incidents": {
+    "list-title": "Incidents",
+    "id": "ID",
+    "vehicle": "Vehicle",
+    "description": "Description",
+    "severity": "Severity",
+    "status": "Status",
+    "reported-at": "Reported At",
+    "actions": "Actions",
+    "new": "New Incident",
+    "view": "View",
+    "delete": "Delete"
+  },
+  "incident": {
+    "new-title": "Register New Incident",
+    "edit-title": "Edit Incident",
+    "detail-title": "Incident Detail",
+    "summary": {
+      "title": "Incident"
+    },
+    "vehicle": "Vehicle ID",
+    "type": "Incident Type",
+    "inspection": "Inspection ID",
+    "origin": {
+      "INSPECTION": "Inspection",
+      "OPERATION": "Operation"
+    },
+    "description": "Description",
+    "severity": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "CRITICAL": "Critical"
+    },
+    "status": {
+      "REGISTERED": "Registered",
+      "IN_REVIEW": "In Review",
+      "RESOLVED": "Resolved",
+      "CLOSED": "Closed"
+    },
+    "reported-by": "Reported By",
+    "reported-at": "Reported At",
+    "create": "Register Incident",
+    "update": "Update Incident",
+    "cancel": "Cancel",
+    "back": "Back",
+    "info": "Information",
+    "corrective-actions": "Corrective Actions",
+    "add-corrective-action": "Add Corrective Action",
+    "no-corrective-actions": "No corrective actions registered.",
+    "repairs": "Repairs",
+    "schedule-repair": "Schedule Repair",
+    "no-repairs": "No repairs scheduled.",
+    "follow-ups": "Follow-ups",
+    "add-follow-up": "Add Follow-up",
+    "no-follow-ups": "No follow-ups registered.",
+    "corrective-action": {
+      "new-title": "Register Corrective Action",
+      "description": "Description",
+      "performed-by": "Performed By",
+      "performed-at": "Performed At",
+      "evidence-url": "Evidence URL",
+      "register": "Register Action"
+    },
+    "repair": {
+      "new-title": "Schedule Repair",
+      "workshop": "Workshop",
+      "cost": "Cost",
+      "started-at": "Started At",
+      "finished-at": "Finished At",
+      "schedule": "Schedule Repair"
+    },
+    "follow-up": {
+      "new-title": "Add Follow-up",
+      "note": "Note",
+      "created-by": "Created By",
+      "add": "Add Follow-up"
+    },
+    "error": {
+      "vehicle-required": "Vehicle is required",
+      "type-required": "Incident type is required",
+      "description-required": "Description is required",
+      "reported-by-required": "Reporter is required",
+      "performed-by-required": "Performer is required",
+      "workshop-required": "Workshop is required",
+      "cost-required": "Cost is required",
+      "note-required": "Note is required",
+      "created-by-required": "Creator is required"
     }
   }
 }
