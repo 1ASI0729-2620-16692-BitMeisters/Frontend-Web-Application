@@ -1,8 +1,4 @@
-# FleetSafe — Vehicle Documentation
-
-Branch implementation and local setup: [Vehicle Documentation](docs/vehicle-documentation.md).
-
-# FrontendWebApplication
+# FleetSafe — Frontend Web Application
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
 
