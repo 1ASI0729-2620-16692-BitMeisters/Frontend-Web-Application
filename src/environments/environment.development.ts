@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
-  platformProviderApiBaseUrl: '/api/v1',
-  demoAccessToken: 'demo-token',
-  useMockApi: true,
+  platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
+  platformProviderInspectionsEndpointPath: '/inspections',
+  platformProviderInspectionItemsEndpointPath: '/inspection-items',
+  platformProviderVehicleAssignmentEndpointPath: '/drivers/me/vehicle-assignment',
 };

@@ -1,6 +1,5 @@
-export interface BaseResponse{}
+export interface BaseResponse {}
 
-export interface BaseResource{
+export interface BaseResource {
   id: string;
-
 }
