@@ -1,0 +1,45 @@
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--fs-color-primary-900);
+  margin: 0;
+}
+
+.incident-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  padding: 24px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--fs-neutral-200);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid var(--fs-neutral-200);
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .incident-form {
+    grid-template-columns: 1fr;
+  }
+}
