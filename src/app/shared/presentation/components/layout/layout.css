@@ -131,6 +131,7 @@
   border-radius: var(--fs-radius-md);
   background-color: transparent;
   color: var(--fs-sidebar-text);
+  --mat-button-text-label-text-color: var(--fs-sidebar-text);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.01em;
