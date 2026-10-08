@@ -1,16 +1,70 @@
-.footer-content {
-  min-height: 64px;
-  padding: 12px 24px;
-  box-sizing: border-box;
-  text-align: center;
-  background: #101a2e;
-  color: white;
+/* ============================================================================
+   FleetSafe Footer
+   ============================================================================ */
+
+.fs-footer {
+  background-color: #0B2545;
+  color: #FFFFFF;
+  padding: 20px 32px;
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-content p {
-  margin: 4px 0;
+.fs-footer__inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 24px;
 }
 
-.footer-content a {
-  color: #93c5fd;
+.fs-footer__copyright {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.fs-footer__sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fs-footer__rights {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.fs-footer__spacer {
+  flex: 1 1 auto;
+}
+
+.fs-footer__powered {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.fs-footer__powered a {
+  color: #F4A261;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.fs-footer__powered a:hover {
+  color: #FFB877;
+  border-bottom-color: #FFB877;
+}
+
+@media (max-width: 640px) {
+  .fs-footer {
+    padding: 16px;
+  }
+  .fs-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .fs-footer__sep,
+  .fs-footer__spacer {
+    display: none;
+  }
 }

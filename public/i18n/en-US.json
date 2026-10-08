@@ -1,6 +1,7 @@
 {
   "app": {
-    "title": "FleetSafe"
+    "title": "FleetSafe",
+    "tagline": "Preventive Vehicle Safety"
   },
   "layout": {
     "dashboard": "Dashboard",

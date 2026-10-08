@@ -1,5 +1,22 @@
-<div class="footer-content">
-  <p>Copyright &copy; 2026 BitMeisters. {{ 'footer.rights' | translate}}</p>
-  <p>{{ 'footer.powered-by'|translate }} <a href="https://material.angular.dev/" target="_blank">Angular Material</a> {{'footer.and'|translate}}
-    <a href="https://ngx-translate.org/" target="_blank">ngx-translate</a> </p>
-</div>
+<footer class="fs-footer">
+  <div class="fs-footer__inner">
+    <span class="fs-footer__copyright">
+      Copyright &copy; 2026 BitMeisters
+    </span>
+
+    <span class="fs-footer__sep">·</span>
+
+    <span class="fs-footer__rights">
+      {{ 'footer.rights' | translate }}
+    </span>
+
+    <span class="fs-footer__spacer"></span>
+
+    <span class="fs-footer__powered">
+      {{ 'footer.powered-by' | translate }}
+      <a href="https://material.angular.dev/" target="_blank" rel="noopener">Angular Material</a>
+      {{ 'footer.and' | translate }}
+      <a href="https://ngx-translate.org/" target="_blank" rel="noopener">ngx-translate</a>
+    </span>
+  </div>
+</footer>
