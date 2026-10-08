@@ -275,5 +275,68 @@
       "note-required": "Note is required",
       "created-by-required": "Creator is required"
     }
+  },
+  "fleet": {
+    "title": "Fleet Management",
+    "subtitle": "Manage fleets, vehicles, drivers and assignments.",
+    "fleets": {
+      "title": "Fleets",
+      "count": "Total fleets"
+    },
+    "vehicles": {
+      "title": "Vehicles",
+      "subtitle": "Registered vehicles in the fleet.",
+      "new": "Register vehicle",
+      "newTitle": "Register vehicle",
+      "editTitle": "Update vehicle",
+      "detailTitle": "Vehicle details",
+      "notFound": "Vehicle not found.",
+      "fleet": "Fleet",
+      "plate": "Plate",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "type": "Type",
+      "capacity": "Capacity",
+      "status": "Status"
+    },
+    "drivers": {
+      "title": "Drivers",
+      "licenseNumber": "License number",
+      "licenseExpirationDate": "Expiration date",
+      "licenseStatus": "License status",
+      "valid": "Valid",
+      "expired": "Expired"
+    },
+    "assignments": {
+      "title": "Vehicle assignments",
+      "vehicle": "Vehicle",
+      "driver": "Driver",
+      "assignedFrom": "Assigned from",
+      "activeDriver": "Assigned driver",
+      "none": "No active assignment",
+      "assign": "Assign vehicle"
+    },
+    "vehicleTypes": {
+      "THIN": "Thin",
+      "MEDIUM": "Medium",
+      "LARGE": "Large"
+    },
+    "status": {
+      "ENABLED": "Enabled",
+      "OBSERVED": "Observed",
+      "NOT_ENABLED": "Not enabled"
+    },
+    "actions": {
+      "title": "Actions",
+      "view": "View",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "back": "Back",
+      "viewVehicles": "View vehicles",
+      "viewDrivers": "View drivers",
+      "manageAssignments": "Manage assignments"
+    }
   }
 }
