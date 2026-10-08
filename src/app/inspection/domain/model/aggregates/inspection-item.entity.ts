@@ -1,5 +1,6 @@
 import { AuditableAggregateRoot } from '../../../../shared/domain/model/auditable-aggregate-root';
 import { ItemCategory } from '../valueobjects/item-category.enum';
+import { ItemSystem } from '../valueobjects/item-system.enum';
 
 export interface InspectionItemProps {
   id: string;
@@ -7,6 +8,7 @@ export interface InspectionItemProps {
   name: string;
   description: string;
   category: ItemCategory;
+  system: ItemSystem;
   isSafetyComponent: boolean;
   requiresEvidence: boolean;
   displayOrder: number;
@@ -20,6 +22,7 @@ export class InspectionItem extends AuditableAggregateRoot {
   readonly name: string;
   readonly description: string;
   readonly category: ItemCategory;
+  readonly system: ItemSystem;
   readonly isSafetyComponent: boolean;
   readonly requiresEvidence: boolean;
   readonly displayOrder: number;
@@ -31,6 +34,7 @@ export class InspectionItem extends AuditableAggregateRoot {
     this.name = props.name;
     this.description = props.description;
     this.category = props.category;
+    this.system = props.system;
     this.isSafetyComponent = props.isSafetyComponent;
     this.requiresEvidence = props.requiresEvidence;
     this.displayOrder = props.displayOrder;

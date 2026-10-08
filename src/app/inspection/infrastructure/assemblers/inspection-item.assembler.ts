@@ -1,5 +1,6 @@
 import { InspectionItem } from '../../domain/model/aggregates/inspection-item.entity';
 import { ItemCategory } from '../../domain/model/valueobjects/item-category.enum';
+import { ItemSystem } from '../../domain/model/valueobjects/item-system.enum';
 import { InspectionItemResource } from '../resources/inspection-item.resource';
 
 export class InspectionItemAssembler {
@@ -10,6 +11,7 @@ export class InspectionItemAssembler {
       name: resource.name,
       description: resource.description ?? '',
       category: resource.category as ItemCategory,
+      system: resource.system as ItemSystem,
       isSafetyComponent: resource.isSafetyComponent,
       requiresEvidence: resource.requiresEvidence,
       displayOrder: resource.displayOrder,

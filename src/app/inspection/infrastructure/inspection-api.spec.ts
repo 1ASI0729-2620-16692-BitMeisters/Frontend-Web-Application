@@ -8,6 +8,7 @@ import { StartInspectionCommand } from '../domain/model/commands/start-inspectio
 import { AssignedVehicle } from '../domain/model/valueobjects/assigned-vehicle';
 import { InspectionStatus } from '../domain/model/valueobjects/inspection-status.enum';
 import { ItemCategory } from '../domain/model/valueobjects/item-category.enum';
+import { ItemSystem } from '../domain/model/valueobjects/item-system.enum';
 import { ResultValue } from '../domain/model/valueobjects/result-value.enum';
 import { InspectionApi } from './inspection-api';
 import { InspectionResource } from './resources/inspection.resource';
@@ -103,6 +104,7 @@ describe('InspectionApi', () => {
         code: 'BRK-01',
         name: 'Brake system',
         category: 'SAFETY_COMPONENT',
+        system: 'BRAKES',
         isSafetyComponent: true,
         requiresEvidence: true,
         displayOrder: 1,
@@ -114,6 +116,7 @@ describe('InspectionApi', () => {
 
     expect(items).toHaveLength(1);
     expect(items[0].category).toBe(ItemCategory.SAFETY_COMPONENT);
+    expect(items[0].system).toBe(ItemSystem.BRAKES);
     expect(items[0].description).toBe('');
     expect(items[0].createdAt).toEqual(new Date('2026-09-01T14:00:00Z'));
   });

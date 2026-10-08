@@ -4,6 +4,7 @@ export interface InspectionItemResource {
   name: string;
   description?: string;
   category: string;
+  system: string;
   isSafetyComponent: boolean;
   requiresEvidence: boolean;
   displayOrder: number;
