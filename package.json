@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "mock": "json-server --watch server/db.json --routes server/routes.json --port 3000",
     "mock:contract": "npx --yes @stoplight/prism-cli@5 mock https://raw.githubusercontent.com/1ASI0729-2620-16692-BitMeisters/Web-Services/develop/openapi/openapi.yaml --port 4010"
   },
   "private": true,
@@ -30,14 +31,9 @@
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
     "jsdom": "^30.0.0",
-    "msw": "^2.15.0",
+    "json-server": "^0.17.4",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
   }
 }
