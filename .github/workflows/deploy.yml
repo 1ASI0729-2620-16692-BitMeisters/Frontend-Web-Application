@@ -39,3 +39,12 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-mock-api:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+    steps:
+      - if: env.RENDER_DEPLOY_HOOK != ''
+        run: curl --fail --silent --show-error -X POST "$RENDER_DEPLOY_HOOK"
