@@ -265,6 +265,8 @@
       "add": "Add Follow-up"
     },
     "error": {
+      "loadFailed": "Could not load incidents. Check your connection and try again.",
+      "notFound": "Incident not found.",
       "vehicle-required": "Vehicle is required",
       "type-required": "Incident type is required",
       "description-required": "Description is required",

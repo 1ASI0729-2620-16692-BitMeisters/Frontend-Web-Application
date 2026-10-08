@@ -265,6 +265,8 @@
       "add": "Agregar Seguimiento"
     },
     "error": {
+      "loadFailed": "No se pudieron cargar las incidencias. Revisa tu conexión e inténtalo de nuevo.",
+      "notFound": "Incidencia no encontrada.",
       "vehicle-required": "El vehículo es obligatorio",
       "type-required": "El tipo de incidencia es obligatorio",
       "description-required": "La descripción es obligatoria",
