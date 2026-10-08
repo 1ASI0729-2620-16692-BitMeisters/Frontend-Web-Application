@@ -1,10 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslatePipe } from '@ngx-translate/core';
+import { map } from 'rxjs';
 
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
 import { FooterContent } from '../footer-content/footer-content';
@@ -33,6 +36,13 @@ import { environment } from '../../../../../environments/environment';
 })
 export class Layout {
   protected readonly version = environment.version;
+
+  protected readonly isHandset = toSignal(
+    inject(BreakpointObserver)
+      .observe('(max-width: 768px)')
+      .pipe(map((state) => state.matches)),
+    { initialValue: false },
+  );
 
   /**
    * Navigation entries for the application's sidebar,

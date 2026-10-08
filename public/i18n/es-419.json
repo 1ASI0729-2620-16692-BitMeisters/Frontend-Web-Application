@@ -11,7 +11,8 @@
     "preOperationalInspection": "Inspección Preoperacional",
     "evaluationAndAuthorization": "Evaluación y Autorización",
     "incidentManagement": "Gestión de Incidencias",
-    "preferredLanguage": "Idioma preferido"
+    "preferredLanguage": "Idioma preferido",
+    "openMenu": "Abrir menú"
   },
   "validation": {
     "required": "El campo {{field}} es obligatorio.",
