@@ -46,7 +46,7 @@ export class Layout {
       category: 'core',
     },
     {
-      link: '/incident',
+      link: '/incidents',
       label: 'layout.incidentManagement',
       icon: 'warning_amber',
       category: 'core',
