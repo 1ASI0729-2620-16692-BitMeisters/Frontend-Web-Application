@@ -34,4 +34,26 @@ export class Inspection extends AuditableAggregateRoot {
     this.completedAt = props.completedAt;
     this.results = props.results;
   }
+
+  resultFor(inspectionItemId: string): InspectionResultEntry | undefined {
+    return this.results.find((entry) => entry.inspectionItemId === inspectionItemId);
+  }
+
+  withResult(entry: InspectionResultEntry): Inspection {
+    const others = this.results.filter(
+      (current) => current.inspectionItemId !== entry.inspectionItemId,
+    );
+    return new Inspection({
+      id: this.id,
+      vehicleId: this.vehicleId,
+      driverId: this.driverId,
+      status: this.status,
+      odometer: this.odometer,
+      startedAt: this.startedAt,
+      completedAt: this.completedAt,
+      results: [...others, entry],
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    });
+  }
 }

@@ -1,12 +1,16 @@
 import { Inspection } from '../../domain/model/aggregates/inspection.entity';
+import { RegisterInspectionResultCommand } from '../../domain/model/commands/register-inspection-result.command';
 import { StartInspectionCommand } from '../../domain/model/commands/start-inspection.command';
+import { UpdateInspectionResultCommand } from '../../domain/model/commands/update-inspection-result.command';
 import { Evidence, EvidenceMediaType } from '../../domain/model/entities/evidence.entity';
 import { InspectionResultEntry } from '../../domain/model/entities/inspection-result-entry.entity';
 import { Observation } from '../../domain/model/entities/observation.entity';
 import { InspectionStatus } from '../../domain/model/valueobjects/inspection-status.enum';
 import { ItemCategory } from '../../domain/model/valueobjects/item-category.enum';
 import { ResultValue } from '../../domain/model/valueobjects/result-value.enum';
+import { RegisterInspectionResultRequest } from '../requests/register-inspection-result.request';
 import { StartInspectionRequest } from '../requests/start-inspection.request';
+import { UpdateInspectionResultRequest } from '../requests/update-inspection-result.request';
 import {
   EvidenceResource,
   InspectionResource,
@@ -34,7 +38,19 @@ export class InspectionAssembler {
     return { odometer: command.odometer };
   }
 
-  private static toResultEntry(resource: InspectionResultResource): InspectionResultEntry {
+  static toRegisterResultRequest(
+    command: RegisterInspectionResultCommand,
+  ): RegisterInspectionResultRequest {
+    return { inspectionItemId: command.inspectionItemId, result: command.result };
+  }
+
+  static toUpdateResultRequest(
+    command: UpdateInspectionResultCommand,
+  ): UpdateInspectionResultRequest {
+    return { result: command.result };
+  }
+
+  static toResultEntry(resource: InspectionResultResource): InspectionResultEntry {
     return new InspectionResultEntry({
       id: resource.id,
       inspectionItemId: resource.inspectionItemId,

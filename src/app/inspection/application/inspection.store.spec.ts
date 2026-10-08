@@ -3,6 +3,9 @@ import { Subject, of, throwError } from 'rxjs';
 import { Notifier } from '../../shared/application/notifier';
 import { ApiError } from '../../shared/infrastructure/http/api-error';
 import { Inspection } from '../domain/model/aggregates/inspection.entity';
+import { InspectionResultEntry } from '../domain/model/entities/inspection-result-entry.entity';
+import { ItemCategory } from '../domain/model/valueobjects/item-category.enum';
+import { ResultValue } from '../domain/model/valueobjects/result-value.enum';
 import { StartInspectionCommand } from '../domain/model/commands/start-inspection.command';
 import { AssignedVehicle } from '../domain/model/valueobjects/assigned-vehicle';
 import { InspectionStatus } from '../domain/model/valueobjects/inspection-status.enum';
@@ -34,7 +37,11 @@ const startedInspection = new Inspection({
 describe('InspectionStore', () => {
   const api = {
     getAssignedVehicle: vi.fn(),
+    getActiveInspectionItems: vi.fn(),
+    getInspection: vi.fn(),
     startInspection: vi.fn(),
+    registerResult: vi.fn(),
+    updateResult: vi.fn(),
   };
   const notifier = { success: vi.fn() };
 
@@ -51,6 +58,60 @@ describe('InspectionStore', () => {
   beforeEach(() => {
     vi.resetAllMocks();
     api.getAssignedVehicle.mockReturnValue(of(assignedVehicle));
+    api.getActiveInspectionItems.mockReturnValue(of([]));
+  });
+
+  function entry(result: ResultValue): InspectionResultEntry {
+    return new InspectionResultEntry({
+      id: 'result-1',
+      inspectionItemId: 'brakes',
+      itemName: 'Brake system',
+      itemCategory: ItemCategory.SAFETY_COMPONENT,
+      result,
+      createdAt: new Date('2026-09-15T10:39:00Z'),
+      observations: [],
+    });
+  }
+
+  it('registers the first result of an item and keeps it in the inspection', () => {
+    api.getInspection.mockReturnValue(of(startedInspection));
+    api.registerResult.mockReturnValue(of(entry(ResultValue.FAIL)));
+    const store = createStore();
+    store.loadInspection('inspection-1').subscribe();
+
+    store.answerItem('brakes', ResultValue.FAIL).subscribe();
+
+    expect(api.registerResult).toHaveBeenCalledWith(
+      expect.objectContaining({ inspectionItemId: 'brakes', result: ResultValue.FAIL }),
+    );
+    expect(store.currentInspection()?.resultFor('brakes')?.result).toBe(ResultValue.FAIL);
+    expect(store.savingItemId()).toBeNull();
+  });
+
+  it('corrects an item that already has a different result', () => {
+    api.getInspection.mockReturnValue(of(startedInspection.withResult(entry(ResultValue.OK))));
+    api.updateResult.mockReturnValue(of(entry(ResultValue.FAIL)));
+    const store = createStore();
+    store.loadInspection('inspection-1').subscribe();
+
+    store.answerItem('brakes', ResultValue.FAIL).subscribe();
+
+    expect(api.updateResult).toHaveBeenCalledWith(
+      expect.objectContaining({ resultId: 'result-1', result: ResultValue.FAIL }),
+    );
+    expect(api.registerResult).not.toHaveBeenCalled();
+    expect(store.currentInspection()?.resultFor('brakes')?.result).toBe(ResultValue.FAIL);
+  });
+
+  it('does not call the api when the item already has that result', () => {
+    api.getInspection.mockReturnValue(of(startedInspection.withResult(entry(ResultValue.OK))));
+    const store = createStore();
+    store.loadInspection('inspection-1').subscribe();
+
+    store.answerItem('brakes', ResultValue.OK).subscribe();
+
+    expect(api.registerResult).not.toHaveBeenCalled();
+    expect(api.updateResult).not.toHaveBeenCalled();
   });
 
   it('loads the vehicle assigned to the driver', () => {
