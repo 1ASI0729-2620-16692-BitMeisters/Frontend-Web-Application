@@ -13,10 +13,10 @@
     </div>
   }
 
-  @if (store.error()) {
+  @if (store.error(); as errorKey) {
     <div class="error-block">
       <mat-icon>error_outline</mat-icon>
-      <span>{{ store.error() }}</span>
+      <span>{{ errorKey | translate }}</span>
     </div>
   }
 

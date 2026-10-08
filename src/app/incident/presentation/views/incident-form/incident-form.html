@@ -39,7 +39,7 @@
 
     <!-- Origin -->
     <mat-form-field appearance="outline">
-      <mat-label>{{ 'incident.origin' | translate }}</mat-label>
+      <mat-label>{{ 'incident.origin.label' | translate }}</mat-label>
       <mat-select formControlName="origin">
         @for (origin of origins; track origin) {
           <mat-option [value]="origin">
@@ -60,7 +60,7 @@
 
     <!-- Severity -->
     <mat-form-field appearance="outline">
-      <mat-label>{{ 'incident.severity' | translate }}</mat-label>
+      <mat-label>{{ 'incident.severity.label' | translate }}</mat-label>
       <mat-select formControlName="severity">
         @for (severity of severities; track severity) {
           <mat-option [value]="severity">
