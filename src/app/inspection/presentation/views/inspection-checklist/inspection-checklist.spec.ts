@@ -2,15 +2,14 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
-import { of } from 'rxjs';
 import { InspectionStore } from '../../../application/inspection.store';
-import { InspectionItem } from '../../../domain/model/aggregates/inspection-item.entity';
-import { Inspection } from '../../../domain/model/aggregates/inspection.entity';
-import { InspectionResultEntry } from '../../../domain/model/entities/inspection-result-entry.entity';
-import { InspectionStatus } from '../../../domain/model/valueobjects/inspection-status.enum';
-import { ItemCategory } from '../../../domain/model/valueobjects/item-category.enum';
-import { ItemSystem } from '../../../domain/model/valueobjects/item-system.enum';
-import { ResultValue } from '../../../domain/model/valueobjects/result-value.enum';
+import { InspectionItem } from '../../../domain/model/inspection-item.entity';
+import { Inspection } from '../../../domain/model/inspection.entity';
+import { InspectionResultEntry } from '../../../domain/model/inspection-result-entry.entity';
+import { InspectionStatus } from '../../../domain/model/inspection-status.enum';
+import { ItemCategory } from '../../../domain/model/item-category.enum';
+import { ItemSystem } from '../../../domain/model/item-system.enum';
+import { ResultValue } from '../../../domain/model/result-value.enum';
 import { InspectionChecklist } from './inspection-checklist';
 
 function anItem(id: string, name: string, system: ItemSystem, displayOrder: number) {
@@ -61,18 +60,15 @@ const inspection = new Inspection({
 
 function render() {
   const store = {
-    assignedVehicle: { hasValue: () => false },
-    inspectionItems: {
-      hasValue: () => true,
-      value: signal(items),
-      isLoading: signal(false),
-      error: signal(undefined),
-      reload: vi.fn(),
-    },
+    assignedVehicle: signal(null),
+    activeInspectionItems: signal(items),
     currentInspection: signal(inspection),
     savingItemId: signal(null),
-    loadInspection: vi.fn(() => of(inspection)),
-    answerItem: vi.fn(() => of(undefined)),
+    loading: signal(false),
+    error: signal<string | null>(null),
+    loadInspection: vi.fn(),
+    loadInspectionItems: vi.fn(),
+    answerItem: vi.fn(),
   };
   TestBed.configureTestingModule({
     imports: [InspectionChecklist],
@@ -128,6 +124,6 @@ describe('InspectionChecklist', () => {
 
     fluid.querySelector<HTMLButtonElement>('[data-result="OK"]')?.click();
 
-    expect(store.answerItem).toHaveBeenCalledWith('fluid', ResultValue.OK);
+    expect(store.answerItem).toHaveBeenCalledWith(items[1], ResultValue.OK);
   });
 });

@@ -1,7 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ResultValue } from '../../../domain/model/valueobjects/result-value.enum';
+import { ResultValue } from '../../../domain/model/result-value.enum';
 
 @Component({
   selector: 'app-result-selector',

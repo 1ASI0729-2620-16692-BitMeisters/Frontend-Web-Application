@@ -2,15 +2,16 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
-import { of } from 'rxjs';
-import { CurrentUser } from '../../../../shared/application/current-user';
-import { ApiError } from '../../../../shared/infrastructure/http/api-error';
 import { InspectionStore } from '../../../application/inspection.store';
-import { AssignedVehicle } from '../../../domain/model/valueobjects/assigned-vehicle';
+import { AssignedVehicle } from '../../../domain/model/assigned-vehicle.entity';
+import { Inspection } from '../../../domain/model/inspection.entity';
+import { InspectionStatus } from '../../../domain/model/inspection-status.enum';
 import { StartInspection } from './start-inspection';
 
 const vehicle = new AssignedVehicle({
+  id: 'assignment-1',
   vehicleId: 'vehicle-1',
+  driverId: 'driver-1',
   plate: 'ABC-123',
   brand: 'Volvo',
   model: 'FH 460',
@@ -18,16 +19,14 @@ const vehicle = new AssignedVehicle({
   assignedFrom: new Date('2026-09-01'),
 });
 
-function fakeStore(state: { value?: AssignedVehicle; error?: ApiError; isLoading?: boolean }) {
+function fakeStore(state: { vehicle?: AssignedVehicle; noVehicleAssigned?: boolean }) {
   return {
-    assignedVehicle: {
-      value: signal(state.value),
-      error: signal(state.error),
-      isLoading: signal(state.isLoading ?? false),
-      reload: vi.fn(),
-    },
-    starting: signal(false),
-    startInspection: vi.fn(() => of({ id: 'inspection-1' })),
+    assignedVehicle: signal(state.vehicle ?? null),
+    noVehicleAssigned: signal(state.noVehicleAssigned ?? false),
+    loading: signal(false),
+    error: signal<string | null>(null),
+    loadAssignedVehicle: vi.fn(),
+    startInspection: vi.fn(),
   };
 }
 
@@ -38,17 +37,6 @@ function render(store: ReturnType<typeof fakeStore>) {
       provideRouter([]),
       provideTranslateService(),
       { provide: InspectionStore, useValue: store },
-      {
-        provide: CurrentUser,
-        useValue: {
-          user: signal({
-            id: 'driver-1',
-            companyId: 'company-1',
-            firstName: 'Juan',
-            lastName: 'Mendoza',
-          }),
-        },
-      },
     ],
   });
   const fixture = TestBed.createComponent(StartInspection);
@@ -58,23 +46,21 @@ function render(store: ReturnType<typeof fakeStore>) {
 
 describe('StartInspection', () => {
   it('shows the assigned vehicle', () => {
-    const fixture = render(fakeStore({ value: vehicle }));
+    const fixture = render(fakeStore({ vehicle }));
 
     expect(fixture.nativeElement.textContent).toContain('ABC-123');
     expect(fixture.nativeElement.textContent).toContain('Volvo FH 460');
   });
 
   it('tells the driver when no vehicle is assigned', () => {
-    const fixture = render(
-      fakeStore({ error: new ApiError(404, 'Not Found', 'No vehicle assigned.') }),
-    );
+    const fixture = render(fakeStore({ noVehicleAssigned: true }));
 
     expect(fixture.nativeElement.textContent).toContain('inspection.assignedVehicle.none');
     expect(fixture.nativeElement.querySelector('form')).toBeNull();
   });
 
   it('does not start the inspection without an odometer reading', () => {
-    const store = fakeStore({ value: vehicle });
+    const store = fakeStore({ vehicle });
     const fixture = render(store);
 
     fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
@@ -82,8 +68,8 @@ describe('StartInspection', () => {
     expect(store.startInspection).not.toHaveBeenCalled();
   });
 
-  it('starts the inspection and opens its checklist', () => {
-    const store = fakeStore({ value: vehicle });
+  it('starts an inspection of the assigned vehicle and opens its checklist', () => {
+    const store = fakeStore({ vehicle });
     const fixture = render(store);
     const navigate = vi.spyOn(TestBed.inject(Router), 'navigate').mockResolvedValue(true);
 
@@ -92,9 +78,11 @@ describe('StartInspection', () => {
     input.dispatchEvent(new Event('input'));
     fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
 
-    expect(store.startInspection).toHaveBeenCalledWith(
-      expect.objectContaining({ odometer: 184320 }),
-    );
-    expect(navigate).toHaveBeenCalledWith(['/inspections', 'inspection-1', 'execute']);
+    const started: Inspection = store.startInspection.mock.calls[0][0];
+    expect(started.vehicleId).toBe('vehicle-1');
+    expect(started.driverId).toBe('driver-1');
+    expect(started.odometer).toBe(184320);
+    expect(started.status).toBe(InspectionStatus.IN_PROGRESS);
+    expect(navigate).toHaveBeenCalledWith(['/inspections', started.id, 'execute']);
   });
 });

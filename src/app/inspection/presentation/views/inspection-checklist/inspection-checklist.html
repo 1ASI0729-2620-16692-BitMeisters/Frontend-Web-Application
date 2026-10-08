@@ -39,14 +39,12 @@
   <div class="layout">
     @if (steps().length > 0) {
       <aside class="sidebar" [attr.aria-label]="'inspection.checklist.systems' | translate">
-        @if (store.assignedVehicle.hasValue()) {
+        @if (store.assignedVehicle(); as vehicle) {
           <div class="vehicle">
             <mat-icon aria-hidden="true">local_shipping</mat-icon>
             <div>
-              <span class="vehicle-plate">{{ store.assignedVehicle.value().plate }}</span>
-              <span class="vehicle-model">
-                {{ store.assignedVehicle.value().brand }} {{ store.assignedVehicle.value().model }}
-              </span>
+              <span class="vehicle-plate">{{ vehicle.plate }}</span>
+              <span class="vehicle-model"> {{ vehicle.brand }} {{ vehicle.model }} </span>
             </div>
           </div>
         }
@@ -78,7 +76,7 @@
         </ol>
       }
 
-      @if (loadingInspection() || store.inspectionItems.isLoading()) {
+      @if (store.loading() && (!store.currentInspection() || steps().length === 0)) {
         <div class="state" role="status" aria-live="polite">
           <mat-progress-spinner
             mode="indeterminate"
@@ -86,7 +84,7 @@
             [attr.aria-label]="'inspection.checklist.loading' | translate"
           />
         </div>
-      } @else if (inspectionError(); as message) {
+      } @else if (!store.currentInspection() && store.error(); as message) {
         <div class="state" role="alert">
           <mat-icon class="state-icon" aria-hidden="true">search_off</mat-icon>
           <p>{{ message }}</p>
@@ -94,17 +92,17 @@
             {{ 'inspection.checklist.back' | translate }}
           </a>
         </div>
-      } @else if (store.inspectionItems.error()) {
+      } @else if (steps().length === 0 && store.error()) {
         <div class="state" role="alert">
           <mat-icon class="state-icon" aria-hidden="true">cloud_off</mat-icon>
           <p>{{ 'inspection.checklist.loadError' | translate }}</p>
-          <button mat-stroked-button type="button" (click)="store.inspectionItems.reload()">
+          <button mat-stroked-button type="button" (click)="store.loadInspectionItems()">
             <mat-icon>refresh</mat-icon>
             {{ 'inspection.assignedVehicle.retry' | translate }}
           </button>
         </div>
       } @else if (step(); as current) {
-        @if (answerError(); as message) {
+        @if (store.error(); as message) {
           <p class="answer-error" role="alert">
             <mat-icon aria-hidden="true">error</mat-icon>
             {{ message }}

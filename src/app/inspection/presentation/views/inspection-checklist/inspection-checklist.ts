@@ -7,11 +7,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ApiError } from '../../../../shared/infrastructure/http/api-error';
 import { InspectionStore } from '../../../application/inspection.store';
-import { InspectionItem } from '../../../domain/model/aggregates/inspection-item.entity';
-import { ItemSystem } from '../../../domain/model/valueobjects/item-system.enum';
-import { ResultValue } from '../../../domain/model/valueobjects/result-value.enum';
+import { InspectionItem } from '../../../domain/model/inspection-item.entity';
+import { ItemSystem } from '../../../domain/model/item-system.enum';
+import { ResultValue } from '../../../domain/model/result-value.enum';
 import { ResultSelector } from '../../components/result-selector/result-selector';
 import { SystemProgress, SystemsList } from '../../components/systems-list/systems-list';
 import { SystemsSheet, SystemsSheetData } from '../../components/systems-sheet/systems-sheet';
@@ -55,12 +54,9 @@ export class InspectionChecklist {
   private readonly top = viewChild<ElementRef<HTMLElement>>('top');
 
   protected readonly systemIcons = SYSTEM_ICONS;
-  protected readonly loadingInspection = signal(false);
-  protected readonly inspectionError = signal<string | null>(null);
-  protected readonly answerError = signal<string | null>(null);
 
   protected readonly steps = computed<ChecklistStep[]>(() => {
-    const items = this.store.inspectionItems.hasValue() ? this.store.inspectionItems.value() : [];
+    const items = this.store.activeInspectionItems();
     const inspection = this.store.currentInspection();
     return Object.values(ItemSystem)
       .map((system) => {
@@ -117,15 +113,7 @@ export class InspectionChecklist {
     });
 
     if (this.store.currentInspection()?.id === this.inspectionId) return;
-    this.loadingInspection.set(true);
-    this.store.loadInspection(this.inspectionId).subscribe({
-      next: () => this.loadingInspection.set(false),
-      error: (error: unknown) => {
-        this.loadingInspection.set(false);
-        if (!(error instanceof ApiError)) throw error;
-        this.inspectionError.set(error.detail);
-      },
-    });
+    this.store.loadInspection(this.inspectionId);
   }
 
   protected resultOf(item: InspectionItem): ResultValue | undefined {
@@ -138,13 +126,7 @@ export class InspectionChecklist {
   }
 
   protected answer(item: InspectionItem, result: ResultValue): void {
-    this.answerError.set(null);
-    this.store.answerItem(item.id, result).subscribe({
-      error: (error: unknown) => {
-        if (!(error instanceof ApiError)) throw error;
-        this.answerError.set(error.detail);
-      },
-    });
+    this.store.answerItem(item, result);
   }
 
   protected previous(): void {
@@ -170,7 +152,6 @@ export class InspectionChecklist {
   }
 
   protected goTo(index: number): void {
-    this.answerError.set(null);
     this.direction.set(index < this.stepIndex() ? 'backward' : 'forward');
     this.stepIndex.set(Math.min(Math.max(index, 0), this.steps().length - 1));
     this.top()?.nativeElement.scrollIntoView?.({ block: 'start' });

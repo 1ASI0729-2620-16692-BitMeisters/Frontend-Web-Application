@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ItemSystem } from '../../../domain/model/valueobjects/item-system.enum';
+import { ItemSystem } from '../../../domain/model/item-system.enum';
 
 export interface SystemProgress {
   system: ItemSystem;
