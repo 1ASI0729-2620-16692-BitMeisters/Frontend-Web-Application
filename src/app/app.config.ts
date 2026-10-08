@@ -14,7 +14,11 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(withInterceptors([languageInterceptor])),
     provideTranslateService({
-      loader: provideTranslateHttpLoader({ prefix: './i18n/', suffix: '.json' }),
+      loader: provideTranslateHttpLoader({
+        prefix: './i18n/',
+        suffix: '.json',
+        useHttpBackend: true,
+      }),
       lang: 'en-US',
       fallbackLang: 'en-US',
     }),
