@@ -4,16 +4,16 @@ import { BaseEntity } from '../../../shared/domain/model/base-entity';
  * Represents an action applied to address an incident condition.
  */
 export class CorrectiveAction implements BaseEntity {
-  #id: number;
-  #incidentId: number;
+  #id: string;
+  #incidentId: string;
   #description: string;
   #performedBy: string;
   #performedAt: string;
   #evidenceUrl: string;
 
   constructor(props: {
-    id: number;
-    incidentId: number;
+    id: string;
+    incidentId: string;
     description: string;
     performedBy: string;
     performedAt: string;
@@ -27,17 +27,17 @@ export class CorrectiveAction implements BaseEntity {
     this.#evidenceUrl = props.evidenceUrl;
   }
 
-  get id(): number {
+  get id(): string {
     return this.#id;
   }
-  set id(value: number) {
+  set id(value: string) {
     this.#id = value;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 

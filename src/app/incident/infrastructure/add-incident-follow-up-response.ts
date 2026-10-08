@@ -4,8 +4,8 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource returned by the add incident follow-up endpoint.
  */
 export interface AddIncidentFollowUpResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   note: string;
   createdBy: string;
   createdAt: string;

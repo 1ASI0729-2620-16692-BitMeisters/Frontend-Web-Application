@@ -4,15 +4,15 @@ import { BaseEntity } from '../../../shared/domain/model/base-entity';
  * Represents a supervisor follow-up note on an incident.
  */
 export class IncidentFollowUp implements BaseEntity {
-  #id: number;
-  #incidentId: number;
+  #id: string;
+  #incidentId: string;
   #note: string;
   #createdBy: string;
   #createdAt: string;
 
   constructor(props: {
-    id: number;
-    incidentId: number;
+    id: string;
+    incidentId: string;
     note: string;
     createdBy: string;
     createdAt: string;
@@ -24,17 +24,17 @@ export class IncidentFollowUp implements BaseEntity {
     this.#createdAt = props.createdAt;
   }
 
-  get id(): number {
+  get id(): string {
     return this.#id;
   }
-  set id(value: number) {
+  set id(value: string) {
     this.#id = value;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 

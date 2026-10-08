@@ -44,7 +44,7 @@ export class IncidentForm {
       nonNullable: true,
       validators: [Validators.required],
     }),
-    incidentTypeId: new FormControl<number | null>(null, {
+    incidentTypeId: new FormControl<string | null>(null, {
       validators: [Validators.required],
     }),
     inspectionId: new FormControl<string | null>(null),
@@ -89,11 +89,11 @@ export class IncidentForm {
   /**
    * The ID of the incident being edited, or null for new incidents.
    */
-  incidentId: number | null = null;
+  incidentId: string | null = null;
 
   constructor() {
     this.route.params.subscribe((params) => {
-      this.incidentId = params['id'] ? +params['id'] : null;
+      this.incidentId = params['id'] ? params['id'] : null;
       this.isEdit = !!this.incidentId;
 
       if (this.isEdit && this.incidentId) {
@@ -121,7 +121,7 @@ export class IncidentForm {
     if (this.form.invalid) return;
 
     const incident: Incident = new Incident({
-      id: this.incidentId ?? 0,
+      id: this.incidentId ?? crypto.randomUUID(),
       vehicleId: this.form.value.vehicleId!,
       incidentTypeId: this.form.value.incidentTypeId!,
       inspectionId: this.form.value.inspectionId ?? null,

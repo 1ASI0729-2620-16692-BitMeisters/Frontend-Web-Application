@@ -2,7 +2,7 @@
  * Resource payload sent to register a corrective action.
  */
 export interface RegisterCorrectiveActionRequest {
-  incidentId: number;
+  incidentId: string;
   description: string;
   performedBy: string;
   performedAt: string;

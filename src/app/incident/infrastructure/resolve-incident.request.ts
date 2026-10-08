@@ -2,7 +2,7 @@
  * Resource payload sent to resolve an incident.
  */
 export interface ResolveIncidentRequest {
-  incidentId: number;
+  incidentId: string;
   resolutionType: string;
   resolvedAt: string;
 }

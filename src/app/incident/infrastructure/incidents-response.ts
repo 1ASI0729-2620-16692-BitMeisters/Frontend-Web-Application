@@ -4,9 +4,9 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource representation of an incident.
  */
 export interface IncidentResource extends BaseResource {
-  id: number;
+  id: string;
   vehicleId: string;
-  incidentTypeId: number;
+  incidentTypeId: string;
   inspectionId: string | null;
   origin: string;
   description: string;
@@ -27,8 +27,8 @@ export interface IncidentResource extends BaseResource {
  * Resource representation of a corrective action.
  */
 export interface CorrectiveActionResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   description: string;
   performedBy: string;
   performedAt: string;
@@ -39,8 +39,8 @@ export interface CorrectiveActionResource extends BaseResource {
  * Resource representation of a repair.
  */
 export interface RepairResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   workshop: string;
   cost: number;
   startedAt: string;
@@ -52,8 +52,8 @@ export interface RepairResource extends BaseResource {
  * Resource representation of an incident follow-up.
  */
 export interface IncidentFollowUpResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   note: string;
   createdBy: string;
   createdAt: string;

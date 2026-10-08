@@ -2,7 +2,7 @@
  * Captures the data required to schedule a repair for an incident.
  */
 export class ScheduleRepairCommand {
-  #incidentId: number;
+  #incidentId: string;
   #workshop: string;
   #cost: number;
   #startedAt: string;
@@ -13,7 +13,7 @@ export class ScheduleRepairCommand {
    * @param props - Repair scheduling values.
    */
   constructor(props: {
-    incidentId: number;
+    incidentId: string;
     workshop: string;
     cost: number;
     startedAt: string;
@@ -26,10 +26,10 @@ export class ScheduleRepairCommand {
     this.#finishedAt = props.finishedAt;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 

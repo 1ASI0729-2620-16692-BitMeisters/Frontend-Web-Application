@@ -32,7 +32,7 @@ export class IncidentDetail {
   /**
    * The incident ID from the route.
    */
-  readonly incidentId = computed(() => +this.route.snapshot.params['id']);
+  readonly incidentId = computed(() => this.route.snapshot.params['id']);
 
   /**
    * The incident entity.

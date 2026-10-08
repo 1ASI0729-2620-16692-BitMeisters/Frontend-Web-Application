@@ -6,7 +6,7 @@ import { IncidentSeverity } from './incident-severity.enum';
  */
 export class ReportIncidentCommand {
   #vehicleId: string;
-  #incidentTypeId: number;
+  #incidentTypeId: string;
   #inspectionId: string | null;
   #origin: IncidentOrigin;
   #description: string;
@@ -15,7 +15,7 @@ export class ReportIncidentCommand {
 
   constructor(props: {
     vehicleId: string;
-    incidentTypeId: number;
+    incidentTypeId: string;
     inspectionId?: string | null;
     origin: IncidentOrigin;
     description: string;
@@ -38,10 +38,10 @@ export class ReportIncidentCommand {
     this.#vehicleId = value;
   }
 
-  get incidentTypeId(): number {
+  get incidentTypeId(): string {
     return this.#incidentTypeId;
   }
-  set incidentTypeId(value: number) {
+  set incidentTypeId(value: string) {
     this.#incidentTypeId = value;
   }
 

@@ -4,9 +4,9 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource returned by the resolve incident endpoint.
  */
 export interface ResolveIncidentResource extends BaseResource {
-  id: number;
+  id: string;
   vehicleId: string;
-  incidentTypeId: number;
+  incidentTypeId: string;
   inspectionId: string | null;
   origin: string;
   description: string;

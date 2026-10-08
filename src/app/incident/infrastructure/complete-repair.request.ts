@@ -2,7 +2,7 @@
  * Resource payload sent to complete a repair.
  */
 export interface CompleteRepairRequest {
-  incidentId: number;
-  repairId: number;
+  incidentId: string;
+  repairId: string;
   finishedAt: string;
 }

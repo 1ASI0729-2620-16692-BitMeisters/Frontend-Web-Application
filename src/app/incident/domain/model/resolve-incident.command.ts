@@ -2,7 +2,7 @@
  * Captures the data required to resolve an incident.
  */
 export class ResolveIncidentCommand {
-  #incidentId: number;
+  #incidentId: string;
   #resolutionType: string;
   #resolvedAt: string;
 
@@ -10,16 +10,16 @@ export class ResolveIncidentCommand {
    * Creates a new command instance.
    * @param props - Resolution values.
    */
-  constructor(props: { incidentId: number; resolutionType: string; resolvedAt: string }) {
+  constructor(props: { incidentId: string; resolutionType: string; resolvedAt: string }) {
     this.#incidentId = props.incidentId;
     this.#resolutionType = props.resolutionType;
     this.#resolvedAt = props.resolvedAt;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 

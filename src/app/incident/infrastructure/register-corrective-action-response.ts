@@ -4,8 +4,8 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource returned by the register corrective action endpoint.
  */
 export interface RegisterCorrectiveActionResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   description: string;
   performedBy: string;
   performedAt: string;

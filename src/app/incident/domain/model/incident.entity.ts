@@ -10,9 +10,9 @@ import { IncidentFollowUp } from './incident-follow-up.entity';
  * Represents the aggregate root for the Incident Management context.
  */
 export class Incident implements BaseEntity {
-  #id: number;
+  #id: string;
   #vehicleId: string;
-  #incidentTypeId: number;
+  #incidentTypeId: string;
   #inspectionId: string | null;
   #origin: IncidentOrigin;
   #description: string;
@@ -29,9 +29,9 @@ export class Incident implements BaseEntity {
   #followUps: IncidentFollowUp[];
 
   constructor(props: {
-    id: number;
+    id: string;
     vehicleId: string;
-    incidentTypeId: number;
+    incidentTypeId: string;
     inspectionId?: string | null;
     origin: IncidentOrigin;
     description: string;
@@ -66,10 +66,10 @@ export class Incident implements BaseEntity {
     this.#followUps = props.followUps ?? [];
   }
 
-  get id(): number {
+  get id(): string {
     return this.#id;
   }
-  set id(value: number) {
+  set id(value: string) {
     this.#id = value;
   }
 
@@ -80,10 +80,10 @@ export class Incident implements BaseEntity {
     this.#vehicleId = value;
   }
 
-  get incidentTypeId(): number {
+  get incidentTypeId(): string {
     return this.#incidentTypeId;
   }
-  set incidentTypeId(value: number) {
+  set incidentTypeId(value: string) {
     this.#incidentTypeId = value;
   }
 

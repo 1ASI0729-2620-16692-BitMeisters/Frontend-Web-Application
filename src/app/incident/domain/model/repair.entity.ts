@@ -5,8 +5,8 @@ import { RepairStatus } from './repair-status.enum';
  * Represents a repair task associated with an incident.
  */
 export class Repair implements BaseEntity {
-  #id: number;
-  #incidentId: number;
+  #id: string;
+  #incidentId: string;
   #workshop: string;
   #cost: number;
   #startedAt: string;
@@ -14,8 +14,8 @@ export class Repair implements BaseEntity {
   #status: RepairStatus;
 
   constructor(props: {
-    id: number;
-    incidentId: number;
+    id: string;
+    incidentId: string;
     workshop: string;
     cost: number;
     startedAt: string;
@@ -31,17 +31,17 @@ export class Repair implements BaseEntity {
     this.#status = props.status;
   }
 
-  get id(): number {
+  get id(): string {
     return this.#id;
   }
-  set id(value: number) {
+  set id(value: string) {
     this.#id = value;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 

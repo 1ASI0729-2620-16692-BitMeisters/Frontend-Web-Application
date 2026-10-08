@@ -63,7 +63,7 @@ export class IncidentList {
    * Navigates to the incident detail view.
    * @param id - The ID of the incident to view.
    */
-  viewIncident(id: number) {
+  viewIncident(id: string) {
     this.router.navigate(['incidents', id]).then();
   }
 
@@ -71,7 +71,7 @@ export class IncidentList {
    * Deletes an incident by ID.
    * @param id - The ID of the incident to delete.
    */
-  deleteIncident(id: number) {
+  deleteIncident(id: string) {
     this.store.deleteIncident(id);
   }
 

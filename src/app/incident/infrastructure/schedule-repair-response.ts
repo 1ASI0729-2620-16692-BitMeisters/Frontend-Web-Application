@@ -4,8 +4,8 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource returned by the schedule repair endpoint.
  */
 export interface ScheduleRepairResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   workshop: string;
   cost: number;
   startedAt: string;

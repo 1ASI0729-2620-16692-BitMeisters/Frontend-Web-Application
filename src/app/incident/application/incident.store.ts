@@ -72,7 +72,7 @@ export class IncidentStore {
    * @param id - Incident identifier.
    * @returns Reactive selection for the requested incident.
    */
-  getIncidentById = (id: number) =>
+  getIncidentById = (id: string) =>
     computed(() => (id ? this.incidents().find((i) => i.id === id) : undefined));
 
   /**
@@ -80,7 +80,7 @@ export class IncidentStore {
    * @param id - Incident type identifier.
    * @returns Reactive selection for the requested incident type.
    */
-  getIncidentTypeById = (id: number) =>
+  getIncidentTypeById = (id: string) =>
     computed(() => (id ? this.incidentTypes().find((t) => t.id === id) : undefined));
 
   /**
@@ -175,7 +175,7 @@ export class IncidentStore {
    * Deletes an incident by ID.
    * @param id - The ID of the incident to delete.
    */
-  deleteIncident = (id: number): void => {
+  deleteIncident = (id: string): void => {
     this.loadingSignal.set(true);
     this.errorSignal.set(null);
     this.incidentApi

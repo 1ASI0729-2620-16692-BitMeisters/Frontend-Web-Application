@@ -4,7 +4,7 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource representation of an incident type.
  */
 export interface IncidentTypeResource extends BaseResource {
-  id: number;
+  id: string;
   code: string;
   name: string;
   description: string;

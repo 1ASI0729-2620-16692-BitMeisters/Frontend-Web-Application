@@ -4,8 +4,8 @@ import { BaseResource, BaseResponse } from '../../shared/infrastructure/base-res
  * Resource returned by the complete repair endpoint.
  */
 export interface CompleteRepairResource extends BaseResource {
-  id: number;
-  incidentId: number;
+  id: string;
+  incidentId: string;
   workshop: string;
   cost: number;
   startedAt: string;

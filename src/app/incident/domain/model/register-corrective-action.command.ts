@@ -2,7 +2,7 @@
  * Captures the data required to register a corrective action.
  */
 export class RegisterCorrectiveActionCommand {
-  #incidentId: number;
+  #incidentId: string;
   #description: string;
   #performedBy: string;
   #performedAt: string;
@@ -13,7 +13,7 @@ export class RegisterCorrectiveActionCommand {
    * @param props - Corrective action values.
    */
   constructor(props: {
-    incidentId: number;
+    incidentId: string;
     description: string;
     performedBy: string;
     performedAt: string;
@@ -26,10 +26,10 @@ export class RegisterCorrectiveActionCommand {
     this.#evidenceUrl = props.evidenceUrl;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 

@@ -4,14 +4,14 @@ import { BaseEntity } from '../../../shared/domain/model/base-entity';
  * Represents a classification catalog entry for incidents.
  */
 export class IncidentType implements BaseEntity {
-  #id: number;
+  #id: string;
   #code: string;
   #name: string;
   #description: string;
   #isActive: boolean;
 
   constructor(props: {
-    id: number;
+    id: string;
     code: string;
     name: string;
     description: string;
@@ -24,10 +24,10 @@ export class IncidentType implements BaseEntity {
     this.#isActive = props.isActive;
   }
 
-  get id(): number {
+  get id(): string {
     return this.#id;
   }
-  set id(value: number) {
+  set id(value: string) {
     this.#id = value;
   }
 

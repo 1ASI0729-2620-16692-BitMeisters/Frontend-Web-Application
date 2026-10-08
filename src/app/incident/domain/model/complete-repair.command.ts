@@ -2,31 +2,31 @@
  * Captures the data required to mark a repair as completed.
  */
 export class CompleteRepairCommand {
-  #incidentId: number;
-  #repairId: number;
+  #incidentId: string;
+  #repairId: string;
   #finishedAt: string;
 
   /**
    * Creates a new command instance.
    * @param props - Repair completion values.
    */
-  constructor(props: { incidentId: number; repairId: number; finishedAt: string }) {
+  constructor(props: { incidentId: string; repairId: string; finishedAt: string }) {
     this.#incidentId = props.incidentId;
     this.#repairId = props.repairId;
     this.#finishedAt = props.finishedAt;
   }
 
-  get incidentId(): number {
+  get incidentId(): string {
     return this.#incidentId;
   }
-  set incidentId(value: number) {
+  set incidentId(value: string) {
     this.#incidentId = value;
   }
 
-  get repairId(): number {
+  get repairId(): string {
     return this.#repairId;
   }
-  set repairId(value: number) {
+  set repairId(value: string) {
     this.#repairId = value;
   }
 

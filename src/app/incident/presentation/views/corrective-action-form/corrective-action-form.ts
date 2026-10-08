@@ -51,10 +51,10 @@ export class CorrectiveActionForm {
   /**
    * The incident ID from the route.
    */
-  private incidentId: number;
+  private incidentId: string;
 
   constructor() {
-    this.incidentId = +this.route.snapshot.params['id'];
+    this.incidentId = this.route.snapshot.params['id'];
   }
 
   /**

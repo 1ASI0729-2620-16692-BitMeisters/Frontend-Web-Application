@@ -65,7 +65,7 @@ export class IncidentApi extends BaseApi {
   /**
    * Retrieves an incident by ID.
    */
-  getIncident = (id: number): Observable<Incident> => this.incidentsEndpoint.getById(id);
+  getIncident = (id: string): Observable<Incident> => this.incidentsEndpoint.getById(id);
 
   /**
    * Creates a new incident.
@@ -82,7 +82,7 @@ export class IncidentApi extends BaseApi {
   /**
    * Deletes an incident by ID.
    */
-  deleteIncident = (id: number): Observable<void> => this.incidentsEndpoint.delete(id);
+  deleteIncident = (id: string): Observable<void> => this.incidentsEndpoint.delete(id);
 
   // ── Incident Types ─────────────────────────────────────────
 
@@ -94,7 +94,7 @@ export class IncidentApi extends BaseApi {
   /**
    * Retrieves an incident type by ID.
    */
-  getIncidentType = (id: number): Observable<IncidentType> =>
+  getIncidentType = (id: string): Observable<IncidentType> =>
     this.incidentTypesEndpoint.getById(id);
 
   /**
@@ -112,7 +112,7 @@ export class IncidentApi extends BaseApi {
   /**
    * Deletes an incident type by ID.
    */
-  deleteIncidentType = (id: number): Observable<void> => this.incidentTypesEndpoint.delete(id);
+  deleteIncidentType = (id: string): Observable<void> => this.incidentTypesEndpoint.delete(id);
 
   // ── Corrective Actions ─────────────────────────────────────
 
