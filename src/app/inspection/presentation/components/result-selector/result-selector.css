@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  container-type: inline-size;
+}
+
 .selector {
   position: relative;
   display: grid;
@@ -42,6 +47,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-width: 0;
   min-height: 44px;
   padding: 0 8px;
   border: none;
@@ -74,6 +80,16 @@
 
 .option:disabled {
   cursor: progress;
+}
+
+@container (max-width: 360px) {
+  .option {
+    flex-direction: column;
+    gap: 2px;
+    min-height: 52px;
+    padding: 4px;
+    font: var(--mat-sys-label-medium);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
