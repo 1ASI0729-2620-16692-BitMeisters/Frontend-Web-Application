@@ -1,6 +1,6 @@
 {
   "name": "frontend-web-application",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "mock": "json-server --watch server/db.json --routes server/routes.json --port 3000",
-    "mock:contract": "prism mock https://raw.githubusercontent.com/1ASI0729-2620-16692-BitMeisters/Web-Services/develop/openapi/openapi.yaml --port 4010"
+    "mock:contract": "npx --yes @stoplight/prism-cli@5 mock https://raw.githubusercontent.com/1ASI0729-2620-16692-BitMeisters/Web-Services/develop/openapi/openapi.yaml --port 4010",
+    "mock:vehicle-documentation": "node server/vehicle-documentation.mock.mjs"
   },
   "private": true,
   "packageManager": "npm@12.0.2",
@@ -22,6 +23,7 @@
     "@angular/platform-browser": "^22.2.0",
     "@angular/router": "^22.2.0",
     "@ngx-translate/core": "^18.0.0",
+    "@ngx-translate/http-loader": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -29,7 +31,6 @@
     "@angular/build": "^22.2.0",
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
-    "@stoplight/prism-cli": "^5.16.0",
     "jsdom": "^30.0.0",
     "json-server": "^0.17.4",
     "prettier": "^3.8.1",

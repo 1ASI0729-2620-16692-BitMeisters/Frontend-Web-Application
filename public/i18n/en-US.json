@@ -1,0 +1,380 @@
+{
+  "app": {
+    "title": "FleetSafe",
+    "tagline": "Preventive Vehicle Safety"
+  },
+  "layout": {
+    "dashboard": "Dashboard",
+    "identityAndAccess": "Identity and Access",
+    "fleetManagement": "Fleet Management",
+    "vehicleDocumentation": "Vehicle Documentation",
+    "preOperationalInspection": "Pre-Operational Inspection",
+    "evaluationAndAuthorization": "Evaluation and Authorization",
+    "incidentManagement": "Incident Management",
+    "preferredLanguage": "Preferred language"
+  },
+  "validation": {
+    "required": "The field {{field}} is required.",
+    "invalid": "The field {{field}} is invalid."
+  },
+  "errors": {
+    "network": "Unable to reach the server. Check your connection and try again.",
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You do not have permission to perform this action.",
+    "server": "Something went wrong on our side. Please try again later."
+  },
+  "notifications": {
+    "dismiss": "Dismiss"
+  },
+  "home": {
+    "title": "Welcome to FleetSafe",
+    "content": "Fleet management and transport safety platform."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "powered-by": "Powered by",
+    "and": "and"
+  },
+  "page-not-found": {
+    "title": "Page not found",
+    "content": "The page you are looking for does not exist or is no longer available.",
+    "go-home": "Return to Dashboard",
+    "content-prefix": "The path",
+    "content-suffix": "is not valid."
+  },
+  "inspection": {
+    "assignedVehicle": {
+      "title": "My assigned vehicle",
+      "loading": "Loading your assigned vehicle",
+      "since": "Assigned since {{date}}",
+      "none": "No vehicle assigned today. Contact your supervisor.",
+      "error": "We could not load your assigned vehicle.",
+      "retry": "Retry",
+      "greeting": "Hello, {{name}}",
+      "subtitle": "Check your vehicle before starting the route.",
+      "noneTitle": "No vehicle assigned"
+    },
+    "start": {
+      "title": "Before you start",
+      "description": "Complete the pre-operational inspection so the vehicle can be authorized to operate.",
+      "odometer": "Odometer (km)",
+      "odometerRequired": "Enter the odometer reading.",
+      "odometerMin": "The odometer reading cannot be negative.",
+      "submit": "Start inspection",
+      "starting": "Starting inspection",
+      "odometerHint": "Read it from the vehicle dashboard."
+    },
+    "notifications": {
+      "started": "Inspection started."
+    },
+    "category": {
+      "SAFETY_COMPONENT": "Safety components",
+      "COMPONENT": "Vehicle components",
+      "DOCUMENTATION": "Documentation"
+    },
+    "result": {
+      "OK": "Compliant",
+      "OBSERVED": "Observed",
+      "FAIL": "Failed"
+    },
+    "condition": {
+      "ENABLED": "Enabled",
+      "OBSERVED": "Observed",
+      "NOT_ENABLED": "Not Enabled"
+    },
+    "checklist": {
+      "title": "Inspection",
+      "obsEvidenceRequired": "Observation and evidence required",
+      "continue": "Continue",
+      "pendingAlert": "Please register all items. {{count}} items remaining.",
+      "back": "Back",
+      "progress": "{{percent}}% of the items answered",
+      "loading": "Loading the checklist",
+      "loadError": "We could not load the inspection checklist.",
+      "observationRequired": "Observation required",
+      "step": "Step {{current}} of {{total}}",
+      "previous": "Previous",
+      "next": "Next",
+      "review": "Review inspection",
+      "systems": "All systems",
+      "complete": "Complete",
+      "withFindings": "With findings",
+      "answeredOf": "{{answered}} of {{total}} answered",
+      "answerAllToContinue": "Answer every item to continue.",
+      "overall": "{{answered}} of {{total}} items answered",
+      "safety": "Safety",
+      "photo": "Photo if it fails"
+    },
+    "dialog": {
+      "observationLabel": "Observation",
+      "observationPlaceholder": "Describe the detected problem or condition...",
+      "evidenceLabel": "Evidence",
+      "requiredOnThisItem": "required on this item",
+      "photoRequiredError": "At least one photograph is required for this safety component.",
+      "saveAndContinue": "Save and continue"
+    },
+    "summary": {
+      "title": "Summary",
+      "odometer": "Odometer",
+      "compliant": "Compliant",
+      "observed": "Observed",
+      "failed": "Failed",
+      "evaluationNotice": "On submit, the system evaluates the vehicle against your company rules.",
+      "submitInspection": "Submit inspection"
+    },
+    "resultScreen": {
+      "title": "Result",
+      "vehicleText": "Vehicle {{plate}} does not meet the conditions to operate.",
+      "whatHappensNow": "What happens now",
+      "notEnabledInstruction": "The incident was registered and your supervisor has been notified. Do not start the operation until you receive instructions.",
+      "observedInstruction": "The vehicle is authorized to operate with findings recorded for preventive follow-up.",
+      "enabledInstruction": "The vehicle is fully authorized to operate.",
+      "backToStart": "Back to start"
+    },
+    "history": {
+      "title": "Inspection history",
+      "exportPdf": "Export PDF",
+      "pdfExported": "Inspection report exported to PDF.",
+      "kpiTotal": "Total Inspections",
+      "kpiException": "Exceptions",
+      "filterVehicle": "Vehicle plate",
+      "filterResult": "Result",
+      "allResults": "All"
+    },
+    "table": {
+      "date": "Date",
+      "vehicle": "Vehicle",
+      "driver": "Driver",
+      "result": "Result",
+      "exception": "Exception",
+      "authorizedBy": "Authorized by",
+      "actions": "Actions",
+      "viewDetail": "View Detail",
+      "item": "Item",
+      "category": "Category",
+      "observation": "Observation",
+      "evidence": "Evidence",
+      "photos": "photos"
+    },
+    "detail": {
+      "breadcrumbPrefix": "Fleet",
+      "title": "Inspection Findings",
+      "whyNotEnabled": "Why it is not enabled",
+      "ruleAppliedText": "The rule \"{{reason}}\" was applied. A single blocking impact leaves the vehicle Not Enabled.",
+      "findings": "Findings",
+      "noIssues": "No defects or observations were recorded.",
+      "remainingCompliant": "{{count}} remaining items compliant",
+      "close": "Close"
+    },
+    "system": {
+      "BRAKES": "Brakes",
+      "LIGHTS": "Lights and signals",
+      "TIRES_AND_SUSPENSION": "Tires, steering and suspension",
+      "ENGINE_AND_FLUIDS": "Engine and fluids",
+      "CABIN": "Cabin",
+      "SAFETY_EQUIPMENT": "Safety equipment",
+      "BODY_AND_COUPLING": "Body and coupling",
+      "DOCUMENTATION": "Documents"
+    }
+  },
+  "option": {
+    "home": "Home",
+    "about": "About Us",
+    "incidents": "Incidents"
+  },
+  "about": {
+    "title": "About FleetSafe",
+    "content": "FleetSafe is a web platform for vehicle safety and preventive control developed by BitMeisters, aimed at cargo transport companies that need to verify and control the safety conditions of their units before starting an operation."
+  },
+  "incidents": {
+    "list-title": "Incidents",
+    "id": "ID",
+    "vehicle": "Vehicle",
+    "description": "Description",
+    "severity": "Severity",
+    "status": "Status",
+    "reported-at": "Reported At",
+    "actions": "Actions",
+    "new": "New Incident",
+    "view": "View",
+    "delete": "Delete"
+  },
+  "incident": {
+    "new-title": "Register New Incident",
+    "edit-title": "Edit Incident",
+    "detail-title": "Incident Detail",
+    "summary": {
+      "title": "Incident"
+    },
+    "vehicle": "Vehicle ID",
+    "type": "Incident Type",
+    "inspection": "Inspection ID",
+    "origin": {
+      "INSPECTION": "Inspection",
+      "OPERATION": "Operation"
+    },
+    "description": "Description",
+    "severity": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "CRITICAL": "Critical"
+    },
+    "status": {
+      "REGISTERED": "Registered",
+      "IN_REVIEW": "In Review",
+      "RESOLVED": "Resolved",
+      "CLOSED": "Closed"
+    },
+    "reported-by": "Reported By",
+    "reported-at": "Reported At",
+    "create": "Register Incident",
+    "update": "Update Incident",
+    "cancel": "Cancel",
+    "back": "Back",
+    "info": "Information",
+    "corrective-actions": "Corrective Actions",
+    "add-corrective-action": "Add Corrective Action",
+    "no-corrective-actions": "No corrective actions registered.",
+    "repairs": "Repairs",
+    "schedule-repair": "Schedule Repair",
+    "no-repairs": "No repairs scheduled.",
+    "follow-ups": "Follow-ups",
+    "add-follow-up": "Add Follow-up",
+    "no-follow-ups": "No follow-ups registered.",
+    "corrective-action": {
+      "new-title": "Register Corrective Action",
+      "description": "Description",
+      "performed-by": "Performed By",
+      "performed-at": "Performed At",
+      "evidence-url": "Evidence URL",
+      "register": "Register Action"
+    },
+    "repair": {
+      "new-title": "Schedule Repair",
+      "workshop": "Workshop",
+      "cost": "Cost",
+      "started-at": "Started At",
+      "finished-at": "Finished At",
+      "schedule": "Schedule Repair"
+    },
+    "follow-up": {
+      "new-title": "Add Follow-up",
+      "note": "Note",
+      "created-by": "Created By",
+      "add": "Add Follow-up"
+    },
+    "error": {
+      "vehicle-required": "Vehicle is required",
+      "type-required": "Incident type is required",
+      "description-required": "Description is required",
+      "reported-by-required": "Reporter is required",
+      "performed-by-required": "Performer is required",
+      "workshop-required": "Workshop is required",
+      "cost-required": "Cost is required",
+      "note-required": "Note is required",
+      "created-by-required": "Creator is required"
+    }
+  },
+  "fleet": {
+    "title": "Fleet Management",
+    "subtitle": "Manage fleets, vehicles, drivers and assignments.",
+    "fleets": {
+      "title": "Fleets",
+      "count": "Total fleets"
+    },
+    "vehicles": {
+      "title": "Vehicles",
+      "subtitle": "Registered vehicles in the fleet.",
+      "new": "Register vehicle",
+      "newTitle": "Register vehicle",
+      "editTitle": "Update vehicle",
+      "detailTitle": "Vehicle details",
+      "notFound": "Vehicle not found.",
+      "fleet": "Fleet",
+      "plate": "Plate",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "type": "Type",
+      "capacity": "Capacity",
+      "status": "Status"
+    },
+    "drivers": {
+      "title": "Drivers",
+      "licenseNumber": "License number",
+      "licenseExpirationDate": "Expiration date",
+      "licenseStatus": "License status",
+      "valid": "Valid",
+      "expired": "Expired"
+    },
+    "assignments": {
+      "title": "Vehicle assignments",
+      "vehicle": "Vehicle",
+      "driver": "Driver",
+      "assignedFrom": "Assigned from",
+      "activeDriver": "Assigned driver",
+      "none": "No active assignment",
+      "assign": "Assign vehicle"
+    },
+    "vehicleTypes": {
+      "THIN": "Thin",
+      "MEDIUM": "Medium",
+      "LARGE": "Large"
+    },
+    "status": {
+      "ENABLED": "Enabled",
+      "OBSERVED": "Observed",
+      "NOT_ENABLED": "Not enabled"
+    },
+    "actions": {
+      "title": "Actions",
+      "view": "View",
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "back": "Back",
+      "viewVehicles": "View vehicles",
+      "viewDrivers": "View drivers",
+      "manageAssignments": "Manage assignments"
+    }
+  },
+  "documents": {
+    "title": "Vehicle documentation",
+    "subtitle": "Keep your fleet documents up to date and prevent expiration.",
+    "supervisor": "Fleet supervisor",
+    "register": "Register document",
+    "edit": "Update document",
+    "vehicle": "Vehicle",
+    "type": "Document type",
+    "number": "Document number",
+    "issueDate": "Issue date",
+    "expirationDate": "Expiration date",
+    "fileUrl": "Digital document URL (optional)",
+    "fileHint": "Link to an existing PDF or image. Files are not uploaded here.",
+    "requiredExpiration": "Expiration date is required.",
+    "validation": "Complete the required fields. Use valid dates, expiration on or after issue date, and an HTTP(S) URL.",
+    "cancel": "Cancel",
+    "save": "Save document",
+    "saving": "Saving…",
+    "search": "Search plate, type or number",
+    "state": "Status",
+    "actions": "Actions",
+    "viewFile": "View file",
+    "saved": "Document saved. Its validity has been recalculated.",
+    "error": "Could not complete the request. Check that the API on port 3001 is running and try again.",
+    "retry": "Retry",
+    "loading": "Loading documents…",
+    "empty": "No documents match this selection.",
+    "list": "Vehicle documents",
+    "vehicleScope": "Showing all documents for the selected vehicle.",
+    "expiringScope": "Showing documents expiring in the next {{days}} days across all vehicles. Select a vehicle to also see valid and expired documents.",
+    "expiringAll": "Expiring soon · all vehicles",
+    "status": {
+      "ALL": "All statuses",
+      "VALID": "Valid",
+      "EXPIRING": "Expiring soon",
+      "EXPIRED": "Expired"
+    }
+  }
+}

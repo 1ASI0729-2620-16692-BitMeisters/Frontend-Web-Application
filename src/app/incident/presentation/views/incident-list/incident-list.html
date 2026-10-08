@@ -1,0 +1,116 @@
+<div class="container-with-spacing">
+  <div class="page-header">
+    <h1 class="page-title">{{ 'incidents.list-title' | translate }}</h1>
+    <button mat-raised-button color="primary" (click)="navigateToNew()">
+      <mat-icon>add</mat-icon>
+      {{ 'incidents.new' | translate }}
+    </button>
+  </div>
+
+  @if (store.loading()) {
+    <div class="loading-block">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  }
+
+  @if (store.error()) {
+    <div class="error-block">
+      <mat-icon>error_outline</mat-icon>
+      <span>{{ store.error() }}</span>
+    </div>
+  }
+
+  <table
+    mat-table
+    [dataSource]="dataSource()"
+    class="mat-elevation-z8 fs-table"
+    matSort
+    matSortActive="id"
+    matSortDirection="asc"
+    matSortDisableClear>
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'incidents.id' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident">{{ incident.id }}</td>
+    </ng-container>
+
+    <!-- Vehicle -->
+    <ng-container matColumnDef="vehicleId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'incidents.vehicle' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident" class="mono">
+        {{ incident.vehicleId }}
+      </td>
+    </ng-container>
+
+    <!-- Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'incidents.description' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident">{{ incident.description }}</td>
+    </ng-container>
+
+    <!-- Severity -->
+    <ng-container matColumnDef="severity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'incidents.severity' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident">
+        <span [class]="'severity-badge severity-' + incident.severity.toLowerCase()">
+          {{ 'incident.severity.' + incident.severity | translate }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'incidents.status' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident">
+        <span [class]="'status-badge status-' + incident.status.toLowerCase().replace('_', '-')">
+          {{ 'incident.status.' + incident.status | translate }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Reported At -->
+    <ng-container matColumnDef="reportedAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'incidents.reported-at' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident">{{ incident.reportedAt }}</td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ 'incidents.actions' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let incident">
+        <button
+          mat-icon-button
+          aria-label="{{ 'incidents.view' | translate }}"
+          (click)="viewIncident(incident.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          aria-label="{{ 'incidents.delete' | translate }}"
+          (click)="deleteIncident(incident.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

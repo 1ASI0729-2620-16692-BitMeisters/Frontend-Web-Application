@@ -1,0 +1,92 @@
+<div class="container-with-spacing">
+  <div class="form-header">
+    <button mat-icon-button (click)="cancel()" aria-label="Back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="form-title">
+      {{ (isEdit ? 'incident.edit-title' : 'incident.new-title') | translate }}
+    </h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="incident-form">
+    <!-- Vehicle -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'incident.vehicle' | translate }}</mat-label>
+      <input matInput formControlName="vehicleId" required />
+      @if (form.get('vehicleId')?.touched && form.get('vehicleId')!.hasError('required')) {
+        <mat-error>{{ 'incident.error.vehicle-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Incident Type -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'incident.type' | translate }}</mat-label>
+      <mat-select formControlName="incidentTypeId">
+        @for (type of incidentTypes(); track type.id) {
+          <mat-option [value]="type.id">{{ type.name }}</mat-option>
+        }
+      </mat-select>
+      @if (form.get('incidentTypeId')?.touched && form.get('incidentTypeId')!.hasError('required')) {
+        <mat-error>{{ 'incident.error.type-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Inspection ID (optional) -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'incident.inspection' | translate }}</mat-label>
+      <input matInput formControlName="inspectionId" />
+    </mat-form-field>
+
+    <!-- Origin -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'incident.origin' | translate }}</mat-label>
+      <mat-select formControlName="origin">
+        @for (origin of origins; track origin) {
+          <mat-option [value]="origin">
+            {{ 'incident.origin.' + origin | translate }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ 'incident.description' | translate }}</mat-label>
+      <textarea matInput formControlName="description" rows="3" required></textarea>
+      @if (form.get('description')?.touched && form.get('description')!.hasError('required')) {
+        <mat-error>{{ 'incident.error.description-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Severity -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'incident.severity' | translate }}</mat-label>
+      <mat-select formControlName="severity">
+        @for (severity of severities; track severity) {
+          <mat-option [value]="severity">
+            {{ 'incident.severity.' + severity | translate }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Reported By -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'incident.reported-by' | translate }}</mat-label>
+      <input matInput formControlName="reportedBy" required />
+      @if (form.get('reportedBy')?.touched && form.get('reportedBy')!.hasError('required')) {
+        <mat-error>{{ 'incident.error.reported-by-required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        {{ (isEdit ? 'incident.update' : 'incident.create') | translate }}
+      </button>
+      <button mat-stroked-button type="button" (click)="cancel()">
+        {{ 'incident.cancel' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

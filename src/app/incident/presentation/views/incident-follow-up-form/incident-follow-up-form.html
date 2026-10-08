@@ -1,0 +1,28 @@
+<h1 class="title">{{ 'incident.follow-up.new-title' | translate }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>{{ 'incident.follow-up.note' | translate }}</mat-label>
+    <textarea matInput formControlName="note" rows="4" required></textarea>
+    @if (form.get('note')?.touched && form.get('note')!.hasError('required')) {
+      <mat-error>{{ 'incident.error.note-required' | translate }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.follow-up.created-by' | translate }}</mat-label>
+    <input matInput formControlName="createdBy" required />
+    @if (form.get('createdBy')?.touched && form.get('createdBy')!.hasError('required')) {
+      <mat-error>{{ 'incident.error.created-by-required' | translate }}</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      {{ 'incident.follow-up.add' | translate }}
+    </button>
+    <button mat-stroked-button type="button" (click)="cancel()">
+      {{ 'incident.cancel' | translate }}
+    </button>
+  </div>
+</form>

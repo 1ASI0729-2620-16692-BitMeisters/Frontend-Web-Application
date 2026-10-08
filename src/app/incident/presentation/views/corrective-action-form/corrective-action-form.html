@@ -1,0 +1,38 @@
+<h1 class="title">{{ 'incident.corrective-action.new-title' | translate }}</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>{{ 'incident.corrective-action.description' | translate }}</mat-label>
+    <textarea matInput formControlName="description" rows="3" required></textarea>
+    @if (form.get('description')?.touched && form.get('description')!.hasError('required')) {
+      <mat-error>{{ 'incident.error.description-required' | translate }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.corrective-action.performed-by' | translate }}</mat-label>
+    <input matInput formControlName="performedBy" required />
+    @if (form.get('performedBy')?.touched && form.get('performedBy')!.hasError('required')) {
+      <mat-error>{{ 'incident.error.performed-by-required' | translate }}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.corrective-action.performed-at' | translate }}</mat-label>
+    <input matInput type="datetime-local" formControlName="performedAt" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'incident.corrective-action.evidence-url' | translate }}</mat-label>
+    <input matInput formControlName="evidenceUrl" />
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      {{ 'incident.corrective-action.register' | translate }}
+    </button>
+    <button mat-stroked-button type="button" (click)="cancel()">
+      {{ 'incident.cancel' | translate }}
+    </button>
+  </div>
+</form>

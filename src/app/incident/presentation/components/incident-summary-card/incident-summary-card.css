@@ -1,0 +1,38 @@
+.incident-card {
+  margin-bottom: 16px;
+}
+
+.description {
+  margin: 8px 0;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.severity-low { background: #e8f5e9; color: #2e7d32; }
+.severity-medium { background: #fff3e0; color: #ef6c00; }
+.severity-high { background: #ffebee; color: #c62828; }
+.severity-critical { background: #b71c1c; color: #fff; }
+
+.status-registered { background: #e3f2fd; color: #1565c0; }
+.status-in_review { background: #fff3e0; color: #ef6c00; }
+.status-resolved { background: #e8f5e9; color: #2e7d32; }
+.status-closed { background: #eceff1; color: #546e7a; }
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #757575;
+  font-size: 12px;
+}
