@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { Home } from './shared/presentation/view/home/home';
+import { Home } from './shared/presentation/views/home/home';
 
-const about = () => import('./shared/presentation/view/about/about').then(m => m.About);
-const pageNotFound = () => import('./shared/presentation/view/page-not-found/page-not-found').then(m => m.PageNotFound);
+const about = () => import('./shared/presentation/views/about/about').then(m => m.About);
+const pageNotFound = () => import('./shared/presentation/views/page-not-found/page-not-found').then(m => m.PageNotFound);
 const baseTitle = 'FleetSafe';
 
 export const routes: Routes = [
