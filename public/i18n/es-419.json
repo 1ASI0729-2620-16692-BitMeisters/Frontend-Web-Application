@@ -38,5 +38,140 @@
     "title": "Página no encontrada",
     "content": "La página que buscas no existe o ya no está disponible.",
     "go-home": "Volver al panel"
+  },
+  "inspection": {
+    "assignedVehicle": {
+      "title": "Mi vehículo asignado",
+      "loading": "Cargando tu vehículo asignado",
+      "since": "Asignado desde el {{date}}",
+      "none": "Hoy no tienes un vehículo asignado. Comunícate con tu supervisor.",
+      "error": "No pudimos cargar tu vehículo asignado.",
+      "retry": "Reintentar",
+      "greeting": "Hola, {{name}}",
+      "subtitle": "Revisa tu vehículo antes de salir a la ruta.",
+      "noneTitle": "Sin vehículo asignado"
+    },
+    "start": {
+      "title": "Antes de empezar",
+      "description": "Completa la inspección preoperacional para que el vehículo pueda ser habilitado para operar.",
+      "odometer": "Odómetro (km)",
+      "odometerRequired": "Ingresa la lectura del odómetro.",
+      "odometerMin": "La lectura del odómetro no puede ser negativa.",
+      "submit": "Iniciar inspección",
+      "starting": "Iniciando inspección",
+      "odometerHint": "Léelo en el tablero del vehículo."
+    },
+    "notifications": {
+      "started": "Inspección iniciada."
+    },
+    "category": {
+      "SAFETY_COMPONENT": "Componentes de seguridad",
+      "COMPONENT": "Componentes del vehículo",
+      "DOCUMENTATION": "Documentación"
+    },
+    "result": {
+      "OK": "Conforme",
+      "OBSERVED": "Observado",
+      "FAIL": "Falla"
+    },
+    "condition": {
+      "ENABLED": "Habilitado",
+      "OBSERVED": "Observado",
+      "NOT_ENABLED": "No Habilitado"
+    },
+    "checklist": {
+      "title": "Inspección",
+      "obsEvidenceRequired": "Se requiere observación y evidencia",
+      "continue": "Continuar",
+      "pendingAlert": "Por favor complete todos los elementos. Faltan {{count}} elementos por registrar.",
+      "back": "Volver",
+      "progress": "{{percent}}% de los elementos respondidos",
+      "loading": "Cargando la lista de inspección",
+      "loadError": "No pudimos cargar la lista de inspección.",
+      "observationRequired": "Se requiere observación",
+      "step": "Paso {{current}} de {{total}}",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "review": "Revisar inspección",
+      "systems": "Todos los sistemas",
+      "complete": "Completo",
+      "withFindings": "Con hallazgos",
+      "answeredOf": "{{answered}} de {{total}} respondidos",
+      "answerAllToContinue": "Responde todos los elementos para continuar.",
+      "overall": "{{answered}} de {{total}} elementos respondidos",
+      "safety": "Seguridad",
+      "photo": "Foto si falla"
+    },
+    "dialog": {
+      "observationLabel": "Observación",
+      "observationPlaceholder": "Describa la condición o problema detectado...",
+      "evidenceLabel": "Evidencia",
+      "requiredOnThisItem": "requerido en este elemento",
+      "photoRequiredError": "Se requiere al menos una fotografía para este elemento de seguridad.",
+      "saveAndContinue": "Guardar y continuar"
+    },
+    "summary": {
+      "title": "Resumen",
+      "odometer": "Odómetro",
+      "compliant": "Conformes",
+      "observed": "Observados",
+      "failed": "Fallas",
+      "evaluationNotice": "Al enviar, el sistema evaluará el vehículo según las reglas de su empresa.",
+      "submitInspection": "Enviar inspección"
+    },
+    "resultScreen": {
+      "title": "Resultado",
+      "vehicleText": "El vehículo {{plate}} no cumple con las condiciones para operar.",
+      "whatHappensNow": "¿Qué sucede ahora?",
+      "notEnabledInstruction": "La incidencia fue registrada y su supervisor ha sido notificado. No inicie la operación hasta recibir instrucciones.",
+      "observedInstruction": "El vehículo está autorizado para operar con observaciones registradas para seguimiento preventivo.",
+      "enabledInstruction": "El vehículo se encuentra totalmente habilitado para operar.",
+      "backToStart": "Volver al inicio"
+    },
+    "history": {
+      "title": "Historial de inspecciones",
+      "exportPdf": "Exportar PDF",
+      "pdfExported": "Reporte de inspecciones exportado a PDF.",
+      "kpiTotal": "Total Inspecciones",
+      "kpiException": "Excepciones",
+      "filterVehicle": "Placa de vehículo",
+      "filterResult": "Resultado",
+      "allResults": "Todos"
+    },
+    "table": {
+      "date": "Fecha",
+      "vehicle": "Vehículo",
+      "driver": "Conductor",
+      "result": "Resultado",
+      "exception": "Excepción",
+      "authorizedBy": "Autorizado por",
+      "actions": "Acciones",
+      "viewDetail": "Ver Detalle",
+      "item": "Elemento",
+      "category": "Categoría",
+      "observation": "Observación",
+      "evidence": "Evidencia",
+      "photos": "fotos"
+    },
+    "detail": {
+      "breadcrumbPrefix": "Flota",
+      "title": "Hallazgos de la Inspección",
+      "whyNotEnabled": "¿Por qué no está habilitado?",
+      "ruleAppliedText": "Se aplicó la regla \"{{reason}}\". Un único impacto bloqueante deja al vehículo No Habilitado.",
+      "findings": "Hallazgos",
+      "noIssues": "No se registraron defectos ni observaciones.",
+      "remainingCompliant": "{{count}} elementos restantes conformes",
+      "close": "Cerrar"
+    },
+    "system": {
+      "BRAKES": "Frenos",
+      "LIGHTS": "Luces y señales",
+      "TIRES_AND_SUSPENSION": "Llantas, dirección y suspensión",
+      "ENGINE_AND_FLUIDS": "Motor y fluidos",
+      "CABIN": "Cabina",
+      "SAFETY_EQUIPMENT": "Equipo de seguridad",
+      "BODY_AND_COUPLING": "Carrocería y acople",
+      "DOCUMENTATION": "Documentos"
+    }
   }
 }
