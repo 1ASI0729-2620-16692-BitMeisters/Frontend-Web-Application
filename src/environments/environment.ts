@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  version: '0.2.4',
+  version: '0.2.5',
   platformProviderApiBaseUrl: 'https://fleetsafe-api.onrender.com/api/v1',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',
