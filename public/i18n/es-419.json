@@ -11,7 +11,8 @@
     "preOperationalInspection": "Inspección Preoperacional",
     "evaluationAndAuthorization": "Evaluación y Autorización",
     "incidentManagement": "Gestión de Incidencias",
-    "preferredLanguage": "Idioma preferido"
+    "preferredLanguage": "Idioma preferido",
+    "openMenu": "Abrir menú"
   },
   "validation": {
     "required": "El campo {{field}} es obligatorio.",
@@ -210,17 +211,20 @@
     "type": "Tipo de Incidencia",
     "inspection": "ID de Inspección",
     "origin": {
+      "label": "Origen",
       "INSPECTION": "Inspección",
       "OPERATION": "Operación"
     },
     "description": "Descripción",
     "severity": {
+      "label": "Severidad",
       "LOW": "Baja",
       "MEDIUM": "Media",
       "HIGH": "Alta",
       "CRITICAL": "Crítica"
     },
     "status": {
+      "label": "Estado",
       "REGISTERED": "Registrada",
       "IN_REVIEW": "En Revisión",
       "RESOLVED": "Resuelta",
@@ -265,6 +269,8 @@
       "add": "Agregar Seguimiento"
     },
     "error": {
+      "loadFailed": "No se pudieron cargar las incidencias. Revisa tu conexión e inténtalo de nuevo.",
+      "notFound": "Incidencia no encontrada.",
       "vehicle-required": "El vehículo es obligatorio",
       "type-required": "El tipo de incidencia es obligatorio",
       "description-required": "La descripción es obligatoria",

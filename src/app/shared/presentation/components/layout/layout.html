@@ -1,6 +1,10 @@
 <mat-sidenav-container class="layout-container">
 
-  <mat-sidenav class="sidebar" mode="side" opened>
+  <mat-sidenav
+    #sidenav
+    class="sidebar"
+    [mode]="isHandset() ? 'over' : 'side'"
+    [opened]="!isHandset()">
 
     <div class="sidebar-header">
       <mat-icon class="sidebar-header__icon">verified_user</mat-icon>
@@ -19,7 +23,8 @@
           [class.sidebar-link--generic]="option.category === 'generic'"
           mat-button
           [routerLink]="option.link"
-          routerLinkActive="active">
+          routerLinkActive="active"
+          (click)="isHandset() && sidenav.close()">
 
           <mat-icon class="sidebar-link__icon">{{ option.icon }}</mat-icon>
           <span class="sidebar-link__label">{{ option.label | translate }}</span>
@@ -38,6 +43,17 @@
   <mat-sidenav-content class="content-wrapper">
 
     <mat-toolbar class="topbar">
+
+      @if (isHandset()) {
+        <button
+          mat-icon-button
+          class="topbar__menu"
+          type="button"
+          [attr.aria-label]="'layout.openMenu' | translate"
+          (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      }
 
       <div class="topbar__brand">
         <mat-icon class="topbar__brand-icon">verified_user</mat-icon>

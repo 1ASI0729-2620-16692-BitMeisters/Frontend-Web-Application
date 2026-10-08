@@ -317,16 +317,24 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 200px;
-  }
-
-  .sidebar-header {
-    padding: 16px 12px;
+    width: min(280px, 85vw);
   }
 
   .sidebar-link {
-    min-height: 40px;
-    font-size: 12px;
+    min-height: 48px;
+  }
+
+  .topbar {
+    height: 64px;
+    padding: 0 8px 0 4px;
+  }
+
+  .topbar__menu {
+    margin-right: 4px;
+  }
+
+  .topbar__subtitle {
+    display: none;
   }
 
   .content {

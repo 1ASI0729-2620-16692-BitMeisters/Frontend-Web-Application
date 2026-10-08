@@ -339,12 +339,10 @@ export class IncidentStore {
    * @param fallback - Default message when details are unavailable.
    * @returns Normalized message.
    */
-  private formatError = (error: unknown, fallback: string): string => {
-    if (error instanceof Error) {
-      return error.message.includes('Resource not found')
-        ? `${fallback}: Not found`
-        : error.message;
+  private formatError = (error: unknown, _fallback: string): string => {
+    if (error instanceof Error && error.message.includes('Resource not found')) {
+      return 'incident.error.notFound';
     }
-    return fallback;
+    return 'incident.error.loadFailed';
   };
 }

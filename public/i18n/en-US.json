@@ -11,7 +11,8 @@
     "preOperationalInspection": "Pre-Operational Inspection",
     "evaluationAndAuthorization": "Evaluation and Authorization",
     "incidentManagement": "Incident Management",
-    "preferredLanguage": "Preferred language"
+    "preferredLanguage": "Preferred language",
+    "openMenu": "Open menu"
   },
   "validation": {
     "required": "The field {{field}} is required.",
@@ -210,17 +211,20 @@
     "type": "Incident Type",
     "inspection": "Inspection ID",
     "origin": {
+      "label": "Origin",
       "INSPECTION": "Inspection",
       "OPERATION": "Operation"
     },
     "description": "Description",
     "severity": {
+      "label": "Severity",
       "LOW": "Low",
       "MEDIUM": "Medium",
       "HIGH": "High",
       "CRITICAL": "Critical"
     },
     "status": {
+      "label": "Status",
       "REGISTERED": "Registered",
       "IN_REVIEW": "In Review",
       "RESOLVED": "Resolved",
@@ -265,6 +269,8 @@
       "add": "Add Follow-up"
     },
     "error": {
+      "loadFailed": "Could not load incidents. Check your connection and try again.",
+      "notFound": "Incident not found.",
       "vehicle-required": "Vehicle is required",
       "type-required": "Incident type is required",
       "description-required": "Description is required",
