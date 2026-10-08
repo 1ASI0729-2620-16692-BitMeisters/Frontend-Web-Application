@@ -11,4 +11,9 @@ export const environment = {
   platformProviderCompleteRepairEndpointPath: '/incidents',
   platformProviderAddIncidentFollowUpEndpointPath: '/incidents',
   platformProviderResolveIncidentEndpointPath: '/incidents',
+  platformProviderCompaniesEndpointPath: '/companies',
+  platformProviderFleetsEndpointPath: '/fleets',
+  platformProviderVehiclesEndpointPath: '/vehicles',
+  platformProviderDriversEndpointPath: '/drivers',
+  platformProviderVehicleAssignmentsEndpointPath: '/vehicle-assignments',
 };

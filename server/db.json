@@ -734,6 +734,90 @@
         "type": "Tractor unit",
         "currentStatus": "ENABLED"
       }
+    },
+    {
+      "id": "ASSIGN001",
+      "vehicleId": "VEH001",
+      "driverId": "DRV001",
+      "assignedFrom": "2026-10-01",
+      "assignedTo": null,
+      "isActive": true,
+      "createdAt": "2026-10-01T13:00:00Z"
+    }
+  ],
+  "companies": [
+    {
+      "id": "COM001",
+      "name": "Transportes Andinos S.A.C.",
+      "taxId": "202620-111111",
+      "address": "Lima, Peru",
+      "phone": "+51 999 999 999",
+      "email": "contacto@transportesandinos.pe",
+      "fleetIds": [
+        "202620-1"
+      ],
+      "createdAt": "2026-10-01T10:00:00Z",
+      "updatedAt": "2026-10-01T10:00:00Z"
+    }
+  ],
+  "fleets": [
+    {
+      "id": "202620-1",
+      "companyId": "COM001",
+      "name": "Flota Lima",
+      "description": "Flota principal de operaciones de Lima",
+      "vehicleIds": [
+        "VEH001",
+        "VEH002"
+      ],
+      "createdAt": "2026-10-01T10:10:00Z",
+      "updatedAt": "2026-10-01T10:10:00Z"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "VEH001",
+      "fleetId": "202620-1",
+      "plate": "ABC-123",
+      "brand": "Volvo",
+      "model": "FH",
+      "year": 2024,
+      "type": "LARGE",
+      "capacity": 20,
+      "currentStatus": "ENABLED",
+      "createdAt": "2026-10-01T11:00:00Z",
+      "updatedAt": "2026-10-01T11:00:00Z"
+    },
+    {
+      "id": "VEH002",
+      "fleetId": "202620-1",
+      "plate": "XYZ-456",
+      "brand": "Scania",
+      "model": "R450",
+      "year": 2023,
+      "type": "MEDIUM",
+      "capacity": 18,
+      "currentStatus": "OBSERVED",
+      "createdAt": "2026-10-01T11:30:00Z",
+      "updatedAt": "2026-10-01T11:30:00Z"
+    }
+  ],
+  "drivers": [
+    {
+      "id": "DRV001",
+      "userId": "USR001",
+      "licenseNumber": "AIII-B-001",
+      "licenseExpirationDate": "2027-08-15",
+      "createdAt": "2026-10-01T12:00:00Z",
+      "updatedAt": "2026-10-01T12:00:00Z"
+    },
+    {
+      "id": "DRV002",
+      "userId": "USR002",
+      "licenseNumber": "AIII-B-002",
+      "licenseExpirationDate": "2027-11-20",
+      "createdAt": "2026-10-01T12:30:00Z",
+      "updatedAt": "2026-10-01T12:30:00Z"
     }
   ]
 }

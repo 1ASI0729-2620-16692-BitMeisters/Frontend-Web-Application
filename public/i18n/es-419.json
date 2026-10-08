@@ -275,5 +275,68 @@
       "note-required": "La nota es obligatoria",
       "created-by-required": "El creador es obligatorio"
     }
+  },
+  "fleet": {
+    "title": "Gestión de Flota",
+    "subtitle": "Gestiona flotas, vehículos, conductores y asignaciones.",
+    "fleets": {
+      "title": "Flotas",
+      "count": "Total de flotas"
+    },
+    "vehicles": {
+      "title": "Vehículos",
+      "subtitle": "Vehículos registrados en la flota.",
+      "new": "Registrar vehículo",
+      "newTitle": "Registrar vehículo",
+      "editTitle": "Actualizar vehículo",
+      "detailTitle": "Detalle del vehículo",
+      "notFound": "Vehículo no encontrado.",
+      "fleet": "Flota",
+      "plate": "Placa",
+      "brand": "Marca",
+      "model": "Modelo",
+      "year": "Año",
+      "type": "Tipo",
+      "capacity": "Capacidad",
+      "status": "Estado"
+    },
+    "drivers": {
+      "title": "Conductores",
+      "licenseNumber": "Número de licencia",
+      "licenseExpirationDate": "Fecha de vencimiento",
+      "licenseStatus": "Estado de licencia",
+      "valid": "Vigente",
+      "expired": "Vencida"
+    },
+    "assignments": {
+      "title": "Asignaciones de vehículos",
+      "vehicle": "Vehículo",
+      "driver": "Conductor",
+      "assignedFrom": "Asignado desde",
+      "activeDriver": "Conductor asignado",
+      "none": "Sin asignación activa",
+      "assign": "Asignar vehículo"
+    },
+    "vehicleTypes": {
+      "THIN": "Liviano",
+      "MEDIUM": "Mediano",
+      "LARGE": "Grande"
+    },
+    "status": {
+      "ENABLED": "Habilitado",
+      "OBSERVED": "Observado",
+      "NOT_ENABLED": "No habilitado"
+    },
+    "actions": {
+      "title": "Acciones",
+      "view": "Ver",
+      "edit": "Editar",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "back": "Volver",
+      "viewVehicles": "Ver vehículos",
+      "viewDrivers": "Ver conductores",
+      "manageAssignments": "Gestionar asignaciones"
+    }
   }
 }
