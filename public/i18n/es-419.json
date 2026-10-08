@@ -210,17 +210,20 @@
     "type": "Tipo de Incidencia",
     "inspection": "ID de Inspección",
     "origin": {
+      "label": "Origen",
       "INSPECTION": "Inspección",
       "OPERATION": "Operación"
     },
     "description": "Descripción",
     "severity": {
+      "label": "Severidad",
       "LOW": "Baja",
       "MEDIUM": "Media",
       "HIGH": "Alta",
       "CRITICAL": "Crítica"
     },
     "status": {
+      "label": "Estado",
       "REGISTERED": "Registrada",
       "IN_REVIEW": "En Revisión",
       "RESOLVED": "Resuelta",

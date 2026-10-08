@@ -210,17 +210,20 @@
     "type": "Incident Type",
     "inspection": "Inspection ID",
     "origin": {
+      "label": "Origin",
       "INSPECTION": "Inspection",
       "OPERATION": "Operation"
     },
     "description": "Description",
     "severity": {
+      "label": "Severity",
       "LOW": "Low",
       "MEDIUM": "Medium",
       "HIGH": "High",
       "CRITICAL": "Critical"
     },
     "status": {
+      "label": "Status",
       "REGISTERED": "Registered",
       "IN_REVIEW": "In Review",
       "RESOLVED": "Resolved",
