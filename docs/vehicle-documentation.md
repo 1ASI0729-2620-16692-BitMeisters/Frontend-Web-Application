@@ -1,37 +1,35 @@
 # Vehicle Documentation — FleetSafe
 
-Scope: EP07, US32 (register), US33 (query validity / expiring documents), US34 (update and recalculate). Requirements source: organization Report/README.md, sections 3.1, 4.2, 4.7 and 4.8. This branch integrates the existing `feature/shared-infrastructure` foundation, without importing other feature implementations.
+Scope: EP07, US32 (register), US33 (query validity / expiring documents), US34 (update and recalculate). Requirements source: organization Report/README.md, sections 3.1, 4.2, 4.7 and 4.8.
 
 ## Run locally
 
-Use Node.js 24.15 or newer within the Node 24 series and npm. The project uses Angular 22; Node 20 is not supported by the installed tooling.
+Use Node.js 24 and npm. In one terminal start the mock api, which serves `server/db.json` together with the other bounded contexts:
 
 ```bash
-git clone --branch feature/vehicle-documentation --single-branch https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application.git
-cd Frontend-Web-Application
 npm ci
-npm run mock:vehicle-documentation
+npm run mock
 ```
 
-Keep the API terminal running. In a second terminal in the same directory:
+In a second terminal:
 
 ```bash
 npm start
 ```
 
-Open http://localhost:4200/vehicle-documentation (also available at `/app/documents`). The root redirects to this module for branch review. Select ABC-123 or DEF-456 to see every document for that vehicle. The initial view shows expiring documents across all vehicles, rather than every fleet document.
+Open http://localhost:4200/vehicle-documentation. Select ABC-123 or XYZ-456 to see every document for that vehicle. The initial view shows the documents expiring within 30 days across all vehicles.
 
-The mock creates three clearly labeled demo documents relative to the first start date: expired, expiring in 15 days, and valid for 90 days. Registered and updated records persist in `server/vehicle-documentation.local.json`, which is ignored by Git. Stop the mock and delete that local file to reset the demo. This API is only for development, has no authentication, and does not implement production authorization or audit events.
+The mock seeds four documents in the `vehicle-documents` collection and two types in `document-types`. Vehicles come from the Fleet Management `vehicles` collection.
 
 ## Architecture and integration
 
-- `domain/model`: DocumentType, VehicleDocument, DocumentStatus and date validation.
-- `infrastructure`: REST facade, resource assembler and injection configuration.
+- `domain/model`: DocumentType, DocumentedVehicle, VehicleDocument, DocumentStatus and date validation.
+- `infrastructure`: `BaseApiEndpoint` endpoints, assemblers and the `VehicleDocumentationApi` facade, as in the learning center reference.
 - `application`: signal-based store, request state and mutation coordination.
 - `presentation`: lazy routes, document list and reactive registration/update form.
-- `public/i18n/{es,en}.json`: UI text under the `documents` namespace.
+- `public/i18n/{en-US,es-419}.json`: UI text under the `documents` namespace.
 
-Routes must be registered before the team's wildcard route. When integrating with develop, retain other feature route entries, translation namespaces, scripts and navigation. The existing sidebar already points to `/vehicle-documentation`. `vehicleId` is a reference to Fleet Management; this module does not create or change fleet vehicles. IDs are opaque strings and support UUID values.
+`vehicleId` is a reference to Fleet Management; this module does not create or change fleet vehicles. IDs are opaque strings and support UUID values.
 
 The alert threshold defaults to 30 calendar days because the report describes a configurable threshold without specifying a value. The expiry date itself is included in EXPIRING; earlier dates are EXPIRED, and dates beyond the threshold are VALID. Calendar comparisons use local today and UTC date-only arithmetic, avoiding time zone shifts. The open page refreshes its date every minute. Expired dates are allowed as explicitly required by US34; a missing expiration date or expiration before issue date is rejected.
 
@@ -41,20 +39,11 @@ The alert threshold defaults to 30 calendar days because the report describes a 
 | --- | --- |
 | Read fleet references | GET `/api/v1/vehicles` |
 | Read document types | GET `/api/v1/document-types` |
-| Read vehicle documents | GET `/api/v1/vehicles/{vehicleId}/documents` |
-| Read expiring documents | GET `/api/v1/documents/expiring?days=30` |
-| Register | POST `/api/v1/vehicles/{vehicleId}/documents` |
-| Update | PUT `/api/v1/vehicles/{vehicleId}/documents/{documentId}` |
+| Read vehicle documents | GET `/api/v1/vehicle-documents` |
+| Register | POST `/api/v1/vehicle-documents` |
+| Update | PUT `/api/v1/vehicle-documents/{documentId}` |
 
-US44 specifies registration and query endpoints; the type catalog, fleet reference query and update endpoint are the front-end integration contract pending the real backend. Responses are unwrapped JSON arrays or document objects. Document fields are `id`, `vehicleId`, `documentTypeId`, `number`, `issueDate`, `expirationDate`, `fileUrl`, `createdAt`, `updatedAt`. Dates use YYYY-MM-DD. The UI derives status centrally rather than trusting stale server status. Backend persistence and scheduled status recalculation remain backend responsibilities.
-
-Override `VEHICLE_DOCUMENTATION_CONFIG` in app providers when the backend is ready:
-
-```ts
-import { VEHICLE_DOCUMENTATION_CONFIG } from './vehicle-documentation/infrastructure/vehicle-documentation.config';
-// Add to appConfig.providers:
-{ provide: VEHICLE_DOCUMENTATION_CONFIG, useValue: { baseUrl: 'https://YOUR-API/api/v1', alertDays: 30 } }
-```
+The paths are configured in the environments (`platformProviderVehicleDocumentsEndpointPath`, `platformProviderDocumentTypesEndpointPath`, `platformProviderVehiclesEndpointPath`). Document fields are `id`, `vehicleId`, `documentTypeId`, `number`, `issueDate`, `expirationDate`, `fileUrl`, `createdAt`, `updatedAt`. Dates use YYYY-MM-DD. The store filters the documents by vehicle or by expiration and derives the status centrally rather than trusting a stale server status.
 
 The optional digital document field accepts an HTTP(S) link to a hosted PDF/image. It does not upload binary files. Authentication/roles should be supplied by the team's IAM integration; the supervisor label is descriptive, not an access-control mechanism.
 
