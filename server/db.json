@@ -928,5 +928,69 @@
       "repairs": [],
       "followUps": []
     }
+  ],
+  "document-types": [
+    {
+      "id": "2a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c01",
+      "code": "SOAT",
+      "name": "SOAT",
+      "description": "Mandatory traffic accident insurance.",
+      "isRequired": true,
+      "isActive": true
+    },
+    {
+      "id": "2a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c02",
+      "code": "CITV",
+      "name": "Technical inspection (CITV)",
+      "description": "Vehicle technical inspection certificate.",
+      "isRequired": true,
+      "isActive": true
+    }
+  ],
+  "vehicle-documents": [
+    {
+      "id": "3b8c9d0e-1f2a-4b3c-9d4e-5f6a7b8c9d01",
+      "vehicleId": "VEH001",
+      "documentTypeId": "2a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c01",
+      "number": "SOAT-2026-0001",
+      "issueDate": "2025-10-25",
+      "expirationDate": "2026-10-24",
+      "fileUrl": "",
+      "createdAt": "2025-10-25T10:00:00Z",
+      "updatedAt": "2025-10-25T10:00:00Z"
+    },
+    {
+      "id": "3b8c9d0e-1f2a-4b3c-9d4e-5f6a7b8c9d02",
+      "vehicleId": "VEH001",
+      "documentTypeId": "2a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c02",
+      "number": "CITV-2026-0042",
+      "issueDate": "2026-03-15",
+      "expirationDate": "2027-03-14",
+      "fileUrl": "",
+      "createdAt": "2026-03-15T10:00:00Z",
+      "updatedAt": "2026-03-15T10:00:00Z"
+    },
+    {
+      "id": "3b8c9d0e-1f2a-4b3c-9d4e-5f6a7b8c9d03",
+      "vehicleId": "VEH002",
+      "documentTypeId": "2a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c01",
+      "number": "SOAT-2025-0187",
+      "issueDate": "2024-10-01",
+      "expirationDate": "2025-09-30",
+      "fileUrl": "",
+      "createdAt": "2024-10-01T10:00:00Z",
+      "updatedAt": "2024-10-01T10:00:00Z"
+    },
+    {
+      "id": "3b8c9d0e-1f2a-4b3c-9d4e-5f6a7b8c9d04",
+      "vehicleId": "VEH002",
+      "documentTypeId": "2a7b8c9d-0e1f-4a2b-8c3d-4e5f6a7b8c02",
+      "number": "CITV-2026-0108",
+      "issueDate": "2025-11-01",
+      "expirationDate": "2026-10-31",
+      "fileUrl": "",
+      "createdAt": "2025-11-01T10:00:00Z",
+      "updatedAt": "2025-11-01T10:00:00Z"
+    }
   ]
 }
