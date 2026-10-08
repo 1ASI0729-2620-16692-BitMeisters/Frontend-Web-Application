@@ -8,6 +8,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
 import { FooterContent } from '../footer-content/footer-content';
+import { environment } from '../../../../../environments/environment';
 
 /**
  * Main shell component that hosts the sidebar navigation,
@@ -31,6 +32,8 @@ import { FooterContent } from '../footer-content/footer-content';
   styleUrl: './layout.css',
 })
 export class Layout {
+  protected readonly version = environment.version;
+
   /**
    * Navigation entries for the application's sidebar,
    * grouped by the DDD category of each bounded context.

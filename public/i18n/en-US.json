@@ -362,7 +362,7 @@
     "actions": "Actions",
     "viewFile": "View file",
     "saved": "Document saved. Its validity has been recalculated.",
-    "error": "Could not complete the request. Check that the API on port 3001 is running and try again.",
+    "error": "Could not complete the request. Check your connection and try again.",
     "retry": "Retry",
     "loading": "Loading documents…",
     "empty": "No documents match this selection.",

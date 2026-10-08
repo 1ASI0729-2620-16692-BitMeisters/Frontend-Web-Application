@@ -362,7 +362,7 @@
     "actions": "Acciones",
     "viewFile": "Ver archivo",
     "saved": "Documento guardado. Se recalculó su estado de vigencia.",
-    "error": "No se pudo completar la solicitud. Verifica que la API del puerto 3001 esté activa e inténtalo de nuevo.",
+    "error": "No se pudo completar la solicitud. Revisa tu conexión e inténtalo de nuevo.",
     "retry": "Reintentar",
     "loading": "Cargando documentos…",
     "empty": "No hay documentos que coincidan con esta selección.",

@@ -22,7 +22,7 @@ export class DocumentForm {
   }, { validators: control => validateDocument(control.value as VehicleDocumentInput) ? null : { documentInvalid: true } });
   ngOnInit() {
     const doc = this.document();
-    if (doc) this.form.patchValue(doc);
+    if (doc) this.form.patchValue({ vehicleId: doc.vehicleId, documentTypeId: doc.documentTypeId, number: doc.number, issueDate: doc.issueDate, expirationDate: doc.expirationDate, fileUrl: doc.fileUrl });
     else this.form.controls.vehicleId.setValue(this.store.vehicleId());
   }
   submit() {

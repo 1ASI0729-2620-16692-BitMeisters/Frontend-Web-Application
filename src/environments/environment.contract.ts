@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
+  version: '0.2.2',
   platformProviderApiBaseUrl: 'http://localhost:4010',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',
@@ -16,4 +17,6 @@ export const environment = {
   platformProviderVehiclesEndpointPath: '/vehicles',
   platformProviderDriversEndpointPath: '/drivers',
   platformProviderVehicleAssignmentsEndpointPath: '/vehicle-assignments',
+  platformProviderVehicleDocumentsEndpointPath: '/vehicle-documents',
+  platformProviderDocumentTypesEndpointPath: '/document-types',
 };

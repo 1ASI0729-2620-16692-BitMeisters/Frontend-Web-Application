@@ -7,13 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 import { VehicleDocumentationStore } from '../../../application/vehicle-documentation.store';
-import { VehicleDocument, localDate } from '../../../domain/model/vehicle-document.entity';
-import { VEHICLE_DOCUMENTATION_CONFIG } from '../../../infrastructure/vehicle-documentation.config';
+import { DOCUMENT_ALERT_DAYS, VehicleDocument, localDate } from '../../../domain/model/vehicle-document.entity';
 import { DocumentForm } from '../document-form/document-form';
 @Component({ selector: 'app-document-list', imports: [DatePipe, FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslatePipe, DocumentForm], templateUrl: './document-list.html', styleUrl: './document-list.css' })
 export class DocumentList {
   readonly store = inject(VehicleDocumentationStore);
-  readonly config = inject(VEHICLE_DOCUMENTATION_CONFIG);
+  readonly alertDays = DOCUMENT_ALERT_DAYS;
   readonly search = signal(''); readonly filter = signal('ALL');
   readonly showForm = signal(false); readonly editing = signal<VehicleDocument | null>(null);
   readonly notice = signal(false); readonly today = signal(localDate());
@@ -24,10 +23,10 @@ export class DocumentList {
   ).sort((a,b) => a.expirationDate.localeCompare(b.expirationDate)));
   ngOnInit() { this.store.load(); }
   ngOnDestroy() { clearInterval(this.timer); }
-  status(doc: VehicleDocument) { return doc.recalculateStatus(this.today(), this.config.alertDays); }
+  status(doc: VehicleDocument) { return doc.recalculateStatus(this.today(), this.alertDays); }
   count(status: string) { return this.store.documents().filter(doc => this.status(doc) === status).length; }
   typeName(id: string) { return this.store.types().find(type => type.id === id)?.name ?? id; }
-  plate(id: string) { return this.store.vehicles().find(vehicle => vehicle.id === id)?.licensePlate ?? id; }
+  plate(id: string) { return this.store.vehicles().find(vehicle => vehicle.id === id)?.plate ?? id; }
   open(doc: VehicleDocument | null = null) { this.editing.set(doc); this.showForm.set(true); this.notice.set(false); }
   close(saved: boolean) { this.showForm.set(false); this.editing.set(null); this.notice.set(saved); }
   safeUrl(url: string) { return /^https?:\/\//i.test(url) ? url : null; }
