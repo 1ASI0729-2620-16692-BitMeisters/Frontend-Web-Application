@@ -1,7 +1,7 @@
-import { InspectionResultEntry } from '../entities/inspection-result-entry.entity';
-import { InspectionStatus } from '../valueobjects/inspection-status.enum';
-import { ItemCategory } from '../valueobjects/item-category.enum';
-import { ResultValue } from '../valueobjects/result-value.enum';
+import { InspectionResultEntry } from './inspection-result-entry.entity';
+import { InspectionStatus } from './inspection-status.enum';
+import { ItemCategory } from './item-category.enum';
+import { ResultValue } from './result-value.enum';
 import { Inspection } from './inspection.entity';
 
 function anEntry(inspectionItemId: string, result: ResultValue): InspectionResultEntry {
@@ -48,7 +48,7 @@ describe('Inspection', () => {
 
     expect(updated.results).toEqual([brakes]);
     expect(original.results).toEqual([]);
-    expect(updated.equals(original)).toBe(true);
+    expect(updated.id).toBe(original.id);
   });
 
   it('replaces the result of an item that was already answered', () => {
