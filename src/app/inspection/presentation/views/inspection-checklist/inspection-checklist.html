@@ -1,0 +1,186 @@
+<section class="checklist" aria-labelledby="checklist-title" #top>
+  <header class="bar">
+    <a
+      mat-icon-button
+      routerLink="/inspections/new"
+      [attr.aria-label]="'inspection.checklist.back' | translate"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    @if (step(); as current) {
+      <div class="heading">
+        <span class="step-label">
+          {{
+            'inspection.checklist.step'
+              | translate: { current: stepIndex() + 1, total: steps().length }
+          }}
+        </span>
+        <h1 id="checklist-title">
+          <mat-icon class="system-icon" aria-hidden="true">{{
+            systemIcons[current.system]
+          }}</mat-icon>
+          {{ 'inspection.system.' + current.system | translate }}
+        </h1>
+      </div>
+      <button
+        mat-icon-button
+        type="button"
+        class="systems-toggle"
+        [attr.aria-label]="'inspection.checklist.systems' | translate"
+        (click)="openSystems()"
+      >
+        <mat-icon>format_list_bulleted</mat-icon>
+      </button>
+    } @else {
+      <h1 id="checklist-title" class="heading">{{ 'inspection.checklist.title' | translate }}</h1>
+    }
+  </header>
+
+  <div class="layout">
+    @if (steps().length > 0) {
+      <aside class="sidebar" [attr.aria-label]="'inspection.checklist.systems' | translate">
+        @if (store.assignedVehicle(); as vehicle) {
+          <div class="vehicle">
+            <mat-icon aria-hidden="true">local_shipping</mat-icon>
+            <div>
+              <span class="vehicle-plate">{{ vehicle.plate }}</span>
+              <span class="vehicle-model"> {{ vehicle.brand }} {{ vehicle.model }} </span>
+            </div>
+          </div>
+        }
+        <div class="overall">
+          <span>
+            {{
+              'inspection.checklist.overall'
+                | translate: { answered: answeredItems(), total: totalItems() }
+            }}
+          </span>
+          <mat-progress-bar mode="determinate" [value]="overallProgress()" aria-hidden="true" />
+        </div>
+        <app-systems-list [systems]="steps()" [current]="stepIndex()" (selected)="goTo($event)" />
+      </aside>
+    }
+
+    <div class="content">
+      @if (steps().length > 0) {
+        <ol class="segments" aria-hidden="true">
+          @for (segment of steps(); track segment.system; let index = $index) {
+            <li
+              class="segment"
+              [class.segment-complete]="segment.complete"
+              [class.segment-findings]="segment.hasFindings"
+              [class.segment-current]="index === stepIndex()"
+              [style.--fill]="segment.answered / segment.total"
+            ></li>
+          }
+        </ol>
+      }
+
+      @if (store.loading() && (!store.currentInspection() || steps().length === 0)) {
+        <div class="state" role="status" aria-live="polite">
+          <mat-progress-spinner
+            mode="indeterminate"
+            diameter="48"
+            [attr.aria-label]="'inspection.checklist.loading' | translate"
+          />
+        </div>
+      } @else if (!store.currentInspection() && store.error(); as message) {
+        <div class="state" role="alert">
+          <mat-icon class="state-icon" aria-hidden="true">search_off</mat-icon>
+          <p>{{ message }}</p>
+          <a mat-stroked-button routerLink="/inspections/new">
+            {{ 'inspection.checklist.back' | translate }}
+          </a>
+        </div>
+      } @else if (steps().length === 0 && store.error()) {
+        <div class="state" role="alert">
+          <mat-icon class="state-icon" aria-hidden="true">cloud_off</mat-icon>
+          <p>{{ 'inspection.checklist.loadError' | translate }}</p>
+          <button mat-stroked-button type="button" (click)="store.loadInspectionItems()">
+            <mat-icon>refresh</mat-icon>
+            {{ 'inspection.assignedVehicle.retry' | translate }}
+          </button>
+        </div>
+      } @else if (step(); as current) {
+        @if (store.error(); as message) {
+          <p class="answer-error" role="alert">
+            <mat-icon aria-hidden="true">error</mat-icon>
+            {{ message }}
+          </p>
+        }
+
+        @for (shown of visibleStep(); track shown.system) {
+          <ul class="items" [animate.enter]="enterAnimation()">
+            @for (item of shown.items; track item.id) {
+              <li>
+                <mat-card appearance="outlined" class="item" [class.item-finding]="isFinding(item)">
+                  <div class="item-body">
+                    <div class="item-text">
+                      <div class="item-title">
+                        <span class="item-name">{{ item.name }}</span>
+                        @if (item.isSafetyComponent) {
+                          <span class="tag tag-safety">
+                            <mat-icon aria-hidden="true">shield</mat-icon>
+                            {{ 'inspection.checklist.safety' | translate }}
+                          </span>
+                        }
+                        @if (item.requiresEvidence) {
+                          <span class="tag">
+                            <mat-icon aria-hidden="true">photo_camera</mat-icon>
+                            {{ 'inspection.checklist.photo' | translate }}
+                          </span>
+                        }
+                      </div>
+                      @if (item.description) {
+                        <span class="item-description">{{ item.description }}</span>
+                      }
+                      @if (isFinding(item)) {
+                        <p class="item-hint">
+                          <mat-icon aria-hidden="true">edit_note</mat-icon>
+                          {{
+                            (item.requiresEvidence
+                              ? 'inspection.checklist.obsEvidenceRequired'
+                              : 'inspection.checklist.observationRequired'
+                            ) | translate
+                          }}
+                        </p>
+                      }
+                    </div>
+                    <app-result-selector
+                      [value]="resultOf(item)"
+                      [label]="item.name"
+                      [disabled]="store.savingItemId() === item.id"
+                      (selected)="answer(item, $event)"
+                    />
+                  </div>
+                </mat-card>
+              </li>
+            }
+          </ul>
+        }
+
+        <nav class="actions" [attr.aria-label]="'inspection.checklist.systems' | translate">
+          @if (!current.complete) {
+            <p class="actions-hint">{{ 'inspection.checklist.answerAllToContinue' | translate }}</p>
+          }
+          <div class="actions-buttons">
+            <button
+              mat-stroked-button
+              type="button"
+              [disabled]="stepIndex() === 0"
+              (click)="previous()"
+            >
+              {{ 'inspection.checklist.previous' | translate }}
+            </button>
+            <button mat-flat-button type="button" [disabled]="!current.complete" (click)="next()">
+              {{
+                (isLastStep() ? 'inspection.checklist.review' : 'inspection.checklist.next')
+                  | translate
+              }}
+            </button>
+          </div>
+        </nav>
+      }
+    </div>
+  </div>
+</section>
