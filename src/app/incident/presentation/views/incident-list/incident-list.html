@@ -83,7 +83,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ 'incidents.reported-at' | translate }}
       </th>
-      <td mat-cell *matCellDef="let incident">{{ incident.reportedAt }}</td>
+      <td mat-cell *matCellDef="let incident">{{ incident.reportedAt | date: 'dd/MM/yyyy HH:mm' }}</td>
     </ng-container>
 
     <!-- Actions -->

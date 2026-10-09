@@ -36,7 +36,7 @@
           </div>
           <div class="info-item">
             <span class="label">{{ 'incident.reported-at' | translate }}</span>
-            <span class="value">{{ incident.reportedAt }}</span>
+            <span class="value">{{ incident.reportedAt | date: 'dd/MM/yyyy HH:mm' }}</span>
           </div>
         </div>
         <mat-divider></mat-divider>
@@ -55,7 +55,7 @@
         @for (action of incident.correctiveActions; track action.id) {
           <div class="list-item">
             <p>{{ action.description }}</p>
-            <p class="meta">{{ action.performedBy }} · {{ action.performedAt }}</p>
+            <p class="meta">{{ action.performedBy }} · {{ action.performedAt | date: 'dd/MM/yyyy HH:mm' }}</p>
           </div>
         } @empty {
           <p class="empty">{{ 'incident.no-corrective-actions' | translate }}</p>
@@ -75,7 +75,8 @@
           <div class="list-item">
             <p>{{ repair.workshop }} · {{ repair.cost }}</p>
             <p class="meta">
-              {{ repair.startedAt }} → {{ repair.finishedAt }} · {{ repair.status }}
+              {{ repair.startedAt | date: 'dd/MM/yyyy HH:mm' }} → {{ repair.finishedAt | date: 'dd/MM/yyyy HH:mm' }} ·
+              {{ 'incident.repair.status.' + repair.status | translate }}
             </p>
           </div>
         } @empty {
@@ -95,7 +96,7 @@
         @for (followUp of incident.followUps; track followUp.id) {
           <div class="list-item">
             <p>{{ followUp.note }}</p>
-            <p class="meta">{{ followUp.createdBy }} · {{ followUp.createdAt }}</p>
+            <p class="meta">{{ followUp.createdBy }} · {{ followUp.createdAt | date: 'dd/MM/yyyy HH:mm' }}</p>
           </div>
         } @empty {
           <p class="empty">{{ 'incident.no-follow-ups' | translate }}</p>

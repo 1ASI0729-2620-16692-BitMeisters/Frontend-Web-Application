@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, computed, inject, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,7 @@ import { IncidentStore } from '../../../application/incident.store';
 @Component({
   selector: 'app-incident-list',
   imports: [
+    DatePipe,
     MatTableModule,
     MatButtonModule,
     MatProgressSpinner,
