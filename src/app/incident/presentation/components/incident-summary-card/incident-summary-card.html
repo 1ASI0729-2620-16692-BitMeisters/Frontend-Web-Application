@@ -19,7 +19,7 @@
     </div>
     <p class="meta">
       <mat-icon inline>calendar_today</mat-icon>
-      {{ incident().reportedAt }}
+      {{ incident().reportedAt | date: 'dd/MM/yyyy HH:mm' }}
     </p>
   </mat-card-content>
 </mat-card>

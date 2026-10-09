@@ -260,7 +260,12 @@
       "cost": "Costo",
       "started-at": "Inicio",
       "finished-at": "Fin",
-      "schedule": "Programar Reparación"
+      "schedule": "Programar Reparación",
+      "status": {
+        "SCHEDULED": "Programada",
+        "IN_PROGRESS": "En curso",
+        "COMPLETED": "Completada"
+      }
     },
     "follow-up": {
       "new-title": "Agregar Seguimiento",
@@ -382,5 +387,23 @@
       "EXPIRING": "Próximo a vencer",
       "EXPIRED": "Vencido"
     }
+  },
+  "titles": {
+    "home": "Panel",
+    "about": "Acerca de",
+    "incidents": "Incidencias",
+    "fleet": "Flota",
+    "vehicleDocumentation": "Documentación vehicular",
+    "startInspection": "Iniciar inspección",
+    "inspectionChecklist": "Checklist de inspección",
+    "pageNotFound": "Página no encontrada"
+  },
+  "paginator": {
+    "itemsPerPage": "Elementos por página:",
+    "nextPage": "Página siguiente",
+    "previousPage": "Página anterior",
+    "firstPage": "Primera página",
+    "lastPage": "Última página",
+    "range": "{{start}} – {{end}} de {{length}}"
   }
 }

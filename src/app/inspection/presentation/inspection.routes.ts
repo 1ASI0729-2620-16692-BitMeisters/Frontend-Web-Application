@@ -8,10 +8,10 @@ const inspectionChecklist = () =>
 
 export const inspectionRoutes: Routes = [
   { path: '', redirectTo: 'new', pathMatch: 'full' },
-  { path: 'new', loadComponent: startInspection, title: 'FleetSafe - Start inspection' },
+  { path: 'new', loadComponent: startInspection, title: 'titles.startInspection' },
   {
     path: ':id/execute',
     loadComponent: inspectionChecklist,
-    title: 'FleetSafe - Inspection checklist',
+    title: 'titles.inspectionChecklist',
   },
 ];
