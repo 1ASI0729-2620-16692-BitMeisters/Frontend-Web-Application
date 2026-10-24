@@ -290,9 +290,26 @@
   "fleet": {
     "title": "Gestión de Flota",
     "subtitle": "Gestiona flotas, vehículos, conductores y asignaciones.",
+    "titles": {
+      "vehicles": "Vehículos",
+      "newVehicle": "Registrar vehículo",
+      "editVehicle": "Actualizar vehículo",
+      "vehicleDetail": "Detalle del vehículo",
+      "drivers": "Conductores",
+      "assignments": "Asignaciones de vehículos"
+    },
+    "states": {
+      "loading": "Cargando…",
+      "retry": "Reintentar"
+    },
     "fleets": {
       "title": "Flotas",
-      "count": "Total de flotas"
+      "count": "Total de flotas",
+      "overview": "Resumen de flotas",
+      "name": "Flota",
+      "company": "Empresa",
+      "vehicles": "Vehículos",
+      "empty": "Aún no hay flotas registradas."
     },
     "vehicles": {
       "title": "Vehículos",
@@ -304,29 +321,85 @@
       "notFound": "Vehículo no encontrado.",
       "fleet": "Flota",
       "plate": "Placa",
+      "plateHint": "Formato ABC-123",
       "brand": "Marca",
       "model": "Modelo",
       "year": "Año",
       "type": "Tipo",
       "capacity": "Capacidad",
-      "status": "Estado"
+      "status": "Estado",
+      "search": "Buscar por placa, marca o modelo",
+      "allStatuses": "Todos los estados",
+      "empty": "Aún no hay vehículos registrados.",
+      "noResults": "Ningún vehículo coincide con los filtros seleccionados.",
+      "fleetReadOnly": "Un vehículo permanece en la flota donde fue registrado.",
+      "statusReadOnly": "El estado proviene de la última evaluación y no se puede editar aquí.",
+      "create": "Registrar vehículo",
+      "update": "Guardar cambios",
+      "saving": "Guardando…",
+      "information": "Información del vehículo",
+      "registeredOn": "Registrado el",
+      "currentAssignment": "Asignación actual",
+      "assignmentHistory": "Historial de asignaciones",
+      "noAssignmentHistory": "Este vehículo nunca ha sido asignado a un conductor.",
+      "inspectionHistory": "Historial de inspecciones",
+      "noInspections": "No se han registrado inspecciones para este vehículo.",
+      "inspectionDate": "Iniciada",
+      "inspectionStatus": "Estado de la inspección",
+      "odometer": "Odómetro",
+      "assign": "Asignar a un conductor"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "plateFormat": "Usa el formato ABC-123.",
+      "plateTaken": "Esta placa ya está registrada.",
+      "yearRange": "Ingresa un año entre {{min}} y {{max}}.",
+      "positive": "Ingresa un valor mayor que 0.",
+      "maxLength": "Usa como máximo {{max}} caracteres."
     },
     "drivers": {
       "title": "Conductores",
+      "subtitle": "Conductores de la flota y el vehículo que opera cada uno.",
+      "userId": "Usuario",
       "licenseNumber": "Número de licencia",
       "licenseExpirationDate": "Fecha de vencimiento",
       "licenseStatus": "Estado de licencia",
       "valid": "Vigente",
-      "expired": "Vencida"
+      "expired": "Vencida",
+      "assignedVehicle": "Vehículo asignado",
+      "noVehicle": "Sin vehículo",
+      "empty": "Aún no hay conductores registrados."
     },
     "assignments": {
       "title": "Asignaciones de vehículos",
+      "subtitle": "Asigna vehículos a conductores y consulta el historial de asignaciones.",
+      "newTitle": "Nueva asignación",
       "vehicle": "Vehículo",
       "driver": "Conductor",
       "assignedFrom": "Asignado desde",
+      "assignedTo": "Asignado hasta",
       "activeDriver": "Conductor asignado",
       "none": "Sin asignación activa",
-      "assign": "Asignar vehículo"
+      "assign": "Asignar vehículo",
+      "assigning": "Asignando…",
+      "state": "Estado",
+      "active": "Activa",
+      "ended": "Finalizada",
+      "end": "Finalizar asignación",
+      "history": "Historial de asignaciones",
+      "empty": "Aún no se han registrado asignaciones.",
+      "selectVehicle": "Selecciona un vehículo",
+      "selectDriver": "Selecciona un conductor",
+      "noVehicles": "Todos los vehículos ya tienen conductor.",
+      "noDrivers": "Todos los conductores ya tienen vehículo.",
+      "licenseExpired": "licencia vencida",
+      "unknownVehicle": "Vehículo desconocido",
+      "unknownDriver": "Conductor desconocido",
+      "current": "Vigente"
+    },
+    "inspectionStatus": {
+      "IN_PROGRESS": "En curso",
+      "COMPLETED": "Completada"
     },
     "vehicleTypes": {
       "THIN": "Liviano",
@@ -348,6 +421,32 @@
       "viewVehicles": "Ver vehículos",
       "viewDrivers": "Ver conductores",
       "manageAssignments": "Gestionar asignaciones"
+    },
+    "notifications": {
+      "vehicleRegistered": "Vehículo {{plate}} registrado.",
+      "vehicleUpdated": "Vehículo {{plate}} actualizado.",
+      "vehicleDeleted": "Vehículo eliminado.",
+      "vehicleAssigned": "Vehículo asignado. El conductor ya puede inspeccionarlo.",
+      "assignmentEnded": "Asignación finalizada."
+    },
+    "errors": {
+      "loadFailed": "No se pudo cargar la Gestión de Flota. Revisa tu conexión e inténtalo de nuevo.",
+      "inspectionsFailed": "No se pudo cargar el historial de inspecciones.",
+      "saveFailed": "No se pudo completar la solicitud. Revisa tu conexión e inténtalo de nuevo.",
+      "invalidVehicle": "Completa todos los campos con valores válidos.",
+      "plateTaken": "La placa ya está registrada.",
+      "fleetNotFound": "La flota seleccionada no existe.",
+      "vehicleNotFound": "El vehículo no existe.",
+      "assignmentNotFound": "La asignación no existe.",
+      "assignmentNotActive": "La asignación ya finalizó.",
+      "assignment": {
+        "VEHICLE_NOT_FOUND": "El vehículo seleccionado no existe.",
+        "DRIVER_NOT_FOUND": "El conductor seleccionado no existe.",
+        "VEHICLE_NOT_ENABLED": "El vehículo no se encuentra habilitado, por lo que no se puede asignar a un conductor.",
+        "VEHICLE_ALREADY_ASSIGNED": "El vehículo ya está asignado a un conductor.",
+        "DRIVER_LICENSE_EXPIRED": "La licencia del conductor está vencida.",
+        "DRIVER_ALREADY_ASSIGNED": "El conductor ya tiene un vehículo asignado."
+      }
     }
   },
   "documents": {
