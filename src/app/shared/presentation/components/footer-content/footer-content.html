@@ -12,6 +12,13 @@
 
     <span class="fs-footer__spacer"></span>
 
+    <nav class="fs-footer__legal" [attr.aria-label]="'footer.legal-navigation' | translate">
+      <a [href]="landingPageUrl + '/terms.html'" target="_blank" rel="noopener">{{ 'footer.terms' | translate }}</a>
+      <a [href]="landingPageUrl + '/privacy.html'" target="_blank" rel="noopener">{{ 'footer.privacy' | translate }}</a>
+    </nav>
+
+    <span class="fs-footer__sep">·</span>
+
     <span class="fs-footer__powered">
       {{ 'footer.powered-by' | translate }}
       <a href="https://material.angular.dev/" target="_blank" rel="noopener">Angular Material</a>

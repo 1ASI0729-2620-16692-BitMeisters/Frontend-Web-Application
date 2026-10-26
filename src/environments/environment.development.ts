@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   version: '0.2.9',
+  landingPageUrl: 'https://1asi0729-2620-16692-bitmeisters.github.io/Landing-Page',
   platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',

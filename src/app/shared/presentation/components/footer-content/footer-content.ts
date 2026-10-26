@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { environment } from '../../../../../environments/environment';
 
 /**
  * Displays localized footer text.
@@ -10,4 +11,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './footer-content.html',
   styleUrl: './footer-content.css',
 })
-export class FooterContent {}
+export class FooterContent {
+  protected readonly landingPageUrl = environment.landingPageUrl;
+}
