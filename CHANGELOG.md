@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-10-26
+
+### Added
+- The footer links the Terms of Use and the Privacy Policy published with the landing page, in English and Spanish.
+
 ## [0.2.9] - 2026-10-09
 
 ### Fixed
@@ -80,6 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shared layout with sidebar, language switcher and footer.
 - Environments per stage and the json-server mock api.
 
+[0.3.0]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.9...v0.3.0
 [0.2.9]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.8...v0.2.9
 [0.2.8]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/1ASI0729-2620-16692-BitMeisters/Frontend-Web-Application/compare/v0.2.6...v0.2.7

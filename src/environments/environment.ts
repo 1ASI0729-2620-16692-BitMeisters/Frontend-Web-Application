@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  version: '0.2.9',
+  version: '0.3.0',
   landingPageUrl: 'https://1asi0729-2620-16692-bitmeisters.github.io/Landing-Page',
   platformProviderApiBaseUrl: 'https://fleetsafe-api.onrender.com/api/v1',
   platformProviderInspectionsEndpointPath: '/inspections',
