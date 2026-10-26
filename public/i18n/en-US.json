@@ -34,7 +34,10 @@
   "footer": {
     "rights": "All rights reserved.",
     "powered-by": "Powered by",
-    "and": "and"
+    "and": "and",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "legal-navigation": "Legal pages"
   },
   "page-not-found": {
     "title": "Page not found",
