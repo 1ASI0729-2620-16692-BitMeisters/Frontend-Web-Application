@@ -293,9 +293,26 @@
   "fleet": {
     "title": "Fleet Management",
     "subtitle": "Manage fleets, vehicles, drivers and assignments.",
+    "titles": {
+      "vehicles": "Vehicles",
+      "newVehicle": "Register vehicle",
+      "editVehicle": "Update vehicle",
+      "vehicleDetail": "Vehicle details",
+      "drivers": "Drivers",
+      "assignments": "Vehicle assignments"
+    },
+    "states": {
+      "loading": "Loading…",
+      "retry": "Retry"
+    },
     "fleets": {
       "title": "Fleets",
-      "count": "Total fleets"
+      "count": "Total fleets",
+      "overview": "Fleet overview",
+      "name": "Fleet",
+      "company": "Company",
+      "vehicles": "Vehicles",
+      "empty": "No fleets are registered yet."
     },
     "vehicles": {
       "title": "Vehicles",
@@ -307,29 +324,85 @@
       "notFound": "Vehicle not found.",
       "fleet": "Fleet",
       "plate": "Plate",
+      "plateHint": "Format ABC-123",
       "brand": "Brand",
       "model": "Model",
       "year": "Year",
       "type": "Type",
       "capacity": "Capacity",
-      "status": "Status"
+      "status": "Status",
+      "search": "Search by plate, brand or model",
+      "allStatuses": "All statuses",
+      "empty": "No vehicles are registered yet.",
+      "noResults": "No vehicles match the selected filters.",
+      "fleetReadOnly": "A vehicle stays in the fleet where it was registered.",
+      "statusReadOnly": "The status comes from the latest evaluation and cannot be edited here.",
+      "create": "Register vehicle",
+      "update": "Save changes",
+      "saving": "Saving…",
+      "information": "Vehicle information",
+      "registeredOn": "Registered on",
+      "currentAssignment": "Current assignment",
+      "assignmentHistory": "Assignment history",
+      "noAssignmentHistory": "This vehicle has never been assigned to a driver.",
+      "inspectionHistory": "Inspection history",
+      "noInspections": "No inspections have been registered for this vehicle.",
+      "inspectionDate": "Started",
+      "inspectionStatus": "Inspection status",
+      "odometer": "Odometer",
+      "assign": "Assign to a driver"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "plateFormat": "Use the format ABC-123.",
+      "plateTaken": "This plate is already registered.",
+      "yearRange": "Enter a year between {{min}} and {{max}}.",
+      "positive": "Enter a value greater than 0.",
+      "maxLength": "Use at most {{max}} characters."
     },
     "drivers": {
       "title": "Drivers",
+      "subtitle": "Drivers of the fleet and the vehicle each one operates.",
+      "userId": "User",
       "licenseNumber": "License number",
       "licenseExpirationDate": "Expiration date",
       "licenseStatus": "License status",
       "valid": "Valid",
-      "expired": "Expired"
+      "expired": "Expired",
+      "assignedVehicle": "Assigned vehicle",
+      "noVehicle": "No vehicle",
+      "empty": "No drivers are registered yet."
     },
     "assignments": {
       "title": "Vehicle assignments",
+      "subtitle": "Assign vehicles to drivers and review the assignment history.",
+      "newTitle": "New assignment",
       "vehicle": "Vehicle",
       "driver": "Driver",
       "assignedFrom": "Assigned from",
+      "assignedTo": "Assigned until",
       "activeDriver": "Assigned driver",
       "none": "No active assignment",
-      "assign": "Assign vehicle"
+      "assign": "Assign vehicle",
+      "assigning": "Assigning…",
+      "state": "State",
+      "active": "Active",
+      "ended": "Ended",
+      "end": "End assignment",
+      "history": "Assignment history",
+      "empty": "No assignments have been registered yet.",
+      "selectVehicle": "Select a vehicle",
+      "selectDriver": "Select a driver",
+      "noVehicles": "Every vehicle already has a driver.",
+      "noDrivers": "Every driver already has a vehicle.",
+      "licenseExpired": "license expired",
+      "unknownVehicle": "Unknown vehicle",
+      "unknownDriver": "Unknown driver",
+      "current": "In force"
+    },
+    "inspectionStatus": {
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed"
     },
     "vehicleTypes": {
       "THIN": "Thin",
@@ -351,6 +424,32 @@
       "viewVehicles": "View vehicles",
       "viewDrivers": "View drivers",
       "manageAssignments": "Manage assignments"
+    },
+    "notifications": {
+      "vehicleRegistered": "Vehicle {{plate}} registered.",
+      "vehicleUpdated": "Vehicle {{plate}} updated.",
+      "vehicleDeleted": "Vehicle removed.",
+      "vehicleAssigned": "Vehicle assigned. The driver can now inspect it.",
+      "assignmentEnded": "Assignment ended."
+    },
+    "errors": {
+      "loadFailed": "Could not load Fleet Management. Check your connection and try again.",
+      "inspectionsFailed": "Could not load the inspection history.",
+      "saveFailed": "Could not complete the request. Check your connection and try again.",
+      "invalidVehicle": "Complete every field with valid values.",
+      "plateTaken": "The plate is already registered.",
+      "fleetNotFound": "The selected fleet does not exist.",
+      "vehicleNotFound": "The vehicle does not exist.",
+      "assignmentNotFound": "The assignment does not exist.",
+      "assignmentNotActive": "The assignment has already ended.",
+      "assignment": {
+        "VEHICLE_NOT_FOUND": "The selected vehicle does not exist.",
+        "DRIVER_NOT_FOUND": "The selected driver does not exist.",
+        "VEHICLE_NOT_ENABLED": "The vehicle is not enabled, so it cannot be assigned to a driver.",
+        "VEHICLE_ALREADY_ASSIGNED": "The vehicle is already assigned to a driver.",
+        "DRIVER_LICENSE_EXPIRED": "The driver's license has expired.",
+        "DRIVER_ALREADY_ASSIGNED": "The driver already has an assigned vehicle."
+      }
     }
   },
   "documents": {
