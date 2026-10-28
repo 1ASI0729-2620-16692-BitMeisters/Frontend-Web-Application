@@ -3,6 +3,8 @@ export const environment = {
   version: '0.3.0',
   landingPageUrl: 'https://1asi0729-2620-16692-bitmeisters.github.io/Landing-Page',
   platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
+  backendApiBaseUrl: 'https://fleetsafe-api.nicesky-02088f36.chilecentral.azurecontainerapps.io/api/v1',
+  backendSignInEndpointPath: '/auth/login',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',
   platformProviderVehicleAssignmentEndpointPath: '/drivers/me/vehicle-assignment',
