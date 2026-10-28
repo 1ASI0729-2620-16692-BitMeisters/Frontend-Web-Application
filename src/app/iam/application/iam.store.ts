@@ -6,6 +6,7 @@ import { SignInCommand } from '../domain/model/sign-in.command';
 import { User } from '../domain/model/user.entity';
 import { UsersQuery } from '../domain/model/users.query';
 import { IamApi } from '../infrastructure/iam-api';
+import { UpdateUserRequest } from '../infrastructure/update-user.request';
 import { SignInResource } from '../infrastructure/sign-in-response';
 import { UserAssembler } from '../infrastructure/user-assembler';
 
@@ -47,6 +48,9 @@ export class IamStore {
 
   private readonly saveUserErrorSignal = signal<string | null>(null);
   readonly saveUserError = this.saveUserErrorSignal.asReadonly();
+
+  private readonly updatingUserIdSignal = signal<string | null>(null);
+  readonly updatingUserId = this.updatingUserIdSignal.asReadonly();
 
   readonly isSignedIn = computed(() => this.sessionSignal() !== null);
 
@@ -116,6 +120,22 @@ export class IamStore {
       error: (error: HttpErrorResponse) => {
         this.saveUserErrorSignal.set(this.saveErrorFor(error));
         this.savingUserSignal.set(false);
+      },
+    });
+  }
+
+  updateUser(id: string, changes: UpdateUserRequest, done: (error: string | null) => void): void {
+    if (this.updatingUserIdSignal()) return;
+    this.updatingUserIdSignal.set(id);
+    this.iamApi.updateUser(id, changes).subscribe({
+      next: (updated) => {
+        this.usersSignal.update((users) => users.map((user) => (user.id === updated.id ? updated : user)));
+        this.updatingUserIdSignal.set(null);
+        done(null);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.updatingUserIdSignal.set(null);
+        done(this.saveErrorFor(error));
       },
     });
   }

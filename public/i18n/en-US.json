@@ -541,7 +541,11 @@
       "empty": "No users match these filters.",
       "loading": "Loading users",
       "retry": "Try again",
-      "new": "New user"
+      "new": "New user",
+      "roleOf": "Role of {{name}}",
+      "roleChanged": "The role of {{name}} was changed.",
+      "activated": "{{name}} can sign in again.",
+      "deactivated": "{{name}} can no longer sign in."
     },
     "userForm": {
       "title": "New user",

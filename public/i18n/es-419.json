@@ -541,7 +541,11 @@
       "empty": "Ningún usuario coincide con estos filtros.",
       "loading": "Cargando usuarios",
       "retry": "Reintentar",
-      "new": "Nuevo usuario"
+      "new": "Nuevo usuario",
+      "roleOf": "Rol de {{name}}",
+      "roleChanged": "Se cambió el rol de {{name}}.",
+      "activated": "{{name}} puede volver a iniciar sesión.",
+      "deactivated": "{{name}} ya no puede iniciar sesión."
     },
     "userForm": {
       "title": "Nuevo usuario",

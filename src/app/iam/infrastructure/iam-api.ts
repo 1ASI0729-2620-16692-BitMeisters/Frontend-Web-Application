@@ -9,6 +9,7 @@ import { UsersPage, UsersQuery } from '../domain/model/users.query';
 import { SignInApiEndpoint } from './sign-in-api-endpoint';
 import { SignInAssembler } from './sign-in-assembler';
 import { SignInResource } from './sign-in-response';
+import { UpdateUserRequest } from './update-user.request';
 import { UserAssembler } from './user-assembler';
 import { UsersApiEndpoint } from './users-api-endpoint';
 
@@ -27,4 +28,6 @@ export class IamApi extends BaseApi {
   getUsers = (query: UsersQuery): Observable<UsersPage<User>> => this.usersEndpoint.getPage(query);
 
   registerUser = (command: RegisterUserCommand): Observable<User> => this.usersEndpoint.create(command);
+
+  updateUser = (id: string, changes: UpdateUserRequest): Observable<User> => this.usersEndpoint.update(id, changes);
 }

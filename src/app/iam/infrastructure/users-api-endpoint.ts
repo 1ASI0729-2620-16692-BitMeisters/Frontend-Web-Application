@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { RegisterUserCommand } from '../domain/model/register-user.command';
 import { User } from '../domain/model/user.entity';
 import { UsersPage, UsersQuery } from '../domain/model/users.query';
+import { UpdateUserRequest } from './update-user.request';
 import { UserAssembler } from './user-assembler';
 import { UserResource, UsersResponse } from './users-response';
 
@@ -33,5 +34,10 @@ export class UsersApiEndpoint {
   create = (command: RegisterUserCommand): Observable<User> =>
     this.http
       .post<UserResource>(usersApiEndpointUrl, this.assembler.toRequestFromCommand(command))
+      .pipe(map((resource) => this.assembler.toEntityFromResource(resource)));
+
+  update = (id: string, changes: UpdateUserRequest): Observable<User> =>
+    this.http
+      .patch<UserResource>(`${usersApiEndpointUrl}/${id}`, changes)
       .pipe(map((resource) => this.assembler.toEntityFromResource(resource)));
 }

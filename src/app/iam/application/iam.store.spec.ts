@@ -27,7 +27,7 @@ const session = (expiresAt: number): SignInResource => ({
 });
 
 describe('IamStore', () => {
-  const api = { signIn: vi.fn(), getUsers: vi.fn(), registerUser: vi.fn() };
+  const api = { signIn: vi.fn(), getUsers: vi.fn(), registerUser: vi.fn(), updateUser: vi.fn() };
   const router = {
     navigateByUrl: vi.fn(() => Promise.resolve(true)),
     navigate: vi.fn(() => Promise.resolve(true)),
@@ -152,5 +152,24 @@ describe('IamStore', () => {
     store.registerUser(newDriver, vi.fn());
 
     expect(store.saveUserError()).toBe('La contraseña debe tener entre 8 y 72 caracteres.');
+  });
+
+  it('replaces the user in the list after changing its role', () => {
+    const driver = new User({ id: 'user-2', companyId: 'company-1', email: 'luis.mamani@andinos.pe', firstName: 'Luis',
+      lastName: 'Mamani', role: Role.DRIVER, isActive: true });
+    const supervisor = new User({ id: 'user-2', companyId: 'company-1', email: 'luis.mamani@andinos.pe', firstName: 'Luis',
+      lastName: 'Mamani', role: Role.FLEET_SUPERVISOR, isActive: true });
+    api.getUsers.mockReturnValue(of({ users: [driver], totalUsers: 1 }));
+    api.updateUser.mockReturnValue(of(supervisor));
+    const store = createStore();
+    const done = vi.fn();
+    store.loadUsers();
+
+    store.updateUser('user-2', { role: Role.FLEET_SUPERVISOR }, done);
+
+    expect(api.updateUser).toHaveBeenCalledWith('user-2', { role: Role.FLEET_SUPERVISOR });
+    expect(store.users()[0].role).toBe(Role.FLEET_SUPERVISOR);
+    expect(store.updatingUserId()).toBeNull();
+    expect(done).toHaveBeenCalledWith(null);
   });
 });
