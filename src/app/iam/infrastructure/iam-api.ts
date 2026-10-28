@@ -3,9 +3,13 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi } from '../../shared/infrastructure/base-api';
 import { SignInCommand } from '../domain/model/sign-in.command';
+import { User } from '../domain/model/user.entity';
+import { UsersPage, UsersQuery } from '../domain/model/users.query';
 import { SignInApiEndpoint } from './sign-in-api-endpoint';
 import { SignInAssembler } from './sign-in-assembler';
 import { SignInResource } from './sign-in-response';
+import { UserAssembler } from './user-assembler';
+import { UsersApiEndpoint } from './users-api-endpoint';
 
 /**
  * Infrastructure facade that exposes the IAM endpoint operations.
@@ -14,7 +18,10 @@ import { SignInResource } from './sign-in-response';
 export class IamApi extends BaseApi {
   private readonly http = inject(HttpClient);
   private readonly signInEndpoint = new SignInApiEndpoint(this.http, new SignInAssembler());
+  private readonly usersEndpoint = new UsersApiEndpoint(this.http, new UserAssembler());
 
   signIn = (signInCommand: SignInCommand): Observable<SignInResource> =>
     this.signInEndpoint.signIn(signInCommand);
+
+  getUsers = (query: UsersQuery): Observable<UsersPage<User>> => this.usersEndpoint.getPage(query);
 }

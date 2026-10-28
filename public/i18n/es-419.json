@@ -499,7 +499,8 @@
     "startInspection": "Iniciar inspección",
     "inspectionChecklist": "Checklist de inspección",
     "pageNotFound": "Página no encontrada",
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "users": "Usuarios"
   },
   "paginator": {
     "itemsPerPage": "Elementos por página:",
@@ -524,6 +525,21 @@
       "ADMINISTRATOR": "Administrador",
       "FLEET_SUPERVISOR": "Supervisor de flota",
       "DRIVER": "Conductor"
+    },
+    "users": {
+      "title": "Usuarios",
+      "subtitle": "Cuentas de tu empresa, con su rol y su estado.",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "role": "Rol",
+      "status": "Estado",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "allRoles": "Todos los roles",
+      "allStatuses": "Todos los estados",
+      "empty": "Ningún usuario coincide con estos filtros.",
+      "loading": "Cargando usuarios",
+      "retry": "Reintentar"
     }
   }
 }

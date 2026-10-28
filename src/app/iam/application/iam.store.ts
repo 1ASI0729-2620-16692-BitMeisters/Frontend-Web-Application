@@ -3,6 +3,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { SignInCommand } from '../domain/model/sign-in.command';
 import { User } from '../domain/model/user.entity';
+import { UsersQuery } from '../domain/model/users.query';
 import { IamApi } from '../infrastructure/iam-api';
 import { SignInResource } from '../infrastructure/sign-in-response';
 import { UserAssembler } from '../infrastructure/user-assembler';
@@ -24,6 +25,21 @@ export class IamStore {
 
   private readonly errorSignal = signal<string | null>(null);
   readonly error = this.errorSignal.asReadonly();
+
+  private readonly usersSignal = signal<User[]>([]);
+  readonly users = this.usersSignal.asReadonly();
+
+  private readonly totalUsersSignal = signal<number>(0);
+  readonly totalUsers = this.totalUsersSignal.asReadonly();
+
+  private readonly usersQuerySignal = signal<UsersQuery>({ role: null, isActive: null, page: 0, size: 20 });
+  readonly usersQuery = this.usersQuerySignal.asReadonly();
+
+  private readonly loadingUsersSignal = signal<boolean>(false);
+  readonly loadingUsers = this.loadingUsersSignal.asReadonly();
+
+  private readonly usersErrorSignal = signal<string | null>(null);
+  readonly usersError = this.usersErrorSignal.asReadonly();
 
   readonly isSignedIn = computed(() => this.sessionSignal() !== null);
 
@@ -58,6 +74,24 @@ export class IamStore {
     router.navigate(['/iam/sign-in']).then();
   }
 
+  loadUsers(query: Partial<UsersQuery> = {}): void {
+    const nextQuery = { ...this.usersQuerySignal(), ...query };
+    this.usersQuerySignal.set(nextQuery);
+    this.loadingUsersSignal.set(true);
+    this.usersErrorSignal.set(null);
+    this.iamApi.getUsers(nextQuery).subscribe({
+      next: ({ users, totalUsers }) => {
+        this.usersSignal.set(users);
+        this.totalUsersSignal.set(totalUsers);
+        this.loadingUsersSignal.set(false);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.usersErrorSignal.set(this.errorKeyFor(error));
+        this.loadingUsersSignal.set(false);
+      },
+    });
+  }
+
   hasRole(...roles: User['role'][]): boolean {
     return this.currentUser()?.hasRole(...roles) ?? false;
   }
@@ -69,6 +103,13 @@ export class IamStore {
     } catch {
       return;
     }
+  }
+
+  private errorKeyFor(error: HttpErrorResponse): string {
+    if (error.status === 0) return 'errors.network';
+    if (error.status === 401) return 'errors.unauthorized';
+    if (error.status === 403) return 'errors.forbidden';
+    return 'errors.server';
   }
 
   private saveSession(session: SignInResource): void {

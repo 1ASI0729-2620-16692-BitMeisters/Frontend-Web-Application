@@ -499,7 +499,8 @@
     "startInspection": "Start inspection",
     "inspectionChecklist": "Inspection checklist",
     "pageNotFound": "Page not found",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "users": "Users"
   },
   "paginator": {
     "itemsPerPage": "Items per page:",
@@ -524,6 +525,21 @@
       "ADMINISTRATOR": "Administrator",
       "FLEET_SUPERVISOR": "Fleet supervisor",
       "DRIVER": "Driver"
+    },
+    "users": {
+      "title": "Users",
+      "subtitle": "Accounts of your company, with their role and status.",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "allRoles": "All roles",
+      "allStatuses": "All statuses",
+      "empty": "No users match these filters.",
+      "loading": "Loading users",
+      "retry": "Try again"
     }
   }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { Role } from '../domain/model/role.enum';
 import { SignInCommand } from '../domain/model/sign-in.command';
+import { User } from '../domain/model/user.entity';
 import { IamApi } from '../infrastructure/iam-api';
 import { SignInResource } from '../infrastructure/sign-in-response';
 import { IamStore } from './iam.store';
@@ -25,7 +26,7 @@ const session = (expiresAt: number): SignInResource => ({
 });
 
 describe('IamStore', () => {
-  const api = { signIn: vi.fn() };
+  const api = { signIn: vi.fn(), getUsers: vi.fn() };
   const router = {
     navigateByUrl: vi.fn(() => Promise.resolve(true)),
     navigate: vi.fn(() => Promise.resolve(true)),
@@ -88,5 +89,29 @@ describe('IamStore', () => {
     expect(store.currentToken()).toBeNull();
     expect(localStorage.getItem('fleetsafe-session')).toBeNull();
     expect(router.navigate).toHaveBeenCalledWith(['/iam/sign-in']);
+  });
+
+  it('keeps the filters when it loads another page of users', () => {
+    const driver = new User({ id: 'user-2', companyId: 'company-1', email: 'luis.mamani@andinos.pe', firstName: 'Luis',
+      lastName: 'Mamani', role: Role.DRIVER, isActive: true });
+    api.getUsers.mockReturnValue(of({ users: [driver], totalUsers: 21 }));
+    const store = createStore();
+
+    store.loadUsers({ role: Role.DRIVER });
+    store.loadUsers({ page: 1 });
+
+    expect(api.getUsers).toHaveBeenLastCalledWith({ role: Role.DRIVER, isActive: null, page: 1, size: 20 });
+    expect(store.users()).toEqual([driver]);
+    expect(store.totalUsers()).toBe(21);
+  });
+
+  it('explains that the role does not allow listing the users', () => {
+    api.getUsers.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 403 })));
+    const store = createStore();
+
+    store.loadUsers();
+
+    expect(store.usersError()).toBe('errors.forbidden');
+    expect(store.loadingUsers()).toBe(false);
   });
 });

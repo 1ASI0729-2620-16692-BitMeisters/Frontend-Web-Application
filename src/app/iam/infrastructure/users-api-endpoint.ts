@@ -1,0 +1,31 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { User } from '../domain/model/user.entity';
+import { UsersPage, UsersQuery } from '../domain/model/users.query';
+import { UserAssembler } from './user-assembler';
+import { UsersResponse } from './users-response';
+
+const usersApiEndpointUrl = `${environment.backendApiBaseUrl}${environment.backendUsersEndpointPath}`;
+
+/**
+ * Encapsulates the HTTP operations on the users of the company.
+ */
+export class UsersApiEndpoint {
+  constructor(
+    private http: HttpClient,
+    private assembler: UserAssembler,
+  ) {}
+
+  getPage = (query: UsersQuery): Observable<UsersPage<User>> => {
+    let params = new HttpParams().set('page', query.page).set('size', query.size).set('sort', 'lastName,asc');
+    if (query.role) params = params.set('role', query.role);
+    if (query.isActive !== null) params = params.set('isActive', query.isActive);
+    return this.http.get<UsersResponse>(usersApiEndpointUrl, { params }).pipe(
+      map((response) => ({
+        users: response.content.map((resource) => this.assembler.toEntityFromResource(resource)),
+        totalUsers: response.page.totalElements,
+      })),
+    );
+  };
+}
