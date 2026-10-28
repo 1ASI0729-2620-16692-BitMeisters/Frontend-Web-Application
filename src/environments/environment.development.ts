@@ -5,6 +5,7 @@ export const environment = {
   platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
   backendApiBaseUrl: 'http://localhost:8080/api/v1',
   backendSignInEndpointPath: '/auth/login',
+  backendUsersEndpointPath: '/users',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',
   platformProviderVehicleAssignmentEndpointPath: '/drivers/me/vehicle-assignment',
