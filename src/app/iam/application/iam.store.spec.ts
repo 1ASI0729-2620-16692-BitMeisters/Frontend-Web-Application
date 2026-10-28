@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
+import { RegisterUserCommand } from '../domain/model/register-user.command';
 import { Role } from '../domain/model/role.enum';
 import { SignInCommand } from '../domain/model/sign-in.command';
 import { User } from '../domain/model/user.entity';
@@ -26,7 +27,7 @@ const session = (expiresAt: number): SignInResource => ({
 });
 
 describe('IamStore', () => {
-  const api = { signIn: vi.fn(), getUsers: vi.fn() };
+  const api = { signIn: vi.fn(), getUsers: vi.fn(), registerUser: vi.fn() };
   const router = {
     navigateByUrl: vi.fn(() => Promise.resolve(true)),
     navigate: vi.fn(() => Promise.resolve(true)),
@@ -113,5 +114,43 @@ describe('IamStore', () => {
 
     expect(store.usersError()).toBe('errors.forbidden');
     expect(store.loadingUsers()).toBe(false);
+  });
+
+  const newDriver = new RegisterUserCommand({ email: 'luis.mamani@andinos.pe', password: 'S3cure!pass', firstName: 'Luis',
+    lastName: 'Mamani', role: Role.DRIVER });
+
+  it('reloads the users after opening an account', () => {
+    api.registerUser.mockReturnValue(of({}));
+    api.getUsers.mockReturnValue(of({ users: [], totalUsers: 0 }));
+    const store = createStore();
+    const done = vi.fn();
+
+    store.registerUser(newDriver, done);
+
+    expect(done).toHaveBeenCalled();
+    expect(api.getUsers).toHaveBeenCalled();
+    expect(store.savingUser()).toBe(false);
+  });
+
+  it('explains that the email already has an account', () => {
+    api.registerUser.mockReturnValue(throwError(() => new HttpErrorResponse({ status: 409 })));
+    const store = createStore();
+    const done = vi.fn();
+
+    store.registerUser(newDriver, done);
+
+    expect(done).not.toHaveBeenCalled();
+    expect(store.saveUserError()).toBe('iam.userForm.duplicateEmail');
+  });
+
+  it('shows the reason the backend gives for invalid data', () => {
+    api.registerUser.mockReturnValue(
+      throwError(() => new HttpErrorResponse({ status: 400, error: { detail: 'La contraseña debe tener entre 8 y 72 caracteres.' } })),
+    );
+    const store = createStore();
+
+    store.registerUser(newDriver, vi.fn());
+
+    expect(store.saveUserError()).toBe('La contraseña debe tener entre 8 y 72 caracteres.');
   });
 });

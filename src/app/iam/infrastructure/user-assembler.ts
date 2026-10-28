@@ -1,5 +1,7 @@
+import { RegisterUserCommand } from '../domain/model/register-user.command';
 import { Role } from '../domain/model/role.enum';
 import { User } from '../domain/model/user.entity';
+import { CreateUserRequest } from './create-user.request';
 import { UserResource } from './users-response';
 
 /**
@@ -16,4 +18,12 @@ export class UserAssembler {
       role: resource.role as Role,
       isActive: resource.isActive,
     });
+
+  toRequestFromCommand = (command: RegisterUserCommand): CreateUserRequest => ({
+    email: command.email.trim(),
+    password: command.password,
+    firstName: command.firstName.trim(),
+    lastName: command.lastName.trim(),
+    role: command.role,
+  });
 }

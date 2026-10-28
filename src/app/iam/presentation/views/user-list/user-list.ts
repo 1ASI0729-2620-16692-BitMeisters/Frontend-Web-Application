@@ -6,6 +6,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { IamStore } from '../../../application/iam.store';
 import { Role } from '../../../domain/model/role.enum';
@@ -16,6 +17,7 @@ import { Role } from '../../../domain/model/role.enum';
 @Component({
   selector: 'app-user-list',
   imports: [
+    RouterLink,
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,

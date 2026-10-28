@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApi } from '../../shared/infrastructure/base-api';
+import { RegisterUserCommand } from '../domain/model/register-user.command';
 import { SignInCommand } from '../domain/model/sign-in.command';
 import { User } from '../domain/model/user.entity';
 import { UsersPage, UsersQuery } from '../domain/model/users.query';
@@ -24,4 +25,6 @@ export class IamApi extends BaseApi {
     this.signInEndpoint.signIn(signInCommand);
 
   getUsers = (query: UsersQuery): Observable<UsersPage<User>> => this.usersEndpoint.getPage(query);
+
+  registerUser = (command: RegisterUserCommand): Observable<User> => this.usersEndpoint.create(command);
 }

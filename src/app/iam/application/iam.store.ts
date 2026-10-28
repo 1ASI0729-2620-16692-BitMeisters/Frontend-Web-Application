@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegisterUserCommand } from '../domain/model/register-user.command';
 import { SignInCommand } from '../domain/model/sign-in.command';
 import { User } from '../domain/model/user.entity';
 import { UsersQuery } from '../domain/model/users.query';
@@ -40,6 +41,12 @@ export class IamStore {
 
   private readonly usersErrorSignal = signal<string | null>(null);
   readonly usersError = this.usersErrorSignal.asReadonly();
+
+  private readonly savingUserSignal = signal<boolean>(false);
+  readonly savingUser = this.savingUserSignal.asReadonly();
+
+  private readonly saveUserErrorSignal = signal<string | null>(null);
+  readonly saveUserError = this.saveUserErrorSignal.asReadonly();
 
   readonly isSignedIn = computed(() => this.sessionSignal() !== null);
 
@@ -92,6 +99,27 @@ export class IamStore {
     });
   }
 
+  clearSaveUserError(): void {
+    this.saveUserErrorSignal.set(null);
+  }
+
+  registerUser(command: RegisterUserCommand, done: () => void): void {
+    if (this.savingUserSignal()) return;
+    this.savingUserSignal.set(true);
+    this.saveUserErrorSignal.set(null);
+    this.iamApi.registerUser(command).subscribe({
+      next: () => {
+        this.savingUserSignal.set(false);
+        this.loadUsers();
+        done();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.saveUserErrorSignal.set(this.saveErrorFor(error));
+        this.savingUserSignal.set(false);
+      },
+    });
+  }
+
   hasRole(...roles: User['role'][]): boolean {
     return this.currentUser()?.hasRole(...roles) ?? false;
   }
@@ -110,6 +138,12 @@ export class IamStore {
     if (error.status === 401) return 'errors.unauthorized';
     if (error.status === 403) return 'errors.forbidden';
     return 'errors.server';
+  }
+
+  private saveErrorFor(error: HttpErrorResponse): string {
+    if (error.status === 409) return 'iam.userForm.duplicateEmail';
+    if (error.status === 400 && typeof error.error?.detail === 'string') return error.error.detail;
+    return this.errorKeyFor(error);
   }
 
   private saveSession(session: SignInResource): void {

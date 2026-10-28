@@ -500,7 +500,8 @@
     "inspectionChecklist": "Checklist de inspección",
     "pageNotFound": "Página no encontrada",
     "signIn": "Iniciar sesión",
-    "users": "Usuarios"
+    "users": "Usuarios",
+    "newUser": "Nuevo usuario"
   },
   "paginator": {
     "itemsPerPage": "Elementos por página:",
@@ -539,7 +540,23 @@
       "allStatuses": "Todos los estados",
       "empty": "Ningún usuario coincide con estos filtros.",
       "loading": "Cargando usuarios",
-      "retry": "Reintentar"
+      "retry": "Reintentar",
+      "new": "Nuevo usuario"
+    },
+    "userForm": {
+      "title": "Nuevo usuario",
+      "subtitle": "La persona entra con este correo y contraseña, y ve lo que su rol le permite.",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "passwordHint": "Entre 8 y 72 caracteres.",
+      "role": "Rol",
+      "cancel": "Cancelar",
+      "save": "Crear usuario",
+      "saving": "Creando…",
+      "created": "Se creó la cuenta {{email}}.",
+      "duplicateEmail": "Ya existe una cuenta con este correo."
     }
   }
 }
