@@ -499,7 +499,9 @@
     "startInspection": "Start inspection",
     "inspectionChecklist": "Inspection checklist",
     "pageNotFound": "Page not found",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "users": "Users",
+    "newUser": "New user"
   },
   "paginator": {
     "itemsPerPage": "Items per page:",
@@ -524,6 +526,41 @@
       "ADMINISTRATOR": "Administrator",
       "FLEET_SUPERVISOR": "Fleet supervisor",
       "DRIVER": "Driver"
+    },
+    "users": {
+      "title": "Users",
+      "subtitle": "Accounts of your company, with their role and status.",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "allRoles": "All roles",
+      "allStatuses": "All statuses",
+      "empty": "No users match these filters.",
+      "loading": "Loading users",
+      "retry": "Try again",
+      "new": "New user",
+      "roleOf": "Role of {{name}}",
+      "roleChanged": "The role of {{name}} was changed.",
+      "activated": "{{name}} can sign in again.",
+      "deactivated": "{{name}} can no longer sign in."
+    },
+    "userForm": {
+      "title": "New user",
+      "subtitle": "The person signs in with this email and password, and sees what their role allows.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "Between 8 and 72 characters.",
+      "role": "Role",
+      "cancel": "Cancel",
+      "save": "Create user",
+      "saving": "Creating…",
+      "created": "The account {{email}} was created.",
+      "duplicateEmail": "There is already an account with this email."
     }
   }
 }

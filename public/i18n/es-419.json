@@ -499,7 +499,9 @@
     "startInspection": "Iniciar inspección",
     "inspectionChecklist": "Checklist de inspección",
     "pageNotFound": "Página no encontrada",
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "users": "Usuarios",
+    "newUser": "Nuevo usuario"
   },
   "paginator": {
     "itemsPerPage": "Elementos por página:",
@@ -524,6 +526,41 @@
       "ADMINISTRATOR": "Administrador",
       "FLEET_SUPERVISOR": "Supervisor de flota",
       "DRIVER": "Conductor"
+    },
+    "users": {
+      "title": "Usuarios",
+      "subtitle": "Cuentas de tu empresa, con su rol y su estado.",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "role": "Rol",
+      "status": "Estado",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "allRoles": "Todos los roles",
+      "allStatuses": "Todos los estados",
+      "empty": "Ningún usuario coincide con estos filtros.",
+      "loading": "Cargando usuarios",
+      "retry": "Reintentar",
+      "new": "Nuevo usuario",
+      "roleOf": "Rol de {{name}}",
+      "roleChanged": "Se cambió el rol de {{name}}.",
+      "activated": "{{name}} puede volver a iniciar sesión.",
+      "deactivated": "{{name}} ya no puede iniciar sesión."
+    },
+    "userForm": {
+      "title": "Nuevo usuario",
+      "subtitle": "La persona entra con este correo y contraseña, y ve lo que su rol le permite.",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "passwordHint": "Entre 8 y 72 caracteres.",
+      "role": "Rol",
+      "cancel": "Cancelar",
+      "save": "Crear usuario",
+      "saving": "Creando…",
+      "created": "Se creó la cuenta {{email}}.",
+      "duplicateEmail": "Ya existe una cuenta con este correo."
     }
   }
 }

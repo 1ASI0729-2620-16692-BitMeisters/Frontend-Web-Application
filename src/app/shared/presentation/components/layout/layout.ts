@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,6 +13,8 @@ import { AuthenticationSection } from '../../../../iam/presentation/components/a
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
 import { FooterContent } from '../footer-content/footer-content';
 import { environment } from '../../../../../environments/environment';
+import { IamStore } from '../../../../iam/application/iam.store';
+import { Role } from '../../../../iam/domain/model/role.enum';
 
 /**
  * Main shell component that hosts the sidebar navigation,
@@ -50,7 +52,9 @@ export class Layout {
    * Navigation entries for the application's sidebar,
    * grouped by the DDD category of each bounded context.
    */
-  options = signal([
+  private readonly iamStore = inject(IamStore);
+
+  private readonly allOptions = signal<{ link: string; label: string; icon: string; category: string; roles?: Role[] }[]>([
     {
       link: '/home',
       label: 'layout.dashboard',
@@ -92,6 +96,11 @@ export class Layout {
       label: 'layout.identityAndAccess',
       icon: 'manage_accounts',
       category: 'generic',
+      roles: [Role.ADMINISTRATOR],
     },
   ]);
+
+  options = computed(() =>
+    this.allOptions().filter((option) => !option.roles || this.iamStore.hasRole(...option.roles)),
+  );
 }

@@ -5,6 +5,7 @@ export const environment = {
   platformProviderApiBaseUrl: 'https://fleetsafe-api.onrender.com/api/v1',
   backendApiBaseUrl: 'https://fleetsafe-api.nicesky-02088f36.chilecentral.azurecontainerapps.io/api/v1',
   backendSignInEndpointPath: '/auth/login',
+  backendUsersEndpointPath: '/users',
   platformProviderInspectionsEndpointPath: '/inspections',
   platformProviderInspectionItemsEndpointPath: '/inspection-items',
   platformProviderVehicleAssignmentEndpointPath: '/drivers/me/vehicle-assignment',
