@@ -518,6 +518,12 @@
       "submit": "Iniciar sesión",
       "signingIn": "Iniciando sesión…",
       "invalidCredentials": "El correo o la contraseña no son correctos."
+    },
+    "signOut": "Cerrar sesión",
+    "roles": {
+      "ADMINISTRATOR": "Administrador",
+      "FLEET_SUPERVISOR": "Supervisor de flota",
+      "DRIVER": "Conductor"
     }
   }
 }

@@ -53,6 +53,11 @@ export class IamStore {
     });
   }
 
+  signOut(router: Router): void {
+    this.clearSession();
+    router.navigate(['/iam/sign-in']).then();
+  }
+
   hasRole(...roles: User['role'][]): boolean {
     return this.currentUser()?.hasRole(...roles) ?? false;
   }

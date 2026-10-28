@@ -26,7 +26,10 @@ const session = (expiresAt: number): SignInResource => ({
 
 describe('IamStore', () => {
   const api = { signIn: vi.fn() };
-  const router = { navigateByUrl: vi.fn(() => Promise.resolve(true)) } as unknown as Router;
+  const router = {
+    navigateByUrl: vi.fn(() => Promise.resolve(true)),
+    navigate: vi.fn(() => Promise.resolve(true)),
+  } as unknown as Router;
   const credentials = new SignInCommand({ email: 'ana.quispe@andinos.pe', password: 'S3cure!pass' });
 
   function createStore(): IamStore {
@@ -73,5 +76,17 @@ describe('IamStore', () => {
 
     expect(createStore().isSignedIn()).toBe(false);
     expect(localStorage.getItem('fleetsafe-session')).toBeNull();
+  });
+
+  it('forgets the session and goes back to the sign-in page when signing out', () => {
+    localStorage.setItem('fleetsafe-session', JSON.stringify(session(Date.now() + 60_000)));
+    const store = createStore();
+
+    store.signOut(router);
+
+    expect(store.isSignedIn()).toBe(false);
+    expect(store.currentToken()).toBeNull();
+    expect(localStorage.getItem('fleetsafe-session')).toBeNull();
+    expect(router.navigate).toHaveBeenCalledWith(['/iam/sign-in']);
   });
 });

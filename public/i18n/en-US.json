@@ -518,6 +518,12 @@
       "submit": "Sign in",
       "signingIn": "Signing in…",
       "invalidCredentials": "The email or the password is not correct."
+    },
+    "signOut": "Sign out",
+    "roles": {
+      "ADMINISTRATOR": "Administrator",
+      "FLEET_SUPERVISOR": "Fleet supervisor",
+      "DRIVER": "Driver"
     }
   }
 }
