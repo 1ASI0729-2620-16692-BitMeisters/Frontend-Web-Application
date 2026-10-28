@@ -498,7 +498,8 @@
     "vehicleDocumentation": "Vehicle Documentation",
     "startInspection": "Start inspection",
     "inspectionChecklist": "Inspection checklist",
-    "pageNotFound": "Page not found"
+    "pageNotFound": "Page not found",
+    "signIn": "Sign in"
   },
   "paginator": {
     "itemsPerPage": "Items per page:",
@@ -507,5 +508,16 @@
     "firstPage": "First page",
     "lastPage": "Last page",
     "range": "{{start}} – {{end}} of {{length}}"
+  },
+  "iam": {
+    "signIn": {
+      "title": "Sign in to FleetSafe",
+      "subtitle": "Use the account your company administrator gave you.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "signingIn": "Signing in…",
+      "invalidCredentials": "The email or the password is not correct."
+    }
   }
 }
