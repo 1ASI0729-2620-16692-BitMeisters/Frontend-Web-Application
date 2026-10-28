@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslatePipe } from '@ngx-translate/core';
 import { map } from 'rxjs';
 
+import { AuthenticationSection } from '../../../../iam/presentation/components/authentication-section/authentication-section';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
 import { FooterContent } from '../footer-content/footer-content';
 import { environment } from '../../../../../environments/environment';
@@ -29,6 +30,7 @@ import { environment } from '../../../../../environments/environment';
     MatSidenavModule,
     TranslatePipe,
     LanguageSwitcher,
+    AuthenticationSection,
     FooterContent,
   ],
   templateUrl: './layout.html',

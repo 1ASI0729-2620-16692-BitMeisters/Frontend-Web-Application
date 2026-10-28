@@ -498,7 +498,8 @@
     "vehicleDocumentation": "Documentación vehicular",
     "startInspection": "Iniciar inspección",
     "inspectionChecklist": "Checklist de inspección",
-    "pageNotFound": "Página no encontrada"
+    "pageNotFound": "Página no encontrada",
+    "signIn": "Iniciar sesión"
   },
   "paginator": {
     "itemsPerPage": "Elementos por página:",
@@ -507,5 +508,22 @@
     "firstPage": "Primera página",
     "lastPage": "Última página",
     "range": "{{start}} – {{end}} de {{length}}"
+  },
+  "iam": {
+    "signIn": {
+      "title": "Inicia sesión en FleetSafe",
+      "subtitle": "Usa la cuenta que te dio el administrador de tu empresa.",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "signingIn": "Iniciando sesión…",
+      "invalidCredentials": "El correo o la contraseña no son correctos."
+    },
+    "signOut": "Cerrar sesión",
+    "roles": {
+      "ADMINISTRATOR": "Administrador",
+      "FLEET_SUPERVISOR": "Supervisor de flota",
+      "DRIVER": "Conductor"
+    }
   }
 }
